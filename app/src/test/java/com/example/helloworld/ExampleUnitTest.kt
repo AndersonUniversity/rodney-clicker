@@ -1,4 +1,4 @@
-package com.example.mostamazingandroidappever
+package com.example.helloworld
 
 import org.junit.Test
 

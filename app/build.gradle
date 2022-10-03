@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.mostamazingandroidappever'
+    namespace 'com.example.helloworld'
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.mostamazingandroidappever"
+        applicationId "com.example.helloworld"
         minSdk 21
         targetSdk 32
         versionCode 1
