@@ -16,6 +16,7 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
-    - name: Build with Gradle
+    - name: Run ktlintCheck
       run: ./gradlew ktlintCheck
+    - name: Build with Gradle
       run: ./gradlew build
