@@ -18,3 +18,4 @@ jobs:
         distribution: 'temurin'
     - name: Build with Gradle
       run: ./gradlew ktlintCheck
+      run: ./gradlew build
