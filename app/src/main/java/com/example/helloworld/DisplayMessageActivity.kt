@@ -1,9 +1,9 @@
 package com.example.helloworld
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.AlarmClock.EXTRA_MESSAGE
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 class DisplayMessageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
