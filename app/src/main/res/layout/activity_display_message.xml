@@ -16,12 +16,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="141dp"
-        android:layout_height="62dp"
-        android:layout_marginEnd="24dp"
-        android:text="@string/upgrade1"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
-        tools:layout_editor_absoluteY="43dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
