@@ -1,5 +1,5 @@
 package com.example.helloworld
-
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -24,15 +24,11 @@ class MainActivity : AppCompatActivity() {
 
     val rodney = AutoClicker(1, 10, 0)
 
-    //    /** Called when the user taps the Send button */ //TODO change this to shop page
-    //    fun sendMessage(view: View) {
-    //        val editText = findViewById<EditText>(R.id.editTextTextPersonName)
-    //        val message = editText.text.toString()
-    //        val intent = Intent(this, DisplayMessageActivity::class.java).apply {
-    //            putExtra(EXTRA_MESSAGE, message)
-    //        }
-    //        startActivity(intent)
-    //    }
+    /** Called when the user taps the Store button */
+    fun openStorePage(view: View) {
+        val intent = Intent(this, StoreActivity::class.java)
+        startActivity(intent)
+    }
 
     /** Called when the user taps the rodney button */
     fun increaseNum(view: View) {
