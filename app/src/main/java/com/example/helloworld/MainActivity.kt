@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**run every second to add dps*/
     fun addFunds(view: MainActivity) {
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed(
