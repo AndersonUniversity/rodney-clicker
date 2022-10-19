@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -13,8 +12,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         loadData()
-        }
+    }
 
+    /**Saves all the information whenever the main activity is paused*/
     override fun onPause() {
         super.onPause()
         saveData()
@@ -42,8 +42,6 @@ class MainActivity : AppCompatActivity() {
         editor.apply {
             putString("Raven_Dollars", currNum)
         }.apply()
-
-        Toast.makeText(this, "Data saved", Toast.LENGTH_SHORT).show()
     }
 
     /** Load Data */
