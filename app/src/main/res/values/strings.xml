@@ -2,4 +2,7 @@
     <string name="app_name">HelloWorld</string>
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
+    <string name="home_nav_button">Home</string>
+    <string name="store_nav_button">Store</string>
+    <string name="stats_nav_button">Stats</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.example.helloworld
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
@@ -12,22 +13,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         loadData()
-
-        //TODO change the button id
-        findViewById<View>(R.id.button).setOnClickListener {
-            saveData()
         }
+
+    override fun onPause() {
+        super.onPause()
+        saveData()
     }
 
-//    /** Called when the user taps the Send button */ //TODO change this to shop page
-//    fun sendMessage(view: View) {
-//        val editText = findViewById<EditText>(R.id.editTextTextPersonName)
-//        val message = editText.text.toString()
-//        val intent = Intent(this, DisplayMessageActivity::class.java).apply {
-//            putExtra(EXTRA_MESSAGE, message)
-//        }
-//        startActivity(intent)
-//    }
+    /** Called when the user taps the Store button */
+    fun openStorePage(view: View) {
+        val intent = Intent(this, StoreActivity::class.java)
+        startActivity(intent)
+    }
 
     /** Called when the user taps the rodney button */
     fun increaseNum(view: View) {
