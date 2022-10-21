@@ -1,6 +1,5 @@
 package com.example.helloworld
 
-import androidx.lifecycle.Lifecycle
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -27,15 +26,15 @@ class SaveDataTest {
 
         // Click the button
         onView(withId(R.id.ravenButton)).perform(doubleClick())
+        onView(withId(R.id.ravenButton)).perform(doubleClick())
 
         // Confirm that value increments
-        onView(withId(R.id.ravenDollars)).check(matches(withText("2")))
+        onView(withId(R.id.ravenDollars)).check(matches(withText("4")))
+    }
 
-        // Restart the app
-        rule.scenario.moveToState(Lifecycle.State.CREATED) //TODO this doesn't actually restart the app
-        rule.scenario.moveToState(Lifecycle.State.RESUMED)
-
-        // Check that value is saved
-        onView(withId(R.id.ravenDollars)).check(matches(withText("2")))
+    @Test
+    fun loadData() {
+        // Check to see if the value is saved
+        onView(withId(R.id.ravenDollars)).check(matches(withText("4")))
     }
 }
