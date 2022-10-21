@@ -1,4 +1,4 @@
-package com.example.helloworld
+package com.example.rodneyClicker
 
 import android.content.Intent
 import android.os.Bundle

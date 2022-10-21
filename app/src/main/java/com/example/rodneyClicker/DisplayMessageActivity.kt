@@ -1,4 +1,4 @@
-package com.example.helloworld
+package com.example.rodneyClicker
 
 import android.os.Bundle
 import android.provider.AlarmClock.EXTRA_MESSAGE
