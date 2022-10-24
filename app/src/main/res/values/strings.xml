@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HelloWorld</string>
+    <string name="app_name">Rodney Clicker</string>
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
     <string name="home_nav_button">Home</string>

@@ -1,4 +1,4 @@
-package com.example.helloworld
+package com.example.rodneyClicker
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

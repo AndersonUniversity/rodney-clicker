@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.helloworld'
+    namespace 'com.example.rodneyClicker'
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.helloworld"
+        applicationId "com.example.rodneyClicker"
         minSdk 21
         targetSdk 32
         versionCode 1

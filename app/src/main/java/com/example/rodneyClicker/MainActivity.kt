@@ -1,4 +1,4 @@
-package com.example.helloworld
+package com.example.rodneyClicker
 
 import android.content.Context
 import android.content.Intent
