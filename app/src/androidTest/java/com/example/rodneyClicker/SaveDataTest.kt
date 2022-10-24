@@ -31,10 +31,10 @@ class SaveDataTest {
 
         // Confirm that value increments
         onView(withId(R.id.ravenDollars)).check(matches(withText("4")))
-    }
 
-    @Test
-    fun loadData() {
+        // Recreate activity
+        rule.getScenario().recreate()
+
         // Check to see if the value is saved
         onView(withId(R.id.ravenDollars)).check(matches(withText("4")))
     }
