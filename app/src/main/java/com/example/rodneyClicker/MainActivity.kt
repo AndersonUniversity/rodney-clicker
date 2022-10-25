@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -93,9 +94,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun ravenDollarsPerSecond() {
-        val viewText = findViewById<EditText>(R.id.ravenDollarsPerSecond)
+        val viewText = findViewById<TextView>(R.id.ravenDollarsPerSecond)
         val currRDPS = viewText.text.toString().toInt()
-        viewText.setText("Raven Dollars Per Second: ")
+        viewText.text = ("Raven Dollars Per Second: " + (currRDPS).toString())
     }
 
     /**Game loop named render**/
