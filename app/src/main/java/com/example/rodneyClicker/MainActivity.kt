@@ -53,4 +53,17 @@ class MainActivity : AppCompatActivity() {
             findViewById<EditText>(R.id.ravenDollars).setText(savedNum)
         }
     }
+
+    private fun ravenDollarsPerSecond() {
+        val viewText = findViewById<EditText>(R.id.ravenDollarsPerSecond)
+        val currRDPS = viewText.text.toString().toInt()
+        viewText.setText("Raven Dollars Per Second: ")
+    }
+
+    /**Game loop named render**/
+    fun render() {
+        ravenDollarsPerSecond()
+    }
+
+//    window.requestAnimationFrame(render); //TODO figure out how to call this function
 }
