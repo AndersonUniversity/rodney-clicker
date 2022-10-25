@@ -64,7 +64,10 @@ class MainActivity : AppCompatActivity() {
                 override fun run() {
                     val ravenDollars = findViewById<EditText>(R.id.ravenDollars)
                     val currNum = ravenDollars.text.toString().toInt()
-                    ravenDollars.setText((currNum + (rodney.dps * rodney.numOwned)).toString())
+                    val totalCash = rodney.dps * rodney.numOwned
+                    val newBalance = currNum + totalCash
+                    ravenDollarsPerSecond(totalCash)
+                    ravenDollars.setText(newBalance.toString())
                     handler.postDelayed(this, 1000)
                 }
             },
@@ -93,16 +96,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun ravenDollarsPerSecond() {
+    private fun ravenDollarsPerSecond( cash: Int) {
         val viewText = findViewById<TextView>(R.id.ravenDollarsPerSecond)
-        val currRDPS = viewText.text.toString().toInt()
-        viewText.text = ("Raven Dollars Per Second: " + (currRDPS).toString())
+        val currRDPS = cash.toString()
+        val displayText = "Raven Dollars Per Second: $currRDPS"
+        viewText.text = displayText
     }
 
-    /**Game loop named render**/
-    fun render() {
-        ravenDollarsPerSecond()
-    }
-
-//    window.requestAnimationFrame(render); //TODO figure out how to call this function
 }
