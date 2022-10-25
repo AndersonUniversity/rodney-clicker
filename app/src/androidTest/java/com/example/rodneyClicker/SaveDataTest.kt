@@ -1,5 +1,6 @@
 package com.example.rodneyClicker
 
+import androidx.test.core.app.ActivityScenario.launch
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.doubleClick
 import androidx.test.espresso.action.ViewActions.replaceText
@@ -33,7 +34,8 @@ class SaveDataTest {
         onView(withId(R.id.ravenDollars)).check(matches(withText("4")))
 
         // Recreate activity
-        rule.getScenario().recreate()
+        rule.getScenario().close()
+        launch(MainActivity::class.java)
 
         // Check to see if the value is saved
         onView(withId(R.id.ravenDollars)).check(matches(withText("4")))
