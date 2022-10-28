@@ -10,17 +10,29 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
+    var numClickerUpgrades = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        addFunds(this)
-        loadData()
     }
 
     /**Saves all the information whenever the main activity is paused*/
     override fun onPause() {
         super.onPause()
         saveData()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadData()
+        numClickerUpgrades = intent.extras?.getInt("key", 0) ?: 0
+        if (numClickerUpgrades > 0) {
+            // buy rodney for each number
+            for (i in 1..numClickerUpgrades) {
+                rodney.buy()
+            }
+        }
+        addFunds(this)
     }
 
     class AutoClicker(var dps: Int, var cost: Int, var numOwned: Int) {
@@ -46,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         ravenDollars.setText((currNum + 1).toString())
     }
 
-    fun addClicker(view: View) {
+    fun addClicker(view: MainActivity) {
         val ravenDollars = findViewById<EditText>(R.id.ravenDollars)
         val currNum = ravenDollars.text.toString().toInt()
         if (currNum >= rodney.cost) {
