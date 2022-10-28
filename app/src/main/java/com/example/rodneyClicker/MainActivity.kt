@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         if (numClickerUpgrades > 0) {
             // buy rodney for each number
             for (i in 1..numClickerUpgrades) {
-                rodney.buy()
+                addClicker(this)
             }
         }
         addFunds(this)
@@ -64,6 +64,8 @@ class MainActivity : AppCompatActivity() {
         if (currNum >= rodney.cost) {
             ravenDollars.setText((currNum - rodney.cost).toString())
             rodney.buy()
+            val rodneysOwned = findViewById<EditText>(R.id.total_rodneys)
+            rodneysOwned.setText("Total Rodneys: " + rodney.numOwned.toString())
         }
     }
 

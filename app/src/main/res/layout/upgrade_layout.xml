@@ -41,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buy_upgradeButton"
         android:layout_width="335dp"
         android:layout_height="86dp"
         android:layout_marginTop="64dp"
