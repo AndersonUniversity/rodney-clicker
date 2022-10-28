@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.rodneyClicker'
+    namespace 'edu.anderson.rodneyClicker'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.rodneyClicker"
+        applicationId "edu.anderson.rodneyClicker"
         minSdk 21
         targetSdk 33
         versionCode 1
