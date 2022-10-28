@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         loadData()
+        ravenDollarsPerSecond(R.id.ravenDollarsPerSecond)
     }
 
     /**Saves all the information whenever the main activity is paused*/
@@ -55,16 +56,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun ravenDollarsPerSecond() {
+    private fun ravenDollarsPerSecond(view: View) {
         val viewText = findViewById<TextView>(R.id.ravenDollarsPerSecond)
         val currRDPS = viewText.text.toString().toInt()
-        viewText.text = ("Raven Dollars Per Second: " + (currRDPS).toString())
+        viewText.setText("Raven Dollars Per Second: " + (currRDPS).toString())
     }
-
-    /**Game loop named render**/
-    fun render() {
-        ravenDollarsPerSecond()
-    }
-
-//    window.requestAnimationFrame(render); //TODO figure out how to call this function
 }
