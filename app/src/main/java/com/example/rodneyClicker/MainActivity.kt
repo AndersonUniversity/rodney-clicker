@@ -13,7 +13,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         loadData()
-        ravenDollarsPerSecond(R.id.ravenDollarsPerSecond)
     }
 
     /**Saves all the information whenever the main activity is paused*/
@@ -54,6 +53,7 @@ class MainActivity : AppCompatActivity() {
         if (savedNum != null) {
             findViewById<EditText>(R.id.ravenDollars).setText(savedNum)
         }
+        ravenDollarsPerSecond(findViewById<TextView>(R.id.ravenDollarsPerSecond))
     }
 
     private fun ravenDollarsPerSecond(view: View) {
