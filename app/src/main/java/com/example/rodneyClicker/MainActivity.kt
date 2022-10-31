@@ -93,16 +93,21 @@ class MainActivity : AppCompatActivity() {
         val editor = sharedPref.edit()
         editor.apply {
             putString("Raven_Dollars", currNum)
+            putString("Rodney_Clickers", rodney.numOwned.toString())
         }.apply()
     }
 
     /** Load Data */
     private fun loadData() {
         val sharedPref = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        val savedNum = sharedPref.getString("Raven_Dollars", null)
+        val savedRavenDollars = sharedPref.getString("Raven_Dollars", null)
+        val savedRodneyClickers = sharedPref.getString("Rodney_Clickers", null)
 
-        if (savedNum != null) {
-            findViewById<EditText>(R.id.ravenDollars).setText(savedNum)
+        if (savedRavenDollars != null) {
+            findViewById<EditText>(R.id.ravenDollars).setText(savedRavenDollars)
+        }
+        if (savedRodneyClickers != null) {
+            findViewById<EditText>(R.id.total_rodneys).setText("Total Rodneys: $savedRodneyClickers")
         }
     }
 }
