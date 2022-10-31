@@ -1,4 +1,4 @@
-package com.example.rodneyClicker
+package edu.anderson.rodneyClicker
 
 import android.content.Context
 import android.content.Intent

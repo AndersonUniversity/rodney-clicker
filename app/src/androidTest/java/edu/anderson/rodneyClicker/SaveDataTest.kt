@@ -1,5 +1,6 @@
-package com.example.rodneyClicker
+package edu.anderson.rodneyClicker
 
+import androidx.test.core.app.ActivityScenario.launch
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.doubleClick
 import androidx.test.espresso.action.ViewActions.replaceText
@@ -31,10 +32,11 @@ class SaveDataTest {
 
         // Confirm that value increments
         onView(withId(R.id.ravenDollars)).check(matches(withText("4")))
-    }
 
-    @Test
-    fun loadData() {
+        // Recreate activity
+        rule.getScenario().close()
+        launch(MainActivity::class.java)
+
         // Check to see if the value is saved
         onView(withId(R.id.ravenDollars)).check(matches(withText("4")))
     }
