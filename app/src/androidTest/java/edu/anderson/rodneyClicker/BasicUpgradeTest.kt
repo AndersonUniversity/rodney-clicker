@@ -1,4 +1,4 @@
-package com.example.rodneyClicker
+package edu.anderson.rodneyClicker
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
