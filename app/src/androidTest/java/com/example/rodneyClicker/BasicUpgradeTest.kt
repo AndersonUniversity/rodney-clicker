@@ -19,10 +19,10 @@ class BasicUpgradeTest {
 
     @Test
     fun buyUpgrade() {
-        // Set Raven Dollars to 0
+        // Set Raven Dollars to 100
         onView(withId(R.id.ravenDollars)).perform(replaceText("100"))
 
-        // Confirm that Raven Dollars start at zero
+        // Confirm that Raven Dollars start at 100
         onView(withId(R.id.ravenDollars)).check(matches(withText("100")))
 
         // Set Rodney Upgrades to 0
