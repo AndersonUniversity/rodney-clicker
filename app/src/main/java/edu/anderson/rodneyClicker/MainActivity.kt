@@ -1,8 +1,10 @@
-package com.example.rodneyClicker
+package edu.anderson.rodneyClicker
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
@@ -12,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        addFunds(this)
         loadData()
     }
 
@@ -20,6 +23,16 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
         saveData()
     }
+
+    class AutoClicker(var dps: Int, var cost: Int, var numOwned: Int) {
+        fun buy() {
+            var multiplier = 1.5
+            numOwned += 1
+            cost = (cost * multiplier).toInt()
+        }
+    }
+
+    val rodney = AutoClicker(1, 10, 0)
 
     /** Called when the user taps the Store button */
     fun openStorePage(view: View) {
@@ -32,6 +45,34 @@ class MainActivity : AppCompatActivity() {
         val ravenDollars = findViewById<EditText>(R.id.ravenDollars)
         val currNum = ravenDollars.text.toString().toInt()
         ravenDollars.setText((currNum + 1).toString())
+    }
+
+    fun addClicker(view: View) {
+        val ravenDollars = findViewById<EditText>(R.id.ravenDollars)
+        val currNum = ravenDollars.text.toString().toInt()
+        if (currNum >= rodney.cost) {
+            ravenDollars.setText((currNum - rodney.cost).toString())
+            rodney.buy()
+        }
+    }
+
+    /**run every second to add dps*/
+    fun addFunds(view: MainActivity) {
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed(
+            object : Runnable {
+                override fun run() {
+                    val ravenDollars = findViewById<EditText>(R.id.ravenDollars)
+                    val currNum = ravenDollars.text.toString().toInt()
+                    val totalCash = rodney.dps * rodney.numOwned
+                    val newBalance = currNum + totalCash
+                    ravenDollarsPerSecond(totalCash)
+                    ravenDollars.setText(newBalance.toString())
+                    handler.postDelayed(this, 1000)
+                }
+            },
+            1000
+        )
     }
 
     /** Save Data */
@@ -53,12 +94,13 @@ class MainActivity : AppCompatActivity() {
         if (savedNum != null) {
             findViewById<EditText>(R.id.ravenDollars).setText(savedNum)
         }
-        ravenDollarsPerSecond(findViewById<TextView>(R.id.ravenDollarsPerSecond))
     }
 
-    private fun ravenDollarsPerSecond(view: View) {
+    private fun ravenDollarsPerSecond( cash: Int) {
         val viewText = findViewById<TextView>(R.id.ravenDollarsPerSecond)
-        val currRDPS = viewText.text.toString().toInt()
-        viewText.setText("Raven Dollars Per Second: " + (currRDPS).toString())
+        val currRDPS = cash.toString()
+        val displayText = "Raven Dollars Per Second: $currRDPS"
+        viewText.text = displayText
     }
+
 }
