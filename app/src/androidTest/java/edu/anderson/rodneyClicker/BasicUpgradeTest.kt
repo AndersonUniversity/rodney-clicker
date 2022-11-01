@@ -2,7 +2,6 @@ package edu.anderson.rodneyClicker
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.closeSoftKeyboard
 import androidx.test.espresso.action.ViewActions.replaceText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -26,17 +25,11 @@ class BasicUpgradeTest {
         // Confirm that Raven Dollars start at 100
         onView(withId(R.id.ravenDollars)).check(matches(withText("100")))
 
-        // Close keyboard
-        onView(withId(R.id.ravenDollars)).perform(closeSoftKeyboard())
-
         // Click the store page button
         onView(withId(R.id.store_button)).perform(click())
 
         // Click the upgrade button
         onView(withId(R.id.buy_upgradeButton)).perform(click())
-
-        // Close keyboard
-        onView(withId(R.id.buy_upgradeButton)).perform(closeSoftKeyboard())
 
         // Click the home page button
         onView(withId(R.id.home_button)).perform(click())
