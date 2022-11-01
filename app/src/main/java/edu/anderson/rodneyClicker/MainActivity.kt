@@ -96,11 +96,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun ravenDollarsPerSecond( cash: Int) {
+    private fun ravenDollarsPerSecond(cash: Int) {
         val viewText = findViewById<TextView>(R.id.ravenDollarsPerSecond)
         val currRDPS = cash.toString()
         val displayText = "Raven Dollars Per Second: $currRDPS"
         viewText.text = displayText
     }
-
 }
