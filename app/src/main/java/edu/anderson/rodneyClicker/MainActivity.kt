@@ -66,8 +66,9 @@ class MainActivity : AppCompatActivity() {
                     val currNum = ravenDollars.text.toString().toInt()
                     val totalCash = rodney.dps * rodney.numOwned
                     val newBalance = currNum + totalCash
-                    ravenDollarsPerSecond(totalCash)
+                    showRDPS(totalCash)
                     ravenDollars.setText(newBalance.toString())
+                    saveData()
                     handler.postDelayed(this, 1000)
                 }
             },
@@ -96,7 +97,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun ravenDollarsPerSecond(cash: Int) {
+    private fun showRDPS(cash: Int) {
         val viewText = findViewById<TextView>(R.id.ravenDollarsPerSecond)
         val currRDPS = cash.toString()
         val displayText = "Raven Dollars Per Second: $currRDPS"
