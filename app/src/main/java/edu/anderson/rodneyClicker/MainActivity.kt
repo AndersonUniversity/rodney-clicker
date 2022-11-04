@@ -32,11 +32,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        numRavenDollars = intent.extras?.getInt("ravenDollarsKey", 0) ?: 0
-        val updatedNumClickerUpgrades = intent.extras?.getInt("clickerUpgradesKey", 0) ?: 0
-        if (updatedNumClickerUpgrades > numClickerUpgrades) {
-            addClicker(this, updatedNumClickerUpgrades - numClickerUpgrades)
-            numClickerUpgrades = updatedNumClickerUpgrades
+        val numNewClickerUpgrades = numClickerUpgrades - rodney.numOwned
+        if (numNewClickerUpgrades > 0) {
+            addClicker(this, numNewClickerUpgrades)
         }
         gameLoop(this)
     }
@@ -51,9 +49,7 @@ class MainActivity : AppCompatActivity() {
 
     /** Called when the user taps the Store button */
     fun openStorePage(view: View) {
-        val intent = Intent(this, StoreActivity::class.java)
-        intent.putExtra("clickerUpgradesKey", numClickerUpgrades)
-        intent.putExtra("ravenDollarsKey", findViewById<EditText>(R.id.ravenDollars).text.toString().toInt())
+        val intent = Intent(this@MainActivity, StoreActivity::class.java)
         startActivity(intent)
     }
 
@@ -84,7 +80,6 @@ class MainActivity : AppCompatActivity() {
                     numRavenDollars += (rodney.dps * rodney.numOwned)
                     ravenDollars.setText((currNum + (rodney.dps * rodney.numOwned)).toString())
                     showRDPS(numRavenDollars)
-                    saveData()
                     handler.postDelayed(this, 1000)
                 }
             },
@@ -105,8 +100,8 @@ class MainActivity : AppCompatActivity() {
     /** Load Data */
     private fun loadData() {
         val sharedPref = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        val savedRavenDollars = sharedPref.getString("Raven_Dollars", null)
-        val savedRodneyClickers = sharedPref.getString("Rodney_Clickers", null)
+        val savedRavenDollars = sharedPref.getString("Raven_Dollars", "0")
+        val savedRodneyClickers = sharedPref.getString("Rodney_Clickers", "0")
 
         if (savedRavenDollars != null) {
             findViewById<EditText>(R.id.ravenDollars).setText(savedRavenDollars)
@@ -115,6 +110,7 @@ class MainActivity : AppCompatActivity() {
         if (savedRodneyClickers != null) {
             findViewById<EditText>(R.id.total_rodneys).setText("Total Rodneys: $savedRodneyClickers")
             rodney.numOwned = savedRodneyClickers.toInt()
+            numClickerUpgrades = savedRodneyClickers.toInt()
         }
     }
     private fun showRDPS(cash: Int) {
