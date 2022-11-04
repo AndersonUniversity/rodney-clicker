@@ -16,18 +16,26 @@ class RdpsTest {
     @Test
     fun clickerIncrement() {
         // Confirm that Raven Dollars start at zero
-        onView(withId(R.id.ravenDollarsPerSecond)).check(matches(withText("0")))
+        onView(withId(R.id.ravenDollarsPerSecond)).check(matches(withText("Raven Dollars Per Second: 0")))
 
-        // Click the button
-        onView(withId(R.id.ravenButton)).perform(click())
+        // Click the Rodney button 10 times
+        for (i in 1..10) {
+            onView(withId(R.id.ravenButton)).perform(click())
+        }
 
-        // Confirm that value increments
-        onView(withId(R.id.ravenDollars)).check(matches(withText("1")))
-        onView(withId(R.id.ravenDollarsPerSecond)).check(matches(withText("0")))
+        // Open the store page
+        onView(withId(R.id.store_button)).perform(click())
 
-        // Click again and confirm new value
-        onView(withId(R.id.ravenButton)).perform(click())
-        onView(withId(R.id.ravenDollars)).check(matches(withText("2")))
-        onView(withId(R.id.ravenDollarsPerSecond)).check(matches(withText("0")))
+        // Buy a Rodney
+        onView(withId(R.id.buy_upgradeButton)).perform(click())
+
+        // Return to the main page
+        onView(withId(R.id.home_button)).perform(click())
+
+        // Wait 1 second
+        Thread.sleep(1000)
+
+        // Confirm that Raven Dollars per second is 1
+        onView(withId(R.id.ravenDollarsPerSecond)).check(matches(withText("Raven Dollars Per Second: 1")))
     }
 }

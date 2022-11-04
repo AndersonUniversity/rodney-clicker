@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
                     val currNum = ravenDollars.text.toString().toInt()
                     numRavenDollars += (rodney.dps * rodney.numOwned)
                     ravenDollars.setText((currNum + (rodney.dps * rodney.numOwned)).toString())
-                    showRDPS(numRavenDollars)
+                    showRDPS(numClickerUpgrades)
                     handler.postDelayed(this, 1000)
                 }
             },
