@@ -32,8 +32,8 @@ class RdpsTest {
         // Return to the main page
         onView(withId(R.id.home_button)).perform(click())
 
-        // Wait 1 second
-        Thread.sleep(1000)
+        // Wait 3 second
+        Thread.sleep(3000)
 
         // Confirm that Raven Dollars per second is 1
         onView(withId(R.id.ravenDollarsPerSecond)).check(matches(withText("Raven Dollars Per Second: 1")))

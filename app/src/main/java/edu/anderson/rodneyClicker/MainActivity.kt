@@ -56,9 +56,9 @@ class MainActivity : AppCompatActivity() {
     /** Called when the user taps the rodney button */
     fun increaseNum(view: View) {
         val ravenDollars = findViewById<EditText>(R.id.ravenDollars)
-        val currNum = ravenDollars.text.toString().toInt()
-        ravenDollars.setText((currNum + 1).toString())
         numRavenDollars += 1
+        val newRavenDollars = "R$$numRavenDollars"
+        ravenDollars.setText(newRavenDollars)
     }
 
     fun addClicker(view: MainActivity, newClickers: Int) {
@@ -75,11 +75,10 @@ class MainActivity : AppCompatActivity() {
         handler.postDelayed(
             object : Runnable {
                 override fun run() {
-                    val ravenDollars = findViewById<EditText>(R.id.ravenDollars)
-                    val currNum = ravenDollars.text.toString().toInt()
-                    numRavenDollars += (rodney.dps * rodney.numOwned)
-                    ravenDollars.setText((currNum + (rodney.dps * rodney.numOwned)).toString())
                     showRDPS(numClickerUpgrades)
+                    val ravenDollars = findViewById<EditText>(R.id.ravenDollars)
+                    numRavenDollars += (rodney.dps * rodney.numOwned)
+                    ravenDollars.setText("R$$numRavenDollars")
                     handler.postDelayed(this, 1000)
                 }
             },
@@ -104,7 +103,7 @@ class MainActivity : AppCompatActivity() {
         val savedRodneyClickers = sharedPref.getString("Rodney_Clickers", "0")
 
         if (savedRavenDollars != null) {
-            findViewById<EditText>(R.id.ravenDollars).setText(savedRavenDollars)
+            findViewById<EditText>(R.id.ravenDollars).setText("R$$savedRavenDollars")
             numRavenDollars = savedRavenDollars.toInt()
         }
         if (savedRodneyClickers != null) {
