@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 class StoreActivity : AppCompatActivity() {
     private var numRavenDollars = 0
     private var numClickerUpgrades = 0
-    //private val ravenDollarsTextBox = findViewById<TextView>(R.id.currRavenDollars)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.upgrade_layout)
@@ -32,8 +31,7 @@ class StoreActivity : AppCompatActivity() {
     }
 
     fun buyRodney(view: View) {
-        val cost = if(numClickerUpgrades == 0){ 10 }
-        else{ (10*1.15*numClickerUpgrades).toInt() }
+        val cost = if (numClickerUpgrades == 0) { 10 } else { (10 * 1.15 * numClickerUpgrades).toInt() }
         if (numRavenDollars >= cost) {
             numRavenDollars -= cost
             numClickerUpgrades += 1

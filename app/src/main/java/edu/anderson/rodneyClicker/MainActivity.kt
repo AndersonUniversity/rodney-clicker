@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -33,8 +34,8 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         numRavenDollars = intent.extras?.getInt("ravenDollarsKey", 0) ?: 0
         val updatedNumClickerUpgrades = intent.extras?.getInt("clickerUpgradesKey", 0) ?: 0
-        if(updatedNumClickerUpgrades > numClickerUpgrades){
-            addClicker(this, updatedNumClickerUpgrades-numClickerUpgrades)
+        if (updatedNumClickerUpgrades > numClickerUpgrades) {
+            addClicker(this, updatedNumClickerUpgrades - numClickerUpgrades)
             numClickerUpgrades = updatedNumClickerUpgrades
         }
         gameLoop(this)
@@ -64,8 +65,8 @@ class MainActivity : AppCompatActivity() {
         numRavenDollars += 1
     }
 
-    fun addClicker(view: MainActivity,  newClickers : Int) {
-        for(i in 1..newClickers) {
+    fun addClicker(view: MainActivity, newClickers: Int) {
+        for (i in 1..newClickers) {
             rodney.buy()
         }
         val rodneysOwned = findViewById<EditText>(R.id.total_rodneys)
@@ -82,6 +83,8 @@ class MainActivity : AppCompatActivity() {
                     val currNum = ravenDollars.text.toString().toInt()
                     numRavenDollars += (rodney.dps * rodney.numOwned)
                     ravenDollars.setText((currNum + (rodney.dps * rodney.numOwned)).toString())
+                    showRDPS(numRavenDollars)
+                    saveData()
                     handler.postDelayed(this, 1000)
                 }
             },
@@ -113,5 +116,11 @@ class MainActivity : AppCompatActivity() {
             findViewById<EditText>(R.id.total_rodneys).setText("Total Rodneys: $savedRodneyClickers")
             rodney.numOwned = savedRodneyClickers.toInt()
         }
+    }
+    private fun showRDPS(cash: Int) {
+        val viewText = findViewById<TextView>(R.id.ravenDollarsPerSecond)
+        val currRDPS = cash.toString()
+        val displayText = "Raven Dollars Per Second: $currRDPS"
+        viewText.text = displayText
     }
 }

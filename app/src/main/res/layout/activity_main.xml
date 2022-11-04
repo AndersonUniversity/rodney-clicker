@@ -21,8 +21,8 @@
 
     <EditText
         android:id="@+id/ravenDollars"
-        android:layout_width="233dp"
-        android:layout_height="wrap_content"
+        android:layout_width="234dp"
+        android:layout_height="318dp"
         android:layout_marginTop="28dp"
         android:ems="10"
         android:inputType="textPersonName"
@@ -54,4 +54,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/btn_star_big_on" />
 
+    <TextView
+        android:id="@+id/ravenDollarsPerSecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ravenDollars" />
 </androidx.constraintlayout.widget.ConstraintLayout>
