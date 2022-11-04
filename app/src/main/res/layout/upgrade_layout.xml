@@ -7,18 +7,19 @@
 
     <Button
         android:id="@+id/home_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="114dp"
+        android:layout_height="55dp"
         android:layout_marginStart="36dp"
-        android:layout_marginEnd="39dp"
+        android:layout_marginEnd="36dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/home_nav_button"
         android:onClick="openHomePage"
+        android:text="@string/home_nav_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button5"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toEndOf="@+id/button2"
         app:layout_constraintTop_toTopOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.178" />
 
     <Button
         android:id="@+id/button5"
@@ -41,11 +42,23 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buy_upgradeButton"
         android:layout_width="335dp"
         android:layout_height="86dp"
         android:layout_marginTop="64dp"
+        android:onClick="buyRodney"
         android:text="Buy Basic Upgrade"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/currRavenDollars"
+        android:layout_width="177dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="24dp"
+        android:text="Raven Dollars: 0"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
