@@ -5,6 +5,7 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.espresso.matcher.ViewMatchers.withSubstring
 import androidx.test.ext.junit.rules.activityScenarioRule
 import org.junit.Rule
 import org.junit.Test
@@ -32,10 +33,10 @@ class RdpsTest {
         // Return to the main page
         onView(withId(R.id.home_button)).perform(click())
 
-        // Wait 10 seconds
-        Thread.sleep(10000)
+        // Wait 5 seconds
+        Thread.sleep(5000)
 
         // Confirm that Raven Dollars per second is 1
-        onView(withId(R.id.ravenDollarsPerSecond)).check(matches(withText("Raven Dollars Per Second: 1")))
+        onView(withId(R.id.ravenDollarsPerSecond)).check(matches(withSubstring("Raven Dollars Per Second: 1")))
     }
 }
