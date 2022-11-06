@@ -19,11 +19,13 @@ class BasicUpgradeTest {
 
     @Test
     fun buyUpgrade() {
-        // Set Raven Dollars to 100
-        onView(withId(R.id.ravenDollars)).perform(replaceText("R$100"))
+        // Click the Rodney button 10 times
+        for (i in 1..10) {
+            onView(withId(R.id.ravenButton)).perform(click())
+        }
 
-        // Confirm that Raven Dollars start at 100
-        onView(withId(R.id.ravenDollars)).check(matches(withText("R$100")))
+        // Confirm that Raven Dollars are 10
+        onView(withId(R.id.ravenDollars)).check(matches(withText("R$10")))
 
         // Click the store page button
         onView(withId(R.id.store_button)).perform(click())
