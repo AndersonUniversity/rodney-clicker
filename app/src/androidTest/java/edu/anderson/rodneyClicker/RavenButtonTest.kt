@@ -16,16 +16,16 @@ class RavenButtonTest {
     @Test
     fun clickerIncrement() {
         // Confirm that Raven Dollars start at zero
-        onView(withId(R.id.ravenDollars)).check(matches(withText("0")))
+        onView(withId(R.id.ravenDollars)).check(matches(withText("R$0")))
 
         // Click the button
         onView(withId(R.id.ravenButton)).perform(click())
 
         // Confirm that value increments
-        onView(withId(R.id.ravenDollars)).check(matches(withText("1")))
+        onView(withId(R.id.ravenDollars)).check(matches(withText("R$1")))
 
         // Click again and confirm new value
         onView(withId(R.id.ravenButton)).perform(click())
-        onView(withId(R.id.ravenDollars)).check(matches(withText("2")))
+        onView(withId(R.id.ravenDollars)).check(matches(withText("R$2")))
     }
 }
