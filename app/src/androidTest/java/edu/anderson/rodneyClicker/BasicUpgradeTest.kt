@@ -34,6 +34,9 @@ class BasicUpgradeTest {
         // Click the home page button
         onView(withId(R.id.home_button)).perform(click())
 
+        // Wait 1 second for ui to update
+        Thread.sleep(1000)
+
         // Confirm that value increments
         onView(withId(R.id.total_rodneys)).check(matches(withText("Total Rodneys: 1")))
     }
