@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 class StoreActivity : AppCompatActivity() {
     private var numRavenDollars = 0
     private var numTotalClickerUpgrades = 0
+    private var numTotalRodneyMultipliers = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +22,7 @@ class StoreActivity : AppCompatActivity() {
         val sharedPref = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         numRavenDollars = sharedPref.getString("Raven_Dollars", "0")?.toInt() ?: 0
         numTotalClickerUpgrades = sharedPref.getString("Rodney_Clickers", "0")?.toInt() ?: 0
+        numTotalRodneyMultipliers = sharedPref.getString("Rodney_Multipliers", "0")?.toInt() ?: 0
 
         findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
     }
@@ -33,6 +35,7 @@ class StoreActivity : AppCompatActivity() {
         editor.apply {
             putString("Raven_Dollars", numRavenDollars.toString())
             putString("Rodney_Clickers", numTotalClickerUpgrades.toString())
+            putString("Rodney_Multipliers", numTotalRodneyMultipliers.toString())
         }.apply()
         startActivity(i)
     }
@@ -42,6 +45,15 @@ class StoreActivity : AppCompatActivity() {
         if (numRavenDollars >= cost) {
             numRavenDollars -= cost
             numTotalClickerUpgrades += 1
+        }
+        findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
+    }
+
+    fun buyMultiplier(view: View) {
+        val cost = if (numTotalRodneyMultipliers == 1) { 100 } else { (100 * 1.5 * numTotalRodneyMultipliers).toInt() }
+        if (numRavenDollars >= cost) {
+            numRavenDollars -= cost
+            numTotalRodneyMultipliers += 1
         }
         findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
     }

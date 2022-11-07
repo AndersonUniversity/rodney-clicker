@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
     var numRavenDollars = 0
     var numClickerUpgrades = 0
+    var numRodneyMultipliers = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -36,16 +38,23 @@ class MainActivity : AppCompatActivity() {
         if (numNewClickerUpgrades > 0) {
             addClicker(this, numNewClickerUpgrades)
         }
+        val numNewClickerMultipliers = numRodneyMultipliers - rodney.multiplier
+        if (numNewClickerMultipliers > 0) {
+            addMultiplier(this, numNewClickerMultipliers)
+        }
         gameLoop(this)
     }
 
-    class AutoClicker(var dps: Int, var numOwned: Int) {
+    class AutoClicker(var dps: Int, var numOwned: Int, var multiplier: Int) {
         fun buy() {
             numOwned += 1
         }
+        fun buyMultiplier() {
+            multiplier += 1
+        }
     }
 
-    val rodney = AutoClicker(1, 0)
+    val rodney = AutoClicker(1, 0, 1)
 
     /** Called when the user taps the Store button */
     fun openStorePage(view: View) {
@@ -61,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         ravenDollars.setText(newRavenDollars)
     }
 
-    fun addClicker(view: MainActivity, newClickers: Int) {
+    private fun addClicker(view: MainActivity, newClickers: Int) {
         for (i in 1..newClickers) {
             rodney.buy()
         }
@@ -69,15 +78,21 @@ class MainActivity : AppCompatActivity() {
         rodneysOwned.setText("Total Rodneys: " + rodney.numOwned.toString())
     }
 
+    private fun addMultiplier(view: MainActivity, newMultipliers: Int) {
+        for (i in 1..newMultipliers) {
+            rodney.buyMultiplier()
+        }
+    }
+
     /**run every second to add dps*/
-    fun gameLoop(view: MainActivity) {
+    private fun gameLoop(view: MainActivity) {
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed(
             object : Runnable {
                 override fun run() {
-                    showRDPS(numClickerUpgrades)
+                    showRDPS(numClickerUpgrades, numRodneyMultipliers)
                     val ravenDollars = findViewById<EditText>(R.id.ravenDollars)
-                    numRavenDollars += (rodney.dps * rodney.numOwned)
+                    numRavenDollars += (rodney.dps * rodney.numOwned * rodney.multiplier)
                     ravenDollars.setText("R$$numRavenDollars")
                     handler.postDelayed(this, 1000)
                 }
@@ -93,6 +108,7 @@ class MainActivity : AppCompatActivity() {
         editor.apply {
             putString("Raven_Dollars", numRavenDollars.toString())
             putString("Rodney_Clickers", rodney.numOwned.toString())
+            putString("Rodney_Multipliers", rodney.multiplier.toString())
         }.apply()
     }
 
@@ -101,6 +117,7 @@ class MainActivity : AppCompatActivity() {
         val sharedPref = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val savedRavenDollars = sharedPref.getString("Raven_Dollars", "0")
         val savedRodneyClickers = sharedPref.getString("Rodney_Clickers", "0")
+        val savedRodneyClickersMultipliers = sharedPref.getString("Rodney_Multipliers", "0")
 
         if (savedRavenDollars != null) {
             findViewById<EditText>(R.id.ravenDollars).setText("R$$savedRavenDollars")
@@ -111,10 +128,13 @@ class MainActivity : AppCompatActivity() {
             rodney.numOwned = savedRodneyClickers.toInt()
             numClickerUpgrades = savedRodneyClickers.toInt()
         }
+        if (savedRodneyClickersMultipliers != null) {
+            numRodneyMultipliers = savedRodneyClickersMultipliers.toInt()
+        }
     }
-    private fun showRDPS(cash: Int) {
+    private fun showRDPS(clickers: Int, multipliers: Int) {
         val viewText = findViewById<TextView>(R.id.ravenDollarsPerSecond)
-        val currRDPS = cash.toString()
+        val currRDPS = (clickers * multipliers).toString()
         val displayText = "Raven Dollars Per Second: $currRDPS"
         viewText.text = displayText
     }
