@@ -6,6 +6,19 @@
     android:layout_height="match_parent">
 
     <Button
+        android:id="@+id/buy_multiplier_upgrade"
+        android:layout_width="146dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="60dp"
+        android:onClick="buyMultiplier"
+        android:text=" Buy Multiplier"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/buy_upgradeButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/home_button"
         android:layout_width="114dp"
         android:layout_height="55dp"
@@ -43,12 +56,11 @@
 
     <Button
         android:id="@+id/buy_upgradeButton"
-        android:layout_width="335dp"
-        android:layout_height="86dp"
-        android:layout_marginTop="64dp"
+        android:layout_width="243dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="60dp"
         android:onClick="buyRodney"
         android:text="Buy Basic Upgrade"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
