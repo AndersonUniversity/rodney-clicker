@@ -83,6 +83,7 @@ class MainActivity : AppCompatActivity() {
         heliosOwned.setText("Total Helios: " + helios.numOwned.toString())
     }
 
+    /**Adds the multipliers to the clickers*/
     private fun addMultiplier(view: MainActivity) {
         val newRodneyMultipliers = numRodneyMultipliers - rodney.multiplier
         val newHeliosMultipliers = numHeliosMultipliers - helios.multiplier
