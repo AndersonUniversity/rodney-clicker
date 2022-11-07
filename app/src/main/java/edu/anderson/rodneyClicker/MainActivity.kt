@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -64,7 +63,7 @@ class MainActivity : AppCompatActivity() {
 
     /** Called when the user taps the rodney button */
     fun increaseNum(view: View) {
-        val ravenDollars = findViewById<EditText>(R.id.ravenDollars)
+        val ravenDollars = findViewById<TextView>(R.id.ravenDollars)
         numRavenDollars += 1
         val newRavenDollars = "R$$numRavenDollars"
         ravenDollars.setText(newRavenDollars)
@@ -74,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         for (i in 1..newClickers) {
             rodney.buy()
         }
-        val rodneysOwned = findViewById<EditText>(R.id.total_rodneys)
+        val rodneysOwned = findViewById<TextView>(R.id.total_rodneys)
         rodneysOwned.setText("Total Rodneys: " + rodney.numOwned.toString())
     }
 
@@ -91,7 +90,7 @@ class MainActivity : AppCompatActivity() {
             object : Runnable {
                 override fun run() {
                     showRDPS(numClickerUpgrades, numRodneyMultipliers)
-                    val ravenDollars = findViewById<EditText>(R.id.ravenDollars)
+                    val ravenDollars = findViewById<TextView>(R.id.ravenDollars)
                     numRavenDollars += (rodney.dps * rodney.numOwned * rodney.multiplier)
                     ravenDollars.setText("R$$numRavenDollars")
                     handler.postDelayed(this, 1000)
@@ -120,11 +119,11 @@ class MainActivity : AppCompatActivity() {
         val savedRodneyClickersMultipliers = sharedPref.getString("Rodney_Multipliers", "0")
 
         if (savedRavenDollars != null) {
-            findViewById<EditText>(R.id.ravenDollars).setText("R$$savedRavenDollars")
+            findViewById<TextView>(R.id.ravenDollars).setText("R$$savedRavenDollars")
             numRavenDollars = savedRavenDollars.toInt()
         }
         if (savedRodneyClickers != null) {
-            findViewById<EditText>(R.id.total_rodneys).setText("Total Rodneys: $savedRodneyClickers")
+            findViewById<TextView>(R.id.total_rodneys).setText("Total Rodneys: $savedRodneyClickers")
             rodney.numOwned = savedRodneyClickers.toInt()
             numClickerUpgrades = savedRodneyClickers.toInt()
         }
