@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
         
-    <EditText
+    <TextView
         android:id="@+id/total_helios"
         android:layout_width="233dp"
         android:layout_height="wrap_content"
