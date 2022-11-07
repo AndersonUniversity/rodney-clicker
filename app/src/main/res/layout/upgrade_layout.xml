@@ -6,16 +6,29 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/buy_multiplier_upgrade"
+        android:id="@+id/buy_multiplier_rodney"
         android:layout_width="146dp"
         android:layout_height="82dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="60dp"
-        android:onClick="buyMultiplier"
+        android:onClick="buyRodneyMultiplier"
         android:text=" Buy Multiplier"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/buy_upgradeButton"
+        app:layout_constraintStart_toEndOf="@+id/buy_rodneyButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buy_multiplier_helios"
+        android:layout_width="146dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="168dp"
+        android:onClick="buyHeliosMultiplier"
+        android:text=" Buy Multiplier"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/buy_rodneyButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -55,11 +68,21 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/buy_upgradeButton"
+        android:id="@+id/buy_rodneyButton"
         android:layout_width="243dp"
         android:layout_height="82dp"
         android:layout_marginTop="60dp"
         android:onClick="buyRodney"
+        android:text="Buy Basic Upgrade"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buy_heliosButton"
+        android:layout_width="243dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="168dp"
+        android:onClick="buyHelios"
         android:text="Buy Basic Upgrade"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

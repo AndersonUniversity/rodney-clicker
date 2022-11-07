@@ -33,10 +33,10 @@ class SaveDataTest {
         onView(withId(R.id.store_button)).perform(ViewActions.click())
 
         // Buy a Rodney
-        onView(withId(R.id.buy_upgradeButton)).perform(ViewActions.click())
+        onView(withId(R.id.buy_rodneyButton)).perform(ViewActions.click())
 
         // Buy a multiplier
-        onView(withId(R.id.buy_multiplier_upgrade)).perform(ViewActions.click())
+        onView(withId(R.id.buy_multiplier_rodney)).perform(ViewActions.click())
 
         // Return to the main page
         onView(withId(R.id.home_button)).perform(ViewActions.click())
