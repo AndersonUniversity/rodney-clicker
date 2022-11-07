@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -61,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 
     /** Called when the user taps the rodney button */
     fun increaseNum(view: View) {
-        val ravenDollars = findViewById<EditText>(R.id.ravenDollars)
+        val ravenDollars = findViewById<TextView>(R.id.ravenDollars)
         numRavenDollars += 1
         val newRavenDollars = "R$$numRavenDollars"
         ravenDollars.setText(newRavenDollars)
@@ -73,11 +72,13 @@ class MainActivity : AppCompatActivity() {
         for (i in 1..newRodneys) {
             rodney.buy()
         }
+        
         for (i in 1..newHelios) {
             helios.buy()
         }
         val rodneysOwned = findViewById<EditText>(R.id.total_rodneys)
         val heliosOwned = findViewById<EditText>(R.id.total_helios)
+
         rodneysOwned.setText("Total Rodneys: " + rodney.numOwned.toString())
         heliosOwned.setText("Total Helios: " + helios.numOwned.toString())
     }
@@ -134,11 +135,11 @@ class MainActivity : AppCompatActivity() {
         val savedHeliosClickersMultipliers = sharedPref.getString("Helios_Multipliers", "0")
 
         if (savedRavenDollars != null) {
-            findViewById<EditText>(R.id.ravenDollars).setText("R$$savedRavenDollars")
+            findViewById<TextView>(R.id.ravenDollars).setText("R$$savedRavenDollars")
             numRavenDollars = savedRavenDollars.toInt()
         }
         if (savedRodneyClickers != null) {
-            findViewById<EditText>(R.id.total_rodneys).setText("Total Rodneys: $savedRodneyClickers")
+            findViewById<TextView>(R.id.total_rodneys).setText("Total Rodneys: $savedRodneyClickers")
             rodney.numOwned = savedRodneyClickers.toInt()
             numRodneyUpgrades = savedRodneyClickers.toInt()
         }

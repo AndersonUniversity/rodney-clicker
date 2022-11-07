@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
+    <TextView
         android:id="@+id/total_rodneys"
         android:layout_width="233dp"
         android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+        
     <EditText
         android:id="@+id/total_helios"
         android:layout_width="233dp"
@@ -32,7 +32,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+
+    <TextView
         android:id="@+id/ravenDollars"
         android:layout_width="233dp"
         android:layout_height="wrap_content"
