@@ -10,7 +10,7 @@
     android:padding="@null"
     tools:context=".MainActivity">
 
-    <EditText
+    <TextView
         android:id="@+id/total_rodneys"
         android:layout_width="233dp"
         android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/ravenDollars"
         android:layout_width="match_parent"
         android:layout_height="75dp"
