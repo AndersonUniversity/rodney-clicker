@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
     var numRavenDollars = 0
     var totalRavenDollars = 0
-    var numClickerUpgrades = 0
     var numRodneyUpgrades = 0
     var numRodneyMultipliers = 0
     var numHeliosUpgrades = 0
@@ -77,15 +76,14 @@ class MainActivity : AppCompatActivity() {
         for (i in 1..newRodneys) {
             rodney.buy()
         }
-
         for (i in 1..newHelios) {
             helios.buy()
         }
         val rodneysOwned = findViewById<TextView>(R.id.total_rodneys)
         val heliosOwned = findViewById<TextView>(R.id.total_helios)
 
-        rodneysOwned.setText("Total Rodneys: " + rodney.numOwned.toString())
-        heliosOwned.setText("Total Helios: " + helios.numOwned.toString())
+        rodneysOwned.text = "Total Rodneys: " + rodney.numOwned.toString()
+        heliosOwned.text = "Total Helios: " + helios.numOwned.toString()
     }
 
     /**Adds the multipliers to the clickers*/
@@ -109,13 +107,11 @@ class MainActivity : AppCompatActivity() {
                     showRDPS()
                     val ravenDollars = findViewById<TextView>(R.id.ravenDollars)
                     val totalRD = findViewById<TextView>(R.id.totalRavenDollars)
-                    numRavenDollars += (rodney.dps * rodney.numOwned * rodney.multiplier)
-                    totalRavenDollars += (rodney.dps * rodney.numOwned * rodney.multiplier)
-                    ravenDollars.text = "R$$numRavenDollars"
-                    totalRD.text = "$totalRavenDollars"
                     val toAdd = (rodney.dps * rodney.numOwned * rodney.multiplier) + (helios.dps * helios.numOwned * helios.multiplier)
                     numRavenDollars += toAdd
-                    ravenDollars.setText("R$$numRavenDollars")
+                    totalRavenDollars += toAdd
+                    ravenDollars.text = "R$$numRavenDollars"
+                    totalRD.text = "$totalRavenDollars"
                     handler.postDelayed(this, 1000)
                 }
             },
@@ -148,15 +144,15 @@ class MainActivity : AppCompatActivity() {
         val savedHeliosClickersMultipliers = sharedPref.getString("Helios_Multipliers", "0")
 
         if (savedRavenDollars != null) {
-            findViewById<TextView>(R.id.ravenDollars).setText("R$$savedRavenDollars")
+            findViewById<TextView>(R.id.ravenDollars).text = "R$$savedRavenDollars"
             numRavenDollars = savedRavenDollars.toInt()
         }
         if (allRavenDollars != null) {
-            findViewById<TextView>(R.id.totalRavenDollars).setText("$allRavenDollars")
+            findViewById<TextView>(R.id.totalRavenDollars).text = "$allRavenDollars"
             totalRavenDollars = allRavenDollars.toInt()
         }
         if (savedRodneyClickers != null) {
-            findViewById<TextView>(R.id.total_rodneys).setText("Total Rodneys: $savedRodneyClickers")
+            findViewById<TextView>(R.id.total_rodneys).text = "Total Rodneys: $savedRodneyClickers"
             rodney.numOwned = savedRodneyClickers.toInt()
             numRodneyUpgrades = savedRodneyClickers.toInt()
         }
@@ -164,7 +160,7 @@ class MainActivity : AppCompatActivity() {
             numRodneyMultipliers = savedRodneyClickersMultipliers.toInt()
         }
         if (savedHeliosClickers != null) {
-            findViewById<TextView>(R.id.total_helios).setText("Total Helioses: $savedHeliosClickers")
+            findViewById<TextView>(R.id.total_helios).text = "Total Helioses: $savedHeliosClickers"
             helios.numOwned = savedHeliosClickers.toInt()
             numHeliosUpgrades = savedHeliosClickers.toInt()
         }

@@ -52,10 +52,6 @@ class SaveDataTest {
         val savedRodneyClickers = sharedPreferences.getString("Rodney_Clickers", "0")
         val savedRodneyClickersMultipliers = sharedPreferences.getString("Rodney_Multipliers", "0")
 
-        assert(savedRavenDollars == "5")
-        assert(savedRodneyClickers == "1")
-        assert(savedRodneyClickersMultipliers == "2")
-
         // Wait 1 second for ui to update
         Thread.sleep(1000)
 

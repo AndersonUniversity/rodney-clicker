@@ -27,7 +27,7 @@ class TotalRDTest {
         onView(withId(R.id.store_button)).perform(click())
 
         // Click the upgrade button
-        onView(withId(R.id.buy_upgradeButton)).perform(click())
+        onView(withId(R.id.buy_rodneyButton)).perform(click())
 
         // Click the home page button
         onView(withId(R.id.home_button)).perform(click())
