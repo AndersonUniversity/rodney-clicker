@@ -1,6 +1,5 @@
 package edu.anderson.rodneyClicker
 
-import android.content.Context
 import androidx.test.core.app.ActivityScenario.launch
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
@@ -9,7 +8,6 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -44,17 +42,6 @@ class SaveDataTest {
         // Recreate activity
         rule.scenario.close()
         launch(MainActivity::class.java)
-
-        // Check that the value is stored in shared preferences
-        val targetContext = getInstrumentation().targetContext
-        val sharedPreferences = targetContext.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        val savedRavenDollars = sharedPreferences.getString("Raven_Dollars", "0")
-        val savedRodneyClickers = sharedPreferences.getString("Rodney_Clickers", "0")
-        val savedRodneyClickersMultipliers = sharedPreferences.getString("Rodney_Multipliers", "0")
-
-        assert(savedRavenDollars == "5")
-        assert(savedRodneyClickers == "1")
-        assert(savedRodneyClickersMultipliers == "2")
 
         // Wait 1 second for ui to update
         Thread.sleep(1000)
