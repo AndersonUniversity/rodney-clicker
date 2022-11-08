@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -14,6 +13,8 @@ class MainActivity : AppCompatActivity() {
     var numRavenDollars = 0
     var totalRavenDollars = 0
     var numClickerUpgrades = 0
+    var numRodneyMultipliers = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -37,17 +38,24 @@ class MainActivity : AppCompatActivity() {
         if (numNewClickerUpgrades > 0) {
             addClicker(this, numNewClickerUpgrades)
         }
+        val numNewClickerMultipliers = numRodneyMultipliers - rodney.multiplier
+        if (numNewClickerMultipliers > 0) {
+            addMultiplier(this, numNewClickerMultipliers)
+        }
         loadData()
         gameLoop(this)
     }
 
-    class AutoClicker(var dps: Int, var numOwned: Int) {
+    class AutoClicker(var dps: Int, var numOwned: Int, var multiplier: Int) {
         fun buy() {
             numOwned += 1
         }
+        fun buyMultiplier() {
+            multiplier += 1
+        }
     }
 
-    val rodney = AutoClicker(1, 0)
+    val rodney = AutoClicker(1, 0, 1)
 
     /** Called when the user taps the Store button */
     fun openStorePage(view: View) {
@@ -65,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.totalRavenDollars).text = totalRavenDollars.toString()
     }
 
-    fun addClicker(view: MainActivity, newClickers: Int) {
+    private fun addClicker(view: MainActivity, newClickers: Int) {
         for (i in 1..newClickers) {
             rodney.buy()
         }
@@ -73,17 +81,23 @@ class MainActivity : AppCompatActivity() {
         rodneysOwned.text = "Total Rodneys: " + rodney.numOwned.toString()
     }
 
+    private fun addMultiplier(view: MainActivity, newMultipliers: Int) {
+        for (i in 1..newMultipliers) {
+            rodney.buyMultiplier()
+        }
+    }
+
     /**run every second to add dps*/
-    fun gameLoop(view: MainActivity) {
+    private fun gameLoop(view: MainActivity) {
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed(
             object : Runnable {
                 override fun run() {
-                    showRDPS(numClickerUpgrades)
+                    showRDPS(numClickerUpgrades,numRodneyMultipliers)
                     val ravenDollars = findViewById<TextView>(R.id.ravenDollars)
                     val totalRD = findViewById<TextView>(R.id.totalRavenDollars)
-                    numRavenDollars += (rodney.dps * rodney.numOwned)
-                    totalRavenDollars += (rodney.dps * rodney.numOwned)
+                    numRavenDollars += (rodney.dps * rodney.numOwned * rodney.multiplier)
+                    totalRavenDollars += (rodney.dps * rodney.numOwned * rodney.multiplier)
                     ravenDollars.text = "R$$numRavenDollars"
                     totalRD.text = "$totalRavenDollars"
                     handler.postDelayed(this, 1000)
@@ -101,6 +115,7 @@ class MainActivity : AppCompatActivity() {
             putString("Raven_Dollars", numRavenDollars.toString())
             putString("Total_Raven_Dollars", totalRavenDollars.toString())
             putString("Rodney_Clickers", rodney.numOwned.toString())
+            putString("Rodney_Multipliers", rodney.multiplier.toString())
         }.apply()
     }
 
@@ -110,6 +125,7 @@ class MainActivity : AppCompatActivity() {
         val savedRavenDollars = sharedPref.getString("Raven_Dollars", "0")
         val allRavenDollars = sharedPref.getString("Total_Raven_Dollars", "0")
         val savedRodneyClickers = sharedPref.getString("Rodney_Clickers", "0")
+        val savedRodneyClickersMultipliers = sharedPref.getString("Rodney_Multipliers", "0")
 
         if (savedRavenDollars != null) {
             findViewById<TextView>(R.id.ravenDollars).setText("R$$savedRavenDollars")
@@ -124,10 +140,13 @@ class MainActivity : AppCompatActivity() {
             rodney.numOwned = savedRodneyClickers.toInt()
             numClickerUpgrades = savedRodneyClickers.toInt()
         }
+        if (savedRodneyClickersMultipliers != null) {
+            numRodneyMultipliers = savedRodneyClickersMultipliers.toInt()
+        }
     }
-    private fun showRDPS(cash: Int) {
+    private fun showRDPS(clickers: Int, multipliers: Int) {
         val viewText = findViewById<TextView>(R.id.ravenDollarsPerSecond)
-        val currRDPS = cash.toString()
+        val currRDPS = (clickers * multipliers).toString()
         val displayText = "Raven Dollars Per Second: $currRDPS"
         viewText.text = displayText
     }
