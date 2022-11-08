@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     var numRavenDollars = 0
+    var totalRavenDollars = 0
     var numClickerUpgrades = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         if (numNewClickerUpgrades > 0) {
             addClicker(this, numNewClickerUpgrades)
         }
+        loadData()
         gameLoop(this)
     }
 
@@ -55,18 +57,20 @@ class MainActivity : AppCompatActivity() {
 
     /** Called when the user taps the rodney button */
     fun increaseNum(view: View) {
-        val ravenDollars = findViewById<EditText>(R.id.ravenDollars)
+        val ravenDollars = findViewById<TextView>(R.id.ravenDollars)
         numRavenDollars += 1
+        totalRavenDollars += 1
         val newRavenDollars = "R$$numRavenDollars"
-        ravenDollars.setText(newRavenDollars)
+        ravenDollars.text = newRavenDollars
+        findViewById<TextView>(R.id.totalRavenDollars).text = totalRavenDollars.toString()
     }
 
     fun addClicker(view: MainActivity, newClickers: Int) {
         for (i in 1..newClickers) {
             rodney.buy()
         }
-        val rodneysOwned = findViewById<EditText>(R.id.total_rodneys)
-        rodneysOwned.setText("Total Rodneys: " + rodney.numOwned.toString())
+        val rodneysOwned = findViewById<TextView>(R.id.total_rodneys)
+        rodneysOwned.text = "Total Rodneys: " + rodney.numOwned.toString()
     }
 
     /**run every second to add dps*/
@@ -76,9 +80,12 @@ class MainActivity : AppCompatActivity() {
             object : Runnable {
                 override fun run() {
                     showRDPS(numClickerUpgrades)
-                    val ravenDollars = findViewById<EditText>(R.id.ravenDollars)
+                    val ravenDollars = findViewById<TextView>(R.id.ravenDollars)
+                    val totalRD = findViewById<TextView>(R.id.totalRavenDollars)
                     numRavenDollars += (rodney.dps * rodney.numOwned)
-                    ravenDollars.setText("R$$numRavenDollars")
+                    totalRavenDollars += (rodney.dps * rodney.numOwned)
+                    ravenDollars.text = "R$$numRavenDollars"
+                    totalRD.text = "$totalRavenDollars"
                     handler.postDelayed(this, 1000)
                 }
             },
@@ -92,6 +99,7 @@ class MainActivity : AppCompatActivity() {
         val editor = sharedPref.edit()
         editor.apply {
             putString("Raven_Dollars", numRavenDollars.toString())
+            putString("Total_Raven_Dollars", totalRavenDollars.toString())
             putString("Rodney_Clickers", rodney.numOwned.toString())
         }.apply()
     }
@@ -100,14 +108,19 @@ class MainActivity : AppCompatActivity() {
     private fun loadData() {
         val sharedPref = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val savedRavenDollars = sharedPref.getString("Raven_Dollars", "0")
+        val allRavenDollars = sharedPref.getString("Total_Raven_Dollars", "0")
         val savedRodneyClickers = sharedPref.getString("Rodney_Clickers", "0")
 
         if (savedRavenDollars != null) {
-            findViewById<EditText>(R.id.ravenDollars).setText("R$$savedRavenDollars")
+            findViewById<TextView>(R.id.ravenDollars).setText("R$$savedRavenDollars")
             numRavenDollars = savedRavenDollars.toInt()
         }
+        if (allRavenDollars != null) {
+            findViewById<TextView>(R.id.totalRavenDollars).setText("$allRavenDollars")
+            totalRavenDollars = allRavenDollars.toInt()
+        }
         if (savedRodneyClickers != null) {
-            findViewById<EditText>(R.id.total_rodneys).setText("Total Rodneys: $savedRodneyClickers")
+            findViewById<TextView>(R.id.total_rodneys).setText("Total Rodneys: $savedRodneyClickers")
             rodney.numOwned = savedRodneyClickers.toInt()
             numClickerUpgrades = savedRodneyClickers.toInt()
         }
