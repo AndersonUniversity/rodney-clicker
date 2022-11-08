@@ -18,6 +18,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+        
+    <TextView
+        android:id="@+id/total_helios"
+        android:layout_width="233dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="224dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Total Helioses: 0"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/ravenDollars"

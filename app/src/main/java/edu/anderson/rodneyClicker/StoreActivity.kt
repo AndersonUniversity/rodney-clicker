@@ -10,7 +10,10 @@ import androidx.appcompat.app.AppCompatActivity
 class StoreActivity : AppCompatActivity() {
     private var numRavenDollars = 0
     private var numTotalClickerUpgrades = 0
+    private var numTotalRodneyUpgrades = 0
     private var numTotalRodneyMultipliers = 0
+    private var numTotalHeliosUpgrades = 0
+    private var numTotalHeliosMultipliers = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,8 +24,11 @@ class StoreActivity : AppCompatActivity() {
         super.onResume()
         val sharedPref = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         numRavenDollars = sharedPref.getString("Raven_Dollars", "0")?.toInt() ?: 0
-        numTotalClickerUpgrades = sharedPref.getString("Rodney_Clickers", "0")?.toInt() ?: 0
+        numTotalRodneyUpgrades = sharedPref.getString("Rodney_Clickers", "0")?.toInt() ?: 0
         numTotalRodneyMultipliers = sharedPref.getString("Rodney_Multipliers", "0")?.toInt() ?: 0
+        numTotalHeliosUpgrades = sharedPref.getString("Helios_Clickers", "0")?.toInt() ?: 0
+        numTotalHeliosMultipliers = sharedPref.getString("Helios_Multipliers", "0")?.toInt() ?: 0
+        numTotalClickerUpgrades = numTotalRodneyUpgrades + numTotalHeliosUpgrades
 
         findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
     }
@@ -34,26 +40,46 @@ class StoreActivity : AppCompatActivity() {
         val editor = sharedPref.edit()
         editor.apply {
             putString("Raven_Dollars", numRavenDollars.toString())
-            putString("Rodney_Clickers", numTotalClickerUpgrades.toString())
+            putString("Rodney_Clickers", numTotalRodneyUpgrades.toString())
             putString("Rodney_Multipliers", numTotalRodneyMultipliers.toString())
+            putString("Helios_Clickers", numTotalHeliosUpgrades.toString())
+            putString("Helios_Multipliers", numTotalHeliosMultipliers.toString())
         }.apply()
         startActivity(i)
     }
 
     fun buyRodney(view: View) {
-        val cost = if (numTotalClickerUpgrades == 0) { 10 } else { (10 * 1.15 * numTotalClickerUpgrades).toInt() }
+        val cost = if (numTotalRodneyUpgrades == 0) { 10 } else { (10 * 1.15 * numTotalRodneyUpgrades).toInt() }
         if (numRavenDollars >= cost) {
             numRavenDollars -= cost
-            numTotalClickerUpgrades += 1
+            numTotalRodneyUpgrades += 1
         }
         findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
     }
 
-    fun buyMultiplier(view: View) {
+    fun buyHelios(view: View) {
+        val cost = if (numTotalHeliosUpgrades == 0) { 100 } else { (100 * 1.15 * numTotalHeliosUpgrades).toInt() }
+        if (numRavenDollars >= cost) {
+            numRavenDollars -= cost
+            numTotalHeliosUpgrades += 1
+        }
+        findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
+    }
+
+    fun buyRodneyMultiplier(view: View) {
         val cost = if (numTotalRodneyMultipliers == 1) { 100 } else { (100 * 1.5 * numTotalRodneyMultipliers).toInt() }
         if (numRavenDollars >= cost) {
             numRavenDollars -= cost
             numTotalRodneyMultipliers += 1
+        }
+        findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
+    }
+
+    fun buyHeliosMultiplier(view: View) {
+        val cost = if (numTotalHeliosMultipliers == 1) { 500 } else { (500 * 1.5 * numTotalHeliosMultipliers).toInt() }
+        if (numRavenDollars >= cost) {
+            numRavenDollars -= cost
+            numTotalHeliosMultipliers += 1
         }
         findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
     }
