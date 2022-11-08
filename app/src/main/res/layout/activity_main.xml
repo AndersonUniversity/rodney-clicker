@@ -25,12 +25,11 @@
 
     <EditText
         android:id="@+id/ravenDollars"
-        android:layout_width="189dp"
+        android:layout_width="match_parent"
         android:layout_height="75dp"
         android:layout_marginTop="40dp"
         android:clickable="false"
         android:cursorVisible="false"
-        android:editable="false"
         android:ellipsize="none"
         android:ems="10"
         android:enabled="false"
