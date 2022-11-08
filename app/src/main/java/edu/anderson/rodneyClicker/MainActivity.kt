@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
         handler.postDelayed(
             object : Runnable {
                 override fun run() {
-                    showRDPS(numClickerUpgrades,numRodneyMultipliers)
+                    showRDPS(numClickerUpgrades, numRodneyMultipliers)
                     val ravenDollars = findViewById<TextView>(R.id.ravenDollars)
                     val totalRD = findViewById<TextView>(R.id.totalRavenDollars)
                     numRavenDollars += (rodney.dps * rodney.numOwned * rodney.multiplier)
