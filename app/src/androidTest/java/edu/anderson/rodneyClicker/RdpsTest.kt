@@ -27,7 +27,7 @@ class RdpsTest {
         onView(withId(R.id.store_button)).perform(click())
 
         // Buy a Rodney
-        onView(withId(R.id.buy_upgradeButton)).perform(click())
+        onView(withId(R.id.buy_rodneyButton)).perform(click())
 
         // Return to the main page
         onView(withId(R.id.home_button)).perform(click())
