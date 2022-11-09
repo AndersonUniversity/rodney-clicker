@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        loadData()
         addClicker(this)
         addMultiplier(this)
         gameLoop(this)
