@@ -42,7 +42,7 @@ class SaveDataTest {
         // Recreate activity
         rule.scenario.close()
         launch(MainActivity::class.java)
-        
+
         // Wait 1 second for ui to update
         Thread.sleep(1000)
 
