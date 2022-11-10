@@ -1,9 +1,15 @@
 package edu.anderson.rodneyClicker
 
+import android.view.View
+import android.widget.TextView
 import androidx.test.core.app.ActivityScenario.launch
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.UiController
+import androidx.test.espresso.ViewAction
+import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.activityScenarioRule
@@ -16,6 +22,26 @@ import org.junit.runner.RunWith
 class SaveDataTest {
     @get:Rule
     var rule = activityScenarioRule<MainActivity>()
+
+    private fun getText(matcher: ViewInteraction): String {
+        var text = String()
+        matcher.perform(object : ViewAction {
+            override fun getConstraints(): org.hamcrest.Matcher<View>? {
+                return isAssignableFrom(TextView::class.java)
+            }
+
+            override fun getDescription(): String {
+                return "Text of the view"
+            }
+
+            override fun perform(uiController: UiController, view: View) {
+                val tv = view as TextView
+                text = tv.text.toString()
+            }
+        })
+
+        return text
+    }
 
     @Test
     fun saveData() {
@@ -47,7 +73,13 @@ class SaveDataTest {
         Thread.sleep(1000)
 
         // Check to see if the values are saved on the ui
-        onView(withId(R.id.ravenDollars)).check(matches(withText("R$7")))
+        val currRD: ViewInteraction = onView(withId(R.id.ravenDollars))
+        var text = getText(currRD)
+        text = text.substring(2, text.length)
+        val num = text.toInt()
+        val allRD = onView(withId(R.id.totalRavenDollars))
+        val num2 = getText(allRD).toInt()
+        check(num == (num2 - 110))
         onView(withId(R.id.total_rodneys)).check(matches(withText("Total Rodneys: 1")))
         onView(withId(R.id.ravenDollarsPerSecond)).check(matches(withText("Raven Dollars Per Second: 2")))
     }
