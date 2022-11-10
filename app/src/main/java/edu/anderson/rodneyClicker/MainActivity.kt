@@ -11,8 +11,11 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     var numRavenDollars = 0
-    var numClickerUpgrades = 0
+    var totalRavenDollars = 0
+    var numRodneyUpgrades = 0
     var numRodneyMultipliers = 0
+    var numHeliosUpgrades = 0
+    var numHeliosMultipliers = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,14 +36,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        val numNewClickerUpgrades = numClickerUpgrades - rodney.numOwned
-        if (numNewClickerUpgrades > 0) {
-            addClicker(this, numNewClickerUpgrades)
-        }
-        val numNewClickerMultipliers = numRodneyMultipliers - rodney.multiplier
-        if (numNewClickerMultipliers > 0) {
-            addMultiplier(this, numNewClickerMultipliers)
-        }
+        addClicker(this)
+        addMultiplier(this)
         gameLoop(this)
     }
 
@@ -54,6 +51,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     val rodney = AutoClicker(1, 0, 1)
+    val helios = AutoClicker(5, 0, 1)
 
     /** Called when the user taps the Store button */
     fun openStorePage(view: View) {
@@ -65,21 +63,37 @@ class MainActivity : AppCompatActivity() {
     fun increaseNum(view: View) {
         val ravenDollars = findViewById<TextView>(R.id.ravenDollars)
         numRavenDollars += 1
+        totalRavenDollars += 1
         val newRavenDollars = "R$$numRavenDollars"
-        ravenDollars.setText(newRavenDollars)
+        ravenDollars.text = newRavenDollars
+        findViewById<TextView>(R.id.totalRavenDollars).text = totalRavenDollars.toString()
     }
 
-    private fun addClicker(view: MainActivity, newClickers: Int) {
-        for (i in 1..newClickers) {
+    private fun addClicker(view: MainActivity) {
+        val newRodneys = numRodneyUpgrades - rodney.numOwned
+        val newHelios = numHeliosUpgrades - helios.numOwned
+        for (i in 1..newRodneys) {
             rodney.buy()
         }
+        for (i in 1..newHelios) {
+            helios.buy()
+        }
         val rodneysOwned = findViewById<TextView>(R.id.total_rodneys)
-        rodneysOwned.setText("Total Rodneys: " + rodney.numOwned.toString())
+        val heliosOwned = findViewById<TextView>(R.id.total_helios)
+
+        rodneysOwned.text = "Total Rodneys: " + rodney.numOwned.toString()
+        heliosOwned.text = "Total Helios: " + helios.numOwned.toString()
     }
 
-    private fun addMultiplier(view: MainActivity, newMultipliers: Int) {
-        for (i in 1..newMultipliers) {
+    /**Adds the multipliers to the clickers*/
+    private fun addMultiplier(view: MainActivity) {
+        val newRodneyMultipliers = numRodneyMultipliers - rodney.multiplier
+        val newHeliosMultipliers = numHeliosMultipliers - helios.multiplier
+        for (i in 1..newRodneyMultipliers) {
             rodney.buyMultiplier()
+        }
+        for (i in 1..newHeliosMultipliers) {
+            helios.buyMultiplier()
         }
     }
 
@@ -89,10 +103,14 @@ class MainActivity : AppCompatActivity() {
         handler.postDelayed(
             object : Runnable {
                 override fun run() {
-                    showRDPS(numClickerUpgrades, numRodneyMultipliers)
+                    showRDPS()
                     val ravenDollars = findViewById<TextView>(R.id.ravenDollars)
-                    numRavenDollars += (rodney.dps * rodney.numOwned * rodney.multiplier)
-                    ravenDollars.setText("R$$numRavenDollars")
+                    val totalRD = findViewById<TextView>(R.id.totalRavenDollars)
+                    val toAdd = (rodney.dps * rodney.numOwned * rodney.multiplier) + (helios.dps * helios.numOwned * helios.multiplier)
+                    numRavenDollars += toAdd
+                    totalRavenDollars += toAdd
+                    ravenDollars.text = "R$$numRavenDollars"
+                    totalRD.text = "$totalRavenDollars"
                     handler.postDelayed(this, 1000)
                 }
             },
@@ -106,8 +124,11 @@ class MainActivity : AppCompatActivity() {
         val editor = sharedPref.edit()
         editor.apply {
             putString("Raven_Dollars", numRavenDollars.toString())
+            putString("Total_Raven_Dollars", totalRavenDollars.toString())
             putString("Rodney_Clickers", rodney.numOwned.toString())
             putString("Rodney_Multipliers", rodney.multiplier.toString())
+            putString("Helios_Clickers", helios.numOwned.toString())
+            putString("Helios_Multipliers", helios.multiplier.toString())
         }.apply()
     }
 
@@ -115,25 +136,42 @@ class MainActivity : AppCompatActivity() {
     private fun loadData() {
         val sharedPref = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val savedRavenDollars = sharedPref.getString("Raven_Dollars", "0")
+        val allRavenDollars = sharedPref.getString("Total_Raven_Dollars", "0")
         val savedRodneyClickers = sharedPref.getString("Rodney_Clickers", "0")
         val savedRodneyClickersMultipliers = sharedPref.getString("Rodney_Multipliers", "0")
+        val savedHeliosClickers = sharedPref.getString("Helios_Clickers", "0")
+        val savedHeliosClickersMultipliers = sharedPref.getString("Helios_Multipliers", "0")
 
         if (savedRavenDollars != null) {
-            findViewById<TextView>(R.id.ravenDollars).setText("R$$savedRavenDollars")
+            findViewById<TextView>(R.id.ravenDollars).text = "R$$savedRavenDollars"
             numRavenDollars = savedRavenDollars.toInt()
         }
+        if (allRavenDollars != null) {
+            findViewById<TextView>(R.id.totalRavenDollars).text = "$allRavenDollars"
+            totalRavenDollars = allRavenDollars.toInt()
+        }
         if (savedRodneyClickers != null) {
-            findViewById<TextView>(R.id.total_rodneys).setText("Total Rodneys: $savedRodneyClickers")
+            findViewById<TextView>(R.id.total_rodneys).text = "Total Rodneys: $savedRodneyClickers"
             rodney.numOwned = savedRodneyClickers.toInt()
-            numClickerUpgrades = savedRodneyClickers.toInt()
+            numRodneyUpgrades = savedRodneyClickers.toInt()
         }
         if (savedRodneyClickersMultipliers != null) {
             numRodneyMultipliers = savedRodneyClickersMultipliers.toInt()
         }
+        if (savedHeliosClickers != null) {
+            findViewById<TextView>(R.id.total_helios).text = "Total Helioses: $savedHeliosClickers"
+            helios.numOwned = savedHeliosClickers.toInt()
+            numHeliosUpgrades = savedHeliosClickers.toInt()
+        }
+        if (savedHeliosClickersMultipliers != null) {
+            numHeliosMultipliers = savedHeliosClickersMultipliers.toInt()
+        }
     }
-    private fun showRDPS(clickers: Int, multipliers: Int) {
+    private fun showRDPS() {
+        val totalRodney = rodney.dps * rodney.numOwned * rodney.multiplier
+        val totalHelios = helios.dps * helios.numOwned * helios.multiplier
         val viewText = findViewById<TextView>(R.id.ravenDollarsPerSecond)
-        val currRDPS = (clickers * multipliers).toString()
+        val currRDPS = (totalRodney + totalHelios).toString()
         val displayText = "Raven Dollars Per Second: $currRDPS"
         viewText.text = displayText
     }
