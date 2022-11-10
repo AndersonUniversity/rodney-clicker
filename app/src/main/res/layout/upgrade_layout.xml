@@ -69,7 +69,7 @@
         android:layout_width="269dp"
         android:layout_height="80dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="108dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:onClick="buyRodney"
