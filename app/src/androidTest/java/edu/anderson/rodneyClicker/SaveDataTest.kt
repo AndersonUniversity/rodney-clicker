@@ -9,20 +9,21 @@ import androidx.test.espresso.ViewAction
 import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.util.regex.Matcher
 
 @RunWith(AndroidJUnit4::class)
 class SaveDataTest {
     @get:Rule
     var rule = activityScenarioRule<MainActivity>()
 
-    fun getText(matcher: ViewInteraction): String {
+    private fun getText(matcher: ViewInteraction): String {
         var text = String()
         matcher.perform(object : ViewAction {
             override fun getConstraints(): org.hamcrest.Matcher<View>? {
@@ -72,13 +73,13 @@ class SaveDataTest {
         Thread.sleep(1000)
 
         // Check to see if the values are saved on the ui
-        val currRD:ViewInteraction = onView(withId(R.id.ravenDollars))
+        val currRD: ViewInteraction = onView(withId(R.id.ravenDollars))
         var text = getText(currRD)
-        text = text.substring(2,text.length)
-        var num = text.toInt()
+        text = text.substring(2, text.length)
+        val num = text.toInt()
         val allRD = onView(withId(R.id.totalRavenDollars))
-        var num2 = getText(allRD).toInt()
-        check(num == (num2-110))
+        val num2 = getText(allRD).toInt()
+        check(num == (num2 - 110))
         onView(withId(R.id.total_rodneys)).check(matches(withText("Total Rodneys: 1")))
         onView(withId(R.id.ravenDollarsPerSecond)).check(matches(withText("Raven Dollars Per Second: 2")))
     }
