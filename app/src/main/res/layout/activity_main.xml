@@ -35,7 +35,7 @@
         android:enabled="false"
         android:focusable="auto"
         android:focusableInTouchMode="false"
-        android:fontFamily="@font/audiowide"
+        android:fontFamily="@font/ubuntu_bold"
         android:inputType="textPersonName"
         android:linksClickable="false"
         android:longClickable="false"
@@ -51,8 +51,8 @@
 
     <ImageButton
         android:id="@+id/store_button"
-        android:layout_width="85dp"
-        android:layout_height="75dp"
+        android:layout_width="109dp"
+        android:layout_height="102dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:fadingEdge="horizontal|vertical"

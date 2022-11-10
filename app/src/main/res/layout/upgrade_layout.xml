@@ -10,22 +10,27 @@
 
     <ImageButton
         android:id="@+id/buy_multiplier_upgrade"
-        android:layout_width="146dp"
-        android:layout_height="82dp"
-        android:src="@drawable/homebutton"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="60dp"
+        android:layout_width="395dp"
+        android:layout_height="105dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="104dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
         android:onClick="buyMultiplier"
+        android:padding="@null"
+        android:scaleType="fitCenter"
+        android:scaleX="2.5"
+        android:scaleY="2.5"
+        android:src="@drawable/heliosupgrade"
         android:text=" Buy Multiplier"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/buy_upgradeButton"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currRavenDollars" />
 
     <ImageButton
         android:id="@+id/home_button"
-        android:layout_width="85dp"
-        android:layout_height="75dp"
+        android:layout_width="109dp"
+        android:layout_height="102dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:onClick="openHomePage"
@@ -40,23 +45,34 @@
         app:layout_constraintTop_toTopOf="@+id/button2"
         app:layout_constraintVertical_bias="0.178" />
 
-    <Button
+    <ImageButton
         android:id="@+id/buy_upgradeButton"
-        android:layout_width="243dp"
-        android:layout_height="82dp"
-        android:layout_marginTop="60dp"
+        android:layout_width="390dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="36dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
         android:onClick="buyRodney"
+        android:padding="@null"
+        android:scaleType="fitCenter"
+        android:scaleX="2.7"
+        android:scaleY="2.7"
+        android:src="@drawable/rodneyupgrade"
         android:text="Buy Basic Upgrade"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/currRavenDollars" />
 
     <TextView
         android:id="@+id/currRavenDollars"
         android:layout_width="177dp"
         android:layout_height="23dp"
         android:layout_marginTop="24dp"
+        android:fontFamily="@font/ubuntu_bold"
         android:text="Raven Dollars: 0"
         android:textAlignment="center"
+        android:textColor="#388E3C"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
