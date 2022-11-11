@@ -49,6 +49,8 @@
         android:id="@+id/home_button"
         android:layout_width="109dp"
         android:layout_height="102dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="1dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:onClick="openHomePage"
@@ -57,8 +59,7 @@
         android:src="@drawable/homebutton"
         android:text="@string/home_nav_button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
-        app:layout_constraintVertical_bias="0.178" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <ImageButton
