@@ -4,13 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:backgroundTint="#D8D7D7"
+    android:backgroundTintMode="multiply"
+    android:padding="@null"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/total_rodneys"
         android:layout_width="233dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="180dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Total Rodneys: 0"
@@ -18,7 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-        
+
     <TextView
         android:id="@+id/total_helios"
         android:layout_width="233dp"
@@ -35,51 +39,77 @@
 
     <TextView
         android:id="@+id/ravenDollars"
-        android:layout_width="233dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginTop="40dp"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:ellipsize="none"
         android:ems="10"
+        android:enabled="false"
+        android:focusable="auto"
+        android:focusableInTouchMode="false"
+        android:fontFamily="@font/ubuntu_bold"
         android:inputType="textPersonName"
+        android:linksClickable="false"
+        android:longClickable="false"
+        android:selectAllOnFocus="false"
         android:text="0"
         android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#388E3C"
+        android:textSize="55sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/totalRavenDollars"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_width="53dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:text="0"
         android:textAlignment="center"
+        android:textColor="#007922"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <Button
+    <ImageButton
         android:id="@+id/store_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/store_nav_button"
+        android:layout_width="109dp"
+        android:layout_height="102dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:fadingEdge="horizontal|vertical"
+        android:fadingEdgeLength="20sp"
         android:onClick="openStorePage"
+        android:outlineProvider="none"
+        android:padding="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/storebutton"
+        android:text="@string/store_nav_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/ravenButton"
-        android:layout_width="91dp"
-        android:layout_height="106dp"
-        android:layout_marginBottom="96dp"
+        android:layout_width="297dp"
+        android:layout_height="217dp"
+        android:layout_marginBottom="124dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:minHeight="500dp"
         android:onClick="increaseNum"
+        android:padding="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/mainbutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/btn_star_big_on" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/ravenDollarsPerSecond"
