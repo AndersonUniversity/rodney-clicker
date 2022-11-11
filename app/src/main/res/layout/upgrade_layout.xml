@@ -13,8 +13,9 @@
         android:id="@+id/buy_multiplier_rodney"
         android:layout_width="64dp"
         android:layout_height="77dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="24dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:onClick="buyRodneyMultiplier"
@@ -25,14 +26,16 @@
         android:src="@drawable/multiply"
         android:text=" Buy Multiplier"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/buy_rodneyButton"
+        app:layout_constraintTop_toBottomOf="@+id/currRavenDollars" />
 
     <ImageButton
         android:id="@+id/buy_multiplier_helios"
         android:layout_width="67dp"
         android:layout_height="80dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="24dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:onClick="buyHeliosMultiplier"
@@ -43,6 +46,7 @@
         android:src="@drawable/multiply"
         android:text=" Buy Multiplier"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buy_heliosButton"
         app:layout_constraintTop_toBottomOf="@+id/buy_multiplier_rodney" />
 
     <ImageButton
@@ -67,7 +71,7 @@
         android:layout_width="269dp"
         android:layout_height="80dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="80dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:onClick="buyRodney"
@@ -76,17 +80,15 @@
         android:scaleX="2.7"
         android:scaleY="2.7"
         android:src="@drawable/rodneyupgrade"
-        app:layout_constraintEnd_toStartOf="@+id/buy_multiplier_rodney"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/currRavenDollars" />
 
     <ImageButton
         android:id="@+id/buy_heliosButton"
         android:layout_width="269dp"
         android:layout_height="80dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:onClick="buyHelios"
@@ -95,9 +97,6 @@
         android:scaleX="2.652"
         android:scaleY="2.7"
         android:src="@drawable/heliosupgrade"
-        android:text="Buy Basic Upgrade"
-        app:layout_constraintEnd_toStartOf="@+id/buy_multiplier_helios"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buy_rodneyButton" />
 
@@ -105,12 +104,14 @@
         android:id="@+id/currRavenDollars"
         android:layout_width="177dp"
         android:layout_height="23dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:fontFamily="@font/ubuntu_bold"
         android:text="Raven Dollars: 0"
         android:textAlignment="center"
         android:textColor="#388E3C"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
