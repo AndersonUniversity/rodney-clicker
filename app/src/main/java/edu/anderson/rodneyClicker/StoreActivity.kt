@@ -3,6 +3,8 @@ package edu.anderson.rodneyClicker
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -31,6 +33,7 @@ class StoreActivity : AppCompatActivity() {
         numTotalClickerUpgrades = numTotalRodneyUpgrades + numTotalHeliosUpgrades
 
         findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
+        gameLoop(this)
     }
 
     /** Called when the user taps the Home button */
@@ -46,6 +49,26 @@ class StoreActivity : AppCompatActivity() {
             putString("Helios_Multipliers", numTotalHeliosMultipliers.toString())
         }.apply()
         startActivity(i)
+    }
+
+    val rodney = ClickersAndUpgrades.AutoClicker(1, 0, 1)
+    val helios = ClickersAndUpgrades.AutoClicker(5, 0, 1)
+
+    private fun gameLoop(view: StoreActivity) {
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed(
+            object : Runnable {
+                override fun run() {
+                    ClickersAndUpgrades.addClicker(numTotalRodneyUpgrades, numTotalHeliosUpgrades, rodney, helios)
+                    ClickersAndUpgrades.addMultiplier(numTotalRodneyMultipliers, numTotalHeliosMultipliers, rodney, helios)
+                    val toAdd = (rodney.dps * rodney.numOwned * rodney.multiplier) + (helios.dps * helios.numOwned * helios.multiplier)
+                    numRavenDollars += toAdd
+                    findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
+                    handler.postDelayed(this, 1000)
+                }
+            },
+            1000
+        )
     }
 
     fun buyRodney(view: View) {
