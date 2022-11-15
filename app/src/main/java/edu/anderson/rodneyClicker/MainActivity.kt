@@ -60,10 +60,10 @@ class MainActivity : AppCompatActivity() {
     val rodney = ClickersAndUpgrades.AutoClicker(1, 0, 1)
     val helios = ClickersAndUpgrades.AutoClicker(5, 0, 1)
 
-     private fun updateClicker(view: MainActivity) {
+    private fun updateClicker(view: MainActivity) {
         ClickersAndUpgrades.addClicker(numRodneyUpgrades, numHeliosUpgrades, rodney, helios)
-         findViewById<TextView>(R.id.total_rodneys).text = String.format("Total Rodneys: %d", rodney.numOwned)
-         findViewById<TextView>(R.id.total_helios).text = String.format("Total Helios: %d", helios.numOwned)
+        findViewById<TextView>(R.id.total_rodneys).text = String.format("Total Rodneys: %d", rodney.numOwned)
+        findViewById<TextView>(R.id.total_helios).text = String.format("Total Helios: %d", helios.numOwned)
     }
 
     /**Adds the multipliers to the clickers*/
