@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class StoreActivity : AppCompatActivity() {
     private var numRavenDollars = 0
+    private var numTotalRavenDollars = 0
     private var numTotalClickerUpgrades = 0
     private var numTotalRodneyUpgrades = 0
     private var numTotalRodneyMultipliers = 0
@@ -26,6 +27,7 @@ class StoreActivity : AppCompatActivity() {
         super.onResume()
         val sharedPref = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         numRavenDollars = sharedPref.getString("Raven_Dollars", "0")?.toInt() ?: 0
+        numTotalRavenDollars = sharedPref.getString("Total_Raven_Dollars", "0")?.toInt() ?: 0
         numTotalRodneyUpgrades = sharedPref.getString("Rodney_Clickers", "0")?.toInt() ?: 0
         numTotalRodneyMultipliers = sharedPref.getString("Rodney_Multipliers", "0")?.toInt() ?: 0
         numTotalHeliosUpgrades = sharedPref.getString("Helios_Clickers", "0")?.toInt() ?: 0
@@ -43,6 +45,7 @@ class StoreActivity : AppCompatActivity() {
         val editor = sharedPref.edit()
         editor.apply {
             putString("Raven_Dollars", numRavenDollars.toString())
+            putString("Total_Raven_Dollars", numTotalRavenDollars.toString())
             putString("Rodney_Clickers", numTotalRodneyUpgrades.toString())
             putString("Rodney_Multipliers", numTotalRodneyMultipliers.toString())
             putString("Helios_Clickers", numTotalHeliosUpgrades.toString())
@@ -63,6 +66,7 @@ class StoreActivity : AppCompatActivity() {
                     ClickersAndUpgrades.addMultiplier(numTotalRodneyMultipliers, numTotalHeliosMultipliers, rodney, helios)
                     val toAdd = (rodney.dps * rodney.numOwned * rodney.multiplier) + (helios.dps * helios.numOwned * helios.multiplier)
                     numRavenDollars += toAdd
+                    numTotalRavenDollars += toAdd
                     findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
                     handler.postDelayed(this, 1000)
                 }
