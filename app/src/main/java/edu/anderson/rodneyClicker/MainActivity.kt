@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         updateClicker(this)
         updateMultiplier(this)
+        showRDPS()
         gameLoop(this)
     }
 
@@ -77,7 +78,6 @@ class MainActivity : AppCompatActivity() {
         handler.postDelayed(
             object : Runnable {
                 override fun run() {
-                    showRDPS()
                     val toAdd = (rodney.dps * rodney.numOwned * rodney.multiplier) + (helios.dps * helios.numOwned * helios.multiplier)
                     numRavenDollars += toAdd
                     totalRavenDollars += toAdd
