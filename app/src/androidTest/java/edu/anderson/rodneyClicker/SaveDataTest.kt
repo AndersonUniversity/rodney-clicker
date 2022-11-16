@@ -23,26 +23,6 @@ class SaveDataTest {
     @get:Rule
     var rule = activityScenarioRule<MainActivity>()
 
-    private fun getText(matcher: ViewInteraction): String {
-        var text = String()
-        matcher.perform(object : ViewAction {
-            override fun getConstraints(): org.hamcrest.Matcher<View>? {
-                return isAssignableFrom(TextView::class.java)
-            }
-
-            override fun getDescription(): String {
-                return "Text of the view"
-            }
-
-            override fun perform(uiController: UiController, view: View) {
-                val tv = view as TextView
-                text = tv.text.toString()
-            }
-        })
-
-        return text
-    }
-
     @Test
     fun saveData() {
         // Click the Rodney button 115 times
@@ -73,13 +53,6 @@ class SaveDataTest {
         Thread.sleep(1000)
 
         // Check to see if the values are saved on the ui
-        val currRD: ViewInteraction = onView(withId(R.id.ravenDollars))
-        var text = getText(currRD)
-        text = text.substring(2, text.length)
-        val num = text.toInt()
-        val allRD = onView(withId(R.id.totalRavenDollars))
-        val num2 = getText(allRD).toInt()
-        check(num == (num2 - 110))
         onView(withId(R.id.total_rodneys)).check(matches(withText("Total Rodneys: 1")))
         onView(withId(R.id.ravenDollarsPerSecond)).check(matches(withText("Raven Dollars Per Second: 2")))
     }
