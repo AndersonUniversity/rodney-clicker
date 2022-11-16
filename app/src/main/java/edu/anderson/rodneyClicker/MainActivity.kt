@@ -38,8 +38,8 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         updateClicker(this)
         updateMultiplier(this)
-        gameLoop(this)
         showRDPS()
+        gameLoop(this)
     }
 
     /** Called when the user taps the Store button */
