@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         addClicker(this)
         addMultiplier(this)
         gameLoop(this)
+        showRDPS()
     }
 
     class AutoClicker(var dps: Int, var numOwned: Int, var multiplier: Int) {
@@ -103,7 +104,6 @@ class MainActivity : AppCompatActivity() {
         handler.postDelayed(
             object : Runnable {
                 override fun run() {
-                    showRDPS()
                     val ravenDollars = findViewById<TextView>(R.id.ravenDollars)
                     val totalRD = findViewById<TextView>(R.id.totalRavenDollars)
                     val toAdd = (rodney.dps * rodney.numOwned * rodney.multiplier) + (helios.dps * helios.numOwned * helios.multiplier)
