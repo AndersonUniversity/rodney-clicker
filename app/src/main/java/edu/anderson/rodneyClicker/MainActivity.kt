@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         updateClicker(this)
         updateMultiplier(this)
         gameLoop(this)
+        showRDPS()
     }
 
     /** Called when the user taps the Store button */
