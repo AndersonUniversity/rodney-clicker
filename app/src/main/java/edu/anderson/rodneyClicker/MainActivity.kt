@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     var numRodneyMultipliers = 0
     var numHeliosUpgrades = 0
     var numHeliosMultipliers = 0
+    var totalClicks = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,6 +65,7 @@ class MainActivity : AppCompatActivity() {
         val ravenDollars = findViewById<TextView>(R.id.ravenDollars)
         numRavenDollars += 1
         totalRavenDollars += 1
+        totalClicks++
         val newRavenDollars = "R$$numRavenDollars"
         ravenDollars.text = newRavenDollars
         findViewById<TextView>(R.id.totalRavenDollars).text = totalRavenDollars.toString()
@@ -111,6 +113,7 @@ class MainActivity : AppCompatActivity() {
                     totalRavenDollars += toAdd
                     ravenDollars.text = "R$$numRavenDollars"
                     totalRD.text = "$totalRavenDollars"
+                    findViewById<TextView>(R.id.achievementPopup).text = checkAchievements(totalRavenDollars, totalClicks)
                     handler.postDelayed(this, 1000)
                 }
             },

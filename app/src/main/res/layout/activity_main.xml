@@ -66,15 +66,15 @@
 
     <TextView
         android:id="@+id/totalRavenDollars"
-        android:layout_width="53dp"
-        android:layout_height="22dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="191dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:text="0"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
         android:textColor="#007922"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.158"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -121,4 +121,25 @@
         app:layout_constraintHorizontal_bias=".5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ravenDollars" />
+
+    <TextView
+        android:id="@+id/achievementPopup"
+        android:layout_width="199dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginBottom="32dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:gravity="start|top"
+        android:text=""
+        android:textColor="#007922"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/store_button"
+        app:layout_constraintTop_toBottomOf="@+id/ravenButton"
+        app:layout_constraintVertical_bias="0.0" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
