@@ -77,7 +77,7 @@ class StoreActivity : AppCompatActivity() {
         val cost = if (numTotalRodneyUpgrades == 0) { 10 } else { (baseCost * baseCostMultiplier * numOwned).toInt() }
         return if (numRavenDollars >= cost) {
             numRavenDollars -= cost
-            findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
+            findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
             1
         } else {
             0

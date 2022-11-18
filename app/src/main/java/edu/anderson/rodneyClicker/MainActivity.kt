@@ -115,7 +115,7 @@ class MainActivity : AppCompatActivity() {
         val savedHeliosClickersMultipliers = sharedPref.getString("Helios_Multipliers", "0")
 
         if (savedRavenDollars != null) {
-            findViewById<TextView>(R.id.ravenDollars).text = String.format("R$$savedRavenDollars")
+            findViewById<TextView>(R.id.ravenDollars).text = FormatNum.formatNumber(savedRavenDollars.toLong())
             numRavenDollars = savedRavenDollars.toInt()
         }
         if (allRavenDollars != null) {
@@ -144,7 +144,8 @@ class MainActivity : AppCompatActivity() {
         val totalHelios = helios.dps * helios.numOwned * helios.multiplier
         val viewText = findViewById<TextView>(R.id.ravenDollarsPerSecond)
         val currRDPS = (totalRodney + totalHelios).toString()
-        val displayText = "Raven Dollars Per Second: $currRDPS"
+        val formattedRDPS = FormatNum.formatNumber(currRDPS.toLong())
+        val displayText = "Raven Dollars Per Second: " + formattedRDPS.substring(2, formattedRDPS.length)
         viewText.text = displayText
     }
 }
