@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -15,6 +16,8 @@ class StoreActivity : AppCompatActivity() {
     private var numTotalClickerUpgrades = 0
     private var numTotalRodneyUpgrades = 0
     private var numTotalRodneyMultipliers = 0
+    private var rodneyCost = 10
+    private var rodneyMilestone = 25
     private var numTotalHeliosUpgrades = 0
     private var numTotalHeliosMultipliers = 0
 
@@ -35,6 +38,9 @@ class StoreActivity : AppCompatActivity() {
         numTotalClickerUpgrades = numTotalRodneyUpgrades + numTotalHeliosUpgrades
 
         findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
+        findViewById<TextView>(R.id.rodney_cost_text).text = String.format("$%d", rodneyCost)
+        findViewById<ImageButton>(R.id.buy_multiplier_rodney).visibility = View.GONE
+        findViewById<ImageButton>(R.id.buy_multiplier_helios).visibility = View.GONE
         gameLoop(this)
     }
 
@@ -76,12 +82,18 @@ class StoreActivity : AppCompatActivity() {
     }
 
     fun buyRodney(view: View) {
-        val cost = if (numTotalRodneyUpgrades == 0) { 10 } else { (10 * 1.15 * numTotalRodneyUpgrades).toInt() }
+        val cost = (rodneyCost * 1.15).toInt()
         if (numRavenDollars >= cost) {
             numRavenDollars -= cost
             numTotalRodneyUpgrades += 1
+            rodneyCost = cost
         }
         findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
+        findViewById<TextView>(R.id.rodney_cost_text).text = String.format("$%d", rodneyCost)
+
+        if (numTotalRodneyUpgrades >= rodneyMilestone) {
+            findViewById<ImageButton>(R.id.buy_multiplier_rodney).visibility = View.VISIBLE
+        }
     }
 
     fun buyHelios(view: View) {
@@ -100,6 +112,7 @@ class StoreActivity : AppCompatActivity() {
             numTotalRodneyMultipliers += 1
         }
         findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
+        rodneyMilestone += rodneyMilestone
     }
 
     fun buyHeliosMultiplier(view: View) {

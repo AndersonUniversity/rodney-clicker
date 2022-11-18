@@ -118,4 +118,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/rodney_cost_text"
+        android:layout_width="0dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="81dp"
+        android:layout_marginEnd="95dp"
+        android:layout_marginBottom="1dp"
+        android:text="$10"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/buy_heliosButton"
+        app:layout_constraintEnd_toStartOf="@+id/buy_multiplier_rodney"
+        app:layout_constraintStart_toEndOf="@+id/buy_rodneyButton"
+        app:layout_constraintTop_toBottomOf="@+id/currRavenDollars"
+        app:layout_constraintVertical_bias="0.187"
+        tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
