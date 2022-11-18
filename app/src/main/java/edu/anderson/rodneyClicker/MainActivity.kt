@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         updateClicker(this)
         updateMultiplier(this)
+        showRDPS()
         gameLoop(this)
     }
 
@@ -52,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         val ravenDollars = findViewById<TextView>(R.id.ravenDollars)
         numRavenDollars += 1
         totalRavenDollars += 1
-        val newRavenDollars = "R$$numRavenDollars"
+        val newRavenDollars = FormatNum.formatNumber(numRavenDollars.toLong())
         ravenDollars.text = newRavenDollars
         findViewById<TextView>(R.id.totalRavenDollars).text = totalRavenDollars.toString()
     }
@@ -77,11 +78,10 @@ class MainActivity : AppCompatActivity() {
         handler.postDelayed(
             object : Runnable {
                 override fun run() {
-                    showRDPS()
                     val toAdd = (rodney.dps * rodney.numOwned * rodney.multiplier) + (helios.dps * helios.numOwned * helios.multiplier)
                     numRavenDollars += toAdd
                     totalRavenDollars += toAdd
-                    findViewById<TextView>(R.id.ravenDollars).text = String.format("R$$numRavenDollars")
+                    findViewById<TextView>(R.id.ravenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
                     findViewById<TextView>(R.id.totalRavenDollars).text = String.format("$totalRavenDollars")
                     handler.postDelayed(this, 1000)
                 }

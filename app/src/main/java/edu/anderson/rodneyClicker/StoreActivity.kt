@@ -41,6 +41,7 @@ class StoreActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.rodney_cost_text).text = String.format("$%d", rodneyCost)
         findViewById<ImageButton>(R.id.buy_multiplier_rodney).visibility = View.GONE
         findViewById<ImageButton>(R.id.buy_multiplier_helios).visibility = View.GONE
+        findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
         gameLoop(this)
     }
 
@@ -73,7 +74,7 @@ class StoreActivity : AppCompatActivity() {
                     val toAdd = (rodney.dps * rodney.numOwned * rodney.multiplier) + (helios.dps * helios.numOwned * helios.multiplier)
                     numRavenDollars += toAdd
                     numTotalRavenDollars += toAdd
-                    findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
+                    findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
                     handler.postDelayed(this, 1000)
                 }
             },
@@ -94,6 +95,7 @@ class StoreActivity : AppCompatActivity() {
         if (numTotalRodneyUpgrades >= rodneyMilestone) {
             findViewById<ImageButton>(R.id.buy_multiplier_rodney).visibility = View.VISIBLE
         }
+        findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
     }
 
     fun buyHelios(view: View) {
@@ -102,7 +104,7 @@ class StoreActivity : AppCompatActivity() {
             numRavenDollars -= cost
             numTotalHeliosUpgrades += 1
         }
-        findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
+        findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
     }
 
     fun buyRodneyMultiplier(view: View) {
@@ -113,6 +115,7 @@ class StoreActivity : AppCompatActivity() {
         }
         findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
         rodneyMilestone += rodneyMilestone
+        findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
     }
 
     fun buyHeliosMultiplier(view: View) {
@@ -121,6 +124,6 @@ class StoreActivity : AppCompatActivity() {
             numRavenDollars -= cost
             numTotalHeliosMultipliers += 1
         }
-        findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
+        findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
     }
 }
