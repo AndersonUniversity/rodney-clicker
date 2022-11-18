@@ -74,7 +74,7 @@ class StoreActivity : AppCompatActivity() {
     }
 
     private fun calcCost(numOwned: Int, baseCost: Int, baseCostMultiplier: Double): Int {
-        val cost = if (numTotalRodneyUpgrades == 0) { 10 } else { (baseCost * baseCostMultiplier * numOwned).toInt() }
+        val cost = if (numOwned == 0) { baseCost } else { (baseCost * baseCostMultiplier * numOwned).toInt() }
         return if (numRavenDollars >= cost) {
             numRavenDollars -= cost
             findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
@@ -92,10 +92,10 @@ class StoreActivity : AppCompatActivity() {
     }
 
     fun buyRodneyMultiplier(view: View) {
-        numTotalRodneyMultipliers += calcCost(numTotalRodneyMultipliers, 100, 1.5)
+        numTotalRodneyMultipliers += calcCost(numTotalRodneyMultipliers-1, 100, 1.5)
     }
 
     fun buyHeliosMultiplier(view: View) {
-        numTotalHeliosMultipliers += calcCost(numTotalHeliosMultipliers, 500, 1.5)
+        numTotalHeliosMultipliers += calcCost(numTotalHeliosMultipliers-1, 500, 1.5)
     }
 }
