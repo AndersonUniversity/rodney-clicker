@@ -92,10 +92,10 @@ class StoreActivity : AppCompatActivity() {
     }
 
     fun buyRodneyMultiplier(view: View) {
-        numTotalRodneyMultipliers += calcCost(numTotalRodneyMultipliers-1, 100, 1.5)
+        numTotalRodneyMultipliers += calcCost(numTotalRodneyMultipliers - 1, 100, 1.5)
     }
 
     fun buyHeliosMultiplier(view: View) {
-        numTotalHeliosMultipliers += calcCost(numTotalHeliosMultipliers-1, 500, 1.5)
+        numTotalHeliosMultipliers += calcCost(numTotalHeliosMultipliers - 1, 500, 1.5)
     }
 }
