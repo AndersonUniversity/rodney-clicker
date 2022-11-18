@@ -32,7 +32,7 @@ class StoreActivity : AppCompatActivity() {
         numTotalHeliosUpgrades = sharedPref.getString("Helios_Clickers", "0")?.toInt() ?: 0
         numTotalHeliosMultipliers = sharedPref.getString("Helios_Multipliers", "0")?.toInt() ?: 0
 
-        findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
+        findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
         gameLoop(this)
     }
 
@@ -65,7 +65,7 @@ class StoreActivity : AppCompatActivity() {
                     val toAdd = (rodney.dps * rodney.numOwned * rodney.multiplier) + (helios.dps * helios.numOwned * helios.multiplier)
                     numRavenDollars += toAdd
                     numTotalRavenDollars += toAdd
-                    findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
+                    findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
                     handler.postDelayed(this, 1000)
                 }
             },
@@ -83,7 +83,6 @@ class StoreActivity : AppCompatActivity() {
             0
         }
     }
-
     fun buyRodney(view: View) {
         numTotalRodneyUpgrades += calcCost(numTotalRodneyUpgrades, 10, 1.15)
     }
