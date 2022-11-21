@@ -14,8 +14,10 @@ class StoreActivity : AppCompatActivity() {
     private var numTotalRavenDollars = 0
     private var numTotalRodneyUpgrades = 0
     private var numTotalRodneyMultipliers = 0
+    private var rodneyCost = 10
     private var numTotalHeliosUpgrades = 0
     private var numTotalHeliosMultipliers = 0
+    private var heliosCost = 100
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,10 +31,15 @@ class StoreActivity : AppCompatActivity() {
         numTotalRavenDollars = sharedPref.getString("Total_Raven_Dollars", "0")?.toInt() ?: 0
         numTotalRodneyUpgrades = sharedPref.getString("Rodney_Clickers", "0")?.toInt() ?: 0
         numTotalRodneyMultipliers = sharedPref.getString("Rodney_Multipliers", "0")?.toInt() ?: 0
+        rodneyCost = sharedPref.getString("Rodney_Cost", "10")?.toInt() ?: 10
         numTotalHeliosUpgrades = sharedPref.getString("Helios_Clickers", "0")?.toInt() ?: 0
         numTotalHeliosMultipliers = sharedPref.getString("Helios_Multipliers", "0")?.toInt() ?: 0
+        heliosCost = sharedPref.getString("Helios_Cost", "100")?.toInt() ?: 100
 
         findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
+        findViewById<TextView>(R.id.rodney_cost_text).text = FormatNum.formatNumber(rodneyCost.toLong())
+        findViewById<TextView>(R.id.helios_cost_text).text = FormatNum.formatNumber(heliosCost.toLong())
+
         gameLoop(this)
     }
 
@@ -48,6 +55,8 @@ class StoreActivity : AppCompatActivity() {
             putString("Rodney_Multipliers", numTotalRodneyMultipliers.toString())
             putString("Helios_Clickers", numTotalHeliosUpgrades.toString())
             putString("Helios_Multipliers", numTotalHeliosMultipliers.toString())
+            putString("Rodney_Cost", rodneyCost.toString())
+            putString("Helios_Cost", heliosCost.toString())
         }.apply()
         startActivity(i)
     }
@@ -73,6 +82,10 @@ class StoreActivity : AppCompatActivity() {
         )
     }
 
+    private fun setCost(numOwned: Int, baseCost: Int, baseCostMultiplier: Double): Int {
+        return if (numOwned == 0) { baseCost } else { (baseCost * baseCostMultiplier * numOwned).toInt() }
+    }
+
     private fun calcCost(numOwned: Int, baseCost: Int, baseCostMultiplier: Double): Int {
         val cost = if (numOwned == 0) { baseCost } else { (baseCost * baseCostMultiplier * numOwned).toInt() }
         return if (numRavenDollars >= cost) {
@@ -83,12 +96,17 @@ class StoreActivity : AppCompatActivity() {
             0
         }
     }
+
     fun buyRodney(view: View) {
         numTotalRodneyUpgrades += calcCost(numTotalRodneyUpgrades, 10, 1.15)
+        rodneyCost = setCost(numTotalRodneyUpgrades, 10, 1.15)
+        findViewById<TextView>(R.id.rodney_cost_text).text = FormatNum.formatNumber(rodneyCost.toLong())
     }
 
     fun buyHelios(view: View) {
         numTotalHeliosUpgrades += calcCost(numTotalHeliosUpgrades, 100, 1.15)
+        heliosCost = setCost(numTotalHeliosUpgrades, 100, 1.15)
+        findViewById<TextView>(R.id.helios_cost_text).text = FormatNum.formatNumber(heliosCost.toLong())
     }
 
     fun buyRodneyMultiplier(view: View) {
