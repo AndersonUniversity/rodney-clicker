@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -15,9 +16,11 @@ class StoreActivity : AppCompatActivity() {
     private var numTotalRodneyUpgrades = 0
     private var numTotalRodneyMultipliers = 0
     private var rodneyCost = 10
+    private var rodneyMilestone = 25
     private var numTotalHeliosUpgrades = 0
     private var numTotalHeliosMultipliers = 0
     private var heliosCost = 100
+    private var heliosMilestone = 25
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,13 +35,25 @@ class StoreActivity : AppCompatActivity() {
         numTotalRodneyUpgrades = sharedPref.getString("Rodney_Clickers", "0")?.toInt() ?: 0
         numTotalRodneyMultipliers = sharedPref.getString("Rodney_Multipliers", "0")?.toInt() ?: 0
         rodneyCost = sharedPref.getString("Rodney_Cost", "10")?.toInt() ?: 10
+        rodneyMilestone = sharedPref.getString("Rodney_Milestone", "25")?.toInt() ?: 25
         numTotalHeliosUpgrades = sharedPref.getString("Helios_Clickers", "0")?.toInt() ?: 0
         numTotalHeliosMultipliers = sharedPref.getString("Helios_Multipliers", "0")?.toInt() ?: 0
         heliosCost = sharedPref.getString("Helios_Cost", "100")?.toInt() ?: 100
+        heliosMilestone = sharedPref.getString("Helios_Milestone", "25")?.toInt() ?: 25
 
         findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
         findViewById<TextView>(R.id.rodney_cost_text).text = FormatNum.formatNumber(rodneyCost.toLong())
         findViewById<TextView>(R.id.helios_cost_text).text = FormatNum.formatNumber(heliosCost.toLong())
+        findViewById<ImageButton>(R.id.buy_multiplier_rodney).visibility = View.GONE
+        findViewById<ImageButton>(R.id.buy_multiplier_helios).visibility = View.GONE
+
+        if (numTotalRodneyUpgrades >= rodneyMilestone) {
+            findViewById<ImageButton>(R.id.buy_multiplier_rodney).visibility = View.VISIBLE
+        }
+        if (numTotalHeliosUpgrades >= heliosMilestone) {
+            findViewById<ImageButton>(R.id.buy_multiplier_helios).visibility = View.VISIBLE
+        }
+
 
         gameLoop(this)
     }
@@ -57,6 +72,8 @@ class StoreActivity : AppCompatActivity() {
             putString("Helios_Multipliers", numTotalHeliosMultipliers.toString())
             putString("Rodney_Cost", rodneyCost.toString())
             putString("Helios_Cost", heliosCost.toString())
+            putString("Rodney_Milestone", rodneyMilestone.toString())
+            putString("Helios_Milestone", heliosMilestone.toString())
         }.apply()
         startActivity(i)
     }
@@ -101,19 +118,27 @@ class StoreActivity : AppCompatActivity() {
         numTotalRodneyUpgrades += calcCost(numTotalRodneyUpgrades, 10, 1.15)
         rodneyCost = setCost(numTotalRodneyUpgrades, 10, 1.15)
         findViewById<TextView>(R.id.rodney_cost_text).text = FormatNum.formatNumber(rodneyCost.toLong())
+        if (numTotalRodneyUpgrades >= rodneyMilestone) {
+            findViewById<ImageButton>(R.id.buy_multiplier_rodney).visibility = View.VISIBLE
+        }
     }
 
     fun buyHelios(view: View) {
         numTotalHeliosUpgrades += calcCost(numTotalHeliosUpgrades, 100, 1.15)
         heliosCost = setCost(numTotalHeliosUpgrades, 100, 1.15)
         findViewById<TextView>(R.id.helios_cost_text).text = FormatNum.formatNumber(heliosCost.toLong())
+        if (numTotalHeliosUpgrades >= heliosMilestone) {
+            findViewById<ImageButton>(R.id.buy_multiplier_helios).visibility = View.VISIBLE
+        }
     }
 
     fun buyRodneyMultiplier(view: View) {
         numTotalRodneyMultipliers += calcCost(numTotalRodneyMultipliers - 1, 100, 1.5)
+        rodneyMilestone *= 2
     }
 
     fun buyHeliosMultiplier(view: View) {
         numTotalHeliosMultipliers += calcCost(numTotalHeliosMultipliers - 1, 500, 1.5)
+        heliosMilestone *= 2
     }
 }

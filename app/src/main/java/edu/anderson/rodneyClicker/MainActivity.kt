@@ -15,9 +15,11 @@ class MainActivity : AppCompatActivity() {
     private var numRodneyUpgrades = 0
     private var numRodneyMultipliers = 0
     private var rodneyCost = 10
+    private var rodneyMilestone = 25
     private var numHeliosUpgrades = 0
     private var numHeliosMultipliers = 0
     private var heliosCost = 100
+    private var heliosMilestone = 25
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,9 +104,11 @@ class MainActivity : AppCompatActivity() {
             putString("Rodney_Clickers", rodney.numOwned.toString())
             putString("Rodney_Multipliers", rodney.multiplier.toString())
             putString("Rodney_Cost", rodneyCost.toString())
+            putString("Rodney_Milestone", rodneyMilestone.toString())
             putString("Helios_Clickers", helios.numOwned.toString())
             putString("Helios_Multipliers", helios.multiplier.toString())
             putString("Helios_Cost", heliosCost.toString())
+            putString("Helios_Milestone", heliosMilestone.toString())
         }.apply()
     }
 
@@ -116,9 +120,11 @@ class MainActivity : AppCompatActivity() {
         val savedRodneyClickers = sharedPref.getString("Rodney_Clickers", "0")
         val savedRodneyClickersMultipliers = sharedPref.getString("Rodney_Multipliers", "0")
         val savedRodneyClickersCost = sharedPref.getString("Rodney_Cost", "10")
+        val savedRodneyClickersMilestone = sharedPref.getString("Rodney_Milestone", "25")
         val savedHeliosClickers = sharedPref.getString("Helios_Clickers", "0")
         val savedHeliosClickersMultipliers = sharedPref.getString("Helios_Multipliers", "0")
         val savedHeliosClickersCost = sharedPref.getString("Helios_Cost", "100")
+        val savedHeliosClickersMilestone = sharedPref.getString("Helios_Milestone", "25")
 
         if (savedRavenDollars != null) {
             findViewById<TextView>(R.id.ravenDollars).text = FormatNum.formatNumber(savedRavenDollars.toLong())
@@ -139,6 +145,9 @@ class MainActivity : AppCompatActivity() {
         if (savedRodneyClickersCost != null) {
             rodneyCost = savedRodneyClickersCost.toInt()
         }
+        if (savedRodneyClickersMilestone != null) {
+            rodneyMilestone = savedRodneyClickersMilestone.toInt()
+        }
         if (savedHeliosClickers != null) {
             findViewById<TextView>(R.id.total_helios).text = String.format("Total Helios: %s", savedHeliosClickers)
             helios.numOwned = savedHeliosClickers.toInt()
@@ -149,6 +158,9 @@ class MainActivity : AppCompatActivity() {
         }
         if (savedHeliosClickersCost != null) {
             heliosCost = savedHeliosClickersCost.toInt()
+        }
+        if (savedHeliosClickersMilestone != null) {
+            heliosMilestone = savedHeliosClickersMilestone.toInt()
         }
     }
     private fun showRDPS() {
