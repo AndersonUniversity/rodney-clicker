@@ -6,18 +6,14 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class StoreActivity : AppCompatActivity() {
     private var numRavenDollars = 0
     private var numTotalRavenDollars = 0
-    private var numTotalClickerUpgrades = 0
     private var numTotalRodneyUpgrades = 0
     private var numTotalRodneyMultipliers = 0
-    private var rodneyCost = 10
-    private var rodneyMilestone = 25
     private var numTotalHeliosUpgrades = 0
     private var numTotalHeliosMultipliers = 0
 
@@ -35,12 +31,7 @@ class StoreActivity : AppCompatActivity() {
         numTotalRodneyMultipliers = sharedPref.getString("Rodney_Multipliers", "0")?.toInt() ?: 0
         numTotalHeliosUpgrades = sharedPref.getString("Helios_Clickers", "0")?.toInt() ?: 0
         numTotalHeliosMultipliers = sharedPref.getString("Helios_Multipliers", "0")?.toInt() ?: 0
-        numTotalClickerUpgrades = numTotalRodneyUpgrades + numTotalHeliosUpgrades
 
-        findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
-        findViewById<TextView>(R.id.rodney_cost_text).text = String.format("$%d", rodneyCost)
-        findViewById<ImageButton>(R.id.buy_multiplier_rodney).visibility = View.GONE
-        findViewById<ImageButton>(R.id.buy_multiplier_helios).visibility = View.GONE
         findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
         gameLoop(this)
     }
@@ -82,48 +73,29 @@ class StoreActivity : AppCompatActivity() {
         )
     }
 
-    fun buyRodney(view: View) {
-        val cost = (rodneyCost * 1.15).toInt()
-        if (numRavenDollars >= cost) {
+    private fun calcCost(numOwned: Int, baseCost: Int, baseCostMultiplier: Double): Int {
+        val cost = if (numOwned == 0) { baseCost } else { (baseCost * baseCostMultiplier * numOwned).toInt() }
+        return if (numRavenDollars >= cost) {
             numRavenDollars -= cost
-            numTotalRodneyUpgrades += 1
-            rodneyCost = cost
+            findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
+            1
+        } else {
+            0
         }
-        findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
-        findViewById<TextView>(R.id.rodney_cost_text).text = String.format("$%d", rodneyCost)
-
-        if (numTotalRodneyUpgrades >= rodneyMilestone) {
-            findViewById<ImageButton>(R.id.buy_multiplier_rodney).visibility = View.VISIBLE
-        }
-        findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
+    }
+    fun buyRodney(view: View) {
+        numTotalRodneyUpgrades += calcCost(numTotalRodneyUpgrades, 10, 1.15)
     }
 
     fun buyHelios(view: View) {
-        val cost = if (numTotalHeliosUpgrades == 0) { 100 } else { (100 * 1.15 * numTotalHeliosUpgrades).toInt() }
-        if (numRavenDollars >= cost) {
-            numRavenDollars -= cost
-            numTotalHeliosUpgrades += 1
-        }
-        findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
+        numTotalHeliosUpgrades += calcCost(numTotalHeliosUpgrades, 100, 1.15)
     }
 
     fun buyRodneyMultiplier(view: View) {
-        val cost = if (numTotalRodneyMultipliers == 1) { 100 } else { (100 * 1.5 * numTotalRodneyMultipliers).toInt() }
-        if (numRavenDollars >= cost) {
-            numRavenDollars -= cost
-            numTotalRodneyMultipliers += 1
-        }
-        findViewById<TextView>(R.id.currRavenDollars).text = String.format("Raven Dollars: %d", numRavenDollars)
-        rodneyMilestone += rodneyMilestone
-        findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
+        numTotalRodneyMultipliers += calcCost(numTotalRodneyMultipliers - 1, 100, 1.5)
     }
 
     fun buyHeliosMultiplier(view: View) {
-        val cost = if (numTotalHeliosMultipliers == 1) { 500 } else { (500 * 1.5 * numTotalHeliosMultipliers).toInt() }
-        if (numRavenDollars >= cost) {
-            numRavenDollars -= cost
-            numTotalHeliosMultipliers += 1
-        }
-        findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
+        numTotalHeliosMultipliers += calcCost(numTotalHeliosMultipliers - 1, 500, 1.5)
     }
 }
