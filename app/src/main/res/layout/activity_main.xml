@@ -119,7 +119,7 @@
         android:id="@+id/ravenDollars"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="76dp"
         android:clickable="false"
         android:cursorVisible="false"
         android:ellipsize="none"
@@ -191,9 +191,9 @@
 
     <TextView
         android:id="@+id/ravenDollarsPerSecond"
-        android:layout_width="67dp"
-        android:layout_height="19dp"
-        android:text="0 R$/S"
+        android:layout_width="195dp"
+        android:layout_height="28dp"
+        android:text="Raven Dollars Per Second: 0"
         android:textAlignment="center"
         android:textColor="#F9FAFA"
         app:layout_constraintStart_toStartOf="parent"
