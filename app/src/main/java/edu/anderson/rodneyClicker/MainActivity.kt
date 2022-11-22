@@ -16,6 +16,12 @@ class MainActivity : AppCompatActivity() {
     private var numRodneyMultipliers = 0
     private var numHeliosUpgrades = 0
     private var numHeliosMultipliers = 0
+    private var numEternalFlameUpgrades = 0
+    private var numEternalFlameMultipliers = 0
+    private var numKoontzUpgrades = 0
+    private var numKoontzMultipliers = 0
+    private var numJoshTandyUpgrades = 0
+    private var numJoshTandyMultipliers = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,16 +66,22 @@ class MainActivity : AppCompatActivity() {
 
     val rodney = ClickersAndUpgrades.AutoClicker(1, 0, 1)
     val helios = ClickersAndUpgrades.AutoClicker(5, 0, 1)
+    val eternalFlame = ClickersAndUpgrades.AutoClicker(10, 0, 1)
+    val koontz = ClickersAndUpgrades.AutoClicker(15, 0, 1)
+    val joshTandy = ClickersAndUpgrades.AutoClicker(20, 0, 1)
 
     private fun updateClicker(view: MainActivity) {
-        ClickersAndUpgrades.addClicker(numRodneyUpgrades, numHeliosUpgrades, rodney, helios)
+        ClickersAndUpgrades.addClicker(numRodneyUpgrades, numHeliosUpgrades, numEternalFlameUpgrades, numKoontzUpgrades, numJoshTandyUpgrades, rodney, helios, eternalFlame, koontz, joshTandy)
         findViewById<TextView>(R.id.total_rodneys).text = String.format("Total Rodneys: %d", rodney.numOwned)
         findViewById<TextView>(R.id.total_helios).text = String.format("Total Helios: %d", helios.numOwned)
+        findViewById<TextView>(R.id.total_eternalFlame).text = String.format("Total Eternal Flames: %d", eternalFlame.numOwned)
+        findViewById<TextView>(R.id.total_koontz).text = String.format("Total Koontz: %d", koontz.numOwned)
+        findViewById<TextView>(R.id.total_joshTandy).text = String.format("Total Josh Tandy: %d", joshTandy.numOwned)
     }
 
     /**Adds the multipliers to the clickers*/
     private fun updateMultiplier(view: MainActivity) {
-        ClickersAndUpgrades.addMultiplier(numRodneyMultipliers, numHeliosMultipliers, rodney, helios)
+        ClickersAndUpgrades.addMultiplier(numRodneyMultipliers, numHeliosMultipliers, numEternalFlameMultipliers, numKoontzMultipliers, numJoshTandyMultipliers, rodney, helios, eternalFlame, koontz, joshTandy)
     }
 
     /**run every second to add dps*/
@@ -78,7 +90,12 @@ class MainActivity : AppCompatActivity() {
         handler.postDelayed(
             object : Runnable {
                 override fun run() {
-                    val toAdd = (rodney.dps * rodney.numOwned * rodney.multiplier) + (helios.dps * helios.numOwned * helios.multiplier)
+                    val rodneyAdd = (rodney.dps * rodney.numOwned * rodney.multiplier)
+                    val heliosAdd = (helios.dps * helios.numOwned * helios.multiplier)
+                    val eternalFlameAdd = (eternalFlame.dps * eternalFlame.numOwned * eternalFlame.multiplier)
+                    val koontzAdd = (koontz.dps * koontz.numOwned * koontz.multiplier)
+                    val joshTandyAdd = (joshTandy.dps * joshTandy.numOwned * joshTandy.multiplier)
+                    val toAdd = rodneyAdd + heliosAdd + eternalFlameAdd + koontzAdd + joshTandyAdd
                     numRavenDollars += toAdd
                     totalRavenDollars += toAdd
                     findViewById<TextView>(R.id.ravenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
@@ -101,6 +118,12 @@ class MainActivity : AppCompatActivity() {
             putString("Rodney_Multipliers", rodney.multiplier.toString())
             putString("Helios_Clickers", helios.numOwned.toString())
             putString("Helios_Multipliers", helios.multiplier.toString())
+            putString("Eternal_Flame_Clickers", eternalFlame.numOwned.toString())
+            putString("Eternal_Flame_Multipliers", eternalFlame.multiplier.toString())
+            putString("Koontz_Clickers", koontz.numOwned.toString())
+            putString("Koontz_Multiplier", koontz.multiplier.toString())
+            putString("Josh_Tandy_Clickers", joshTandy.numOwned.toString())
+            putString("Josh_Tandy_Multiplier", joshTandy.multiplier.toString())
         }.apply()
     }
 
@@ -113,6 +136,12 @@ class MainActivity : AppCompatActivity() {
         val savedRodneyClickersMultipliers = sharedPref.getString("Rodney_Multipliers", "0")
         val savedHeliosClickers = sharedPref.getString("Helios_Clickers", "0")
         val savedHeliosClickersMultipliers = sharedPref.getString("Helios_Multipliers", "0")
+        val savedEternalFlameClickers = sharedPref.getString("Eternal_Flame_Clickers", "0")
+        val savedEternalFlameClickersMultipliers = sharedPref.getString("Eternal_Flame_Multiplier", "0")
+        val savedKoontzClickers = sharedPref.getString("Koontz_Clickers", "0")
+        val savedKoontzClickersMultipliers = sharedPref.getString("Koontz_Multipliers", "0")
+        val savedJoshTandyClickers = sharedPref.getString("Josh_Tandy_Clickers", "0")
+        val savedJoshTandyClickersMultipliers = sharedPref.getString("Josh_Tandy_Multipliers", "0")
 
         if (savedRavenDollars != null) {
             findViewById<TextView>(R.id.ravenDollars).text = FormatNum.formatNumber(savedRavenDollars.toLong())
@@ -138,12 +167,39 @@ class MainActivity : AppCompatActivity() {
         if (savedHeliosClickersMultipliers != null) {
             numHeliosMultipliers = savedHeliosClickersMultipliers.toInt()
         }
+        if (savedEternalFlameClickers != null) {
+            findViewById<TextView>(R.id.total_eternalFlame).text = String.format("Total Eternal Flame: %s", savedEternalFlameClickers)
+            eternalFlame.numOwned = savedEternalFlameClickers.toInt()
+            numEternalFlameUpgrades = savedEternalFlameClickers.toInt()
+        }
+        if (savedEternalFlameClickersMultipliers != null) {
+            numEternalFlameMultipliers = savedEternalFlameClickersMultipliers.toInt()
+        }
+        if (savedKoontzClickers != null) {
+            findViewById<TextView>(R.id.total_koontz).text = String.format("Total Koontz: %s", savedKoontzClickers)
+            koontz.numOwned = savedKoontzClickers.toInt()
+            numKoontzUpgrades = savedKoontzClickers.toInt()
+        }
+        if (savedKoontzClickersMultipliers != null) {
+            numKoontzMultipliers = savedKoontzClickersMultipliers.toInt()
+        }
+        if (savedJoshTandyClickers != null) {
+            findViewById<TextView>(R.id.total_joshTandy).text = String.format("Total Josh Tandy: %s", savedJoshTandyClickers)
+            joshTandy.numOwned = savedJoshTandyClickers.toInt()
+            numJoshTandyUpgrades = savedJoshTandyClickers.toInt()
+        }
+        if (savedJoshTandyClickersMultipliers != null) {
+            numJoshTandyMultipliers = savedJoshTandyClickersMultipliers.toInt()
+        }
     }
     private fun showRDPS() {
         val totalRodney = rodney.dps * rodney.numOwned * rodney.multiplier
         val totalHelios = helios.dps * helios.numOwned * helios.multiplier
+        val totalEternalFlame = eternalFlame.dps * eternalFlame.numOwned * eternalFlame.multiplier
+        val totalKoontz = koontz.dps * koontz.numOwned * koontz.multiplier
+        val totalJoshTandy = joshTandy.dps * joshTandy.numOwned * joshTandy.multiplier
         val viewText = findViewById<TextView>(R.id.ravenDollarsPerSecond)
-        val currRDPS = (totalRodney + totalHelios).toString()
+        val currRDPS = (totalRodney + totalHelios + totalEternalFlame + totalKoontz + totalJoshTandy).toString()
         val formattedRDPS = FormatNum.formatNumber(currRDPS.toLong())
         val displayText = formattedRDPS.substring(2, formattedRDPS.length) + "R$ per second"
         viewText.text = displayText
