@@ -30,7 +30,7 @@
             <path
                 android:pathData="M17 7H189C194.523 7 199 11.4772 199 17V66C199 71.5228 194.523 76 189 76H17C11.4772 76 7 71.5228 7 66V17C7 11.4772 11.4772 7 17 7Z"
                 android:strokeWidth="14"
-                android:strokeColor="#86A571"
+                android:strokeColor="#5C883F"
                 />
 
         </group>
