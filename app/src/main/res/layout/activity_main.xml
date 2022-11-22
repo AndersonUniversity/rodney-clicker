@@ -7,7 +7,7 @@
     android:background="@drawable/background"
     android:backgroundTint="#D8D7D7"
     android:backgroundTintMode="multiply"
-    android:padding="@null"
+    android:fadingEdge="horizontal|vertical"
     tools:context=".MainActivity">
 
     <TextView
@@ -124,19 +124,21 @@
 
     <TextView
         android:id="@+id/achievementPopup"
-        android:layout_width="199dp"
-        android:layout_height="63dp"
+        android:layout_width="222dp"
+        android:layout_height="73dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="33dp"
         android:layout_marginBottom="32dp"
-        android:background="@color/white"
+        android:textAlignment="center"
+        android:background="@drawable/achievement"
+        android:ellipsize="marquee"
         android:ems="10"
-        android:gravity="start|top"
+        android:fontFamily="@font/ubuntu_bold"
         android:text=""
         android:textColor="#007922"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.095"
         app:layout_constraintStart_toEndOf="@+id/store_button"
         app:layout_constraintTop_toBottomOf="@+id/ravenButton"
         app:layout_constraintVertical_bias="0.0" />

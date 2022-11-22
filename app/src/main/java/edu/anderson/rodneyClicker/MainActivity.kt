@@ -1,5 +1,4 @@
 package edu.anderson.rodneyClicker
-
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +7,7 @@ import android.os.Looper
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import kotlin.math.pow
 
 class MainActivity : AppCompatActivity() {
     var numRavenDollars = 0
@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         updateClicker(this)
         updateMultiplier(this)
         showRDPS()
+        setAchievementView("")
         gameLoop(this)
     }
 
@@ -83,7 +84,7 @@ class MainActivity : AppCompatActivity() {
                     val toAdd = (rodney.dps * rodney.numOwned * rodney.multiplier) + (helios.dps * helios.numOwned * helios.multiplier)
                     numRavenDollars += toAdd
                     totalRavenDollars += toAdd
-                    findViewById<TextView>(R.id.achievementPopup).text = checkAchievements(totalRavenDollars, totalClicks)
+                    setAchievementView(checkAchievements(totalRavenDollars, totalClicks,numRodneyUpgrades))
                     findViewById<TextView>(R.id.ravenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
                     findViewById<TextView>(R.id.totalRavenDollars).text = String.format("$totalRavenDollars")
                     handler.postDelayed(this, 1000)
@@ -149,5 +150,14 @@ class MainActivity : AppCompatActivity() {
         val currRDPS = (totalRodney + totalHelios).toString()
         val displayText = "Raven Dollars Per Second: $currRDPS"
         viewText.text = displayText
+    }
+var achievementCount = 0.0
+    private fun setAchievementView(text:String){
+        findViewById<TextView>(R.id.achievementPopup).visibility = View.INVISIBLE
+        if(text!="") {
+            findViewById<TextView>(R.id.achievementPopup).text = text
+            findViewById<TextView>(R.id.achievementPopup).visibility = View.VISIBLE
+            achievementCount+=.1
+        }
     }
 }
