@@ -112,7 +112,7 @@
         android:fontFamily="@font/ubuntu_bold"
         android:text="Raven Dollars: 0"
         android:textAlignment="center"
-        android:textColor="#388E3C"
+        android:textColor="#EFF4F0"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

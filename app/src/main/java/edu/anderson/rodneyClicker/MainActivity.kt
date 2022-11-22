@@ -145,7 +145,7 @@ class MainActivity : AppCompatActivity() {
         val viewText = findViewById<TextView>(R.id.ravenDollarsPerSecond)
         val currRDPS = (totalRodney + totalHelios).toString()
         val formattedRDPS = FormatNum.formatNumber(currRDPS.toLong())
-        val displayText = formattedRDPS.substring(2, formattedRDPS.length) + "R$ per second: "
+        val displayText = formattedRDPS.substring(2, formattedRDPS.length) + "R$ per second"
         viewText.text = displayText
     }
 }
