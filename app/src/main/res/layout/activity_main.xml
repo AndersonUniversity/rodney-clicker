@@ -12,54 +12,75 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="110dp"
-        android:layout_height="101dp"
+        android:layout_width="51dp"
+        android:layout_height="66dp"
+        android:layout_marginEnd="20dp"
         android:adjustViewBounds="true"
         android:padding="@null"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.331"
-        app:srcCompat="@drawable/rodneyicon"
-        tools:layout_editor_absoluteX="301dp" />
+        app:layout_constraintVertical_bias="0.341"
+        app:srcCompat="@drawable/rodneyicon" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="51dp"
+        android:layout_height="66dp"
+        android:layout_marginEnd="20dp"
+        android:adjustViewBounds="true"
+        android:padding="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.249"
+        app:srcCompat="@drawable/heliosicon" />
 
     <TextView
         android:id="@+id/total_rodneys"
-        android:layout_width="39dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="260dp"
-        android:background="@color/white"
+        android:layout_width="23dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="258dp"
+        android:layout_marginEnd="12dp"
+        android:background="@null"
         android:ems="10"
         android:fontFamily="@font/ubuntu_bold"
         android:inputType="textPersonName"
         android:text="0"
         android:textAlignment="center"
-        android:textColor="#227726"
-        android:textSize="24sp"
+        android:textColor="#00796B"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.868"
+        app:layout_constraintHorizontal_bias="0.904"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/total_helios"
-        android:layout_width="116dp"
-        android:layout_height="19dp"
-        android:layout_marginTop="216dp"
+        android:layout_width="27dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="196dp"
+        android:layout_marginEnd="2dp"
         android:ems="10"
+        android:fontFamily="@font/ubuntu_bold"
         android:inputType="textPersonName"
         android:text="0"
-        android:textAlignment="viewStart"
+        android:textAlignment="center"
+        android:textColor="#00796B"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.885"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/ravenDollars"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:clickable="false"
         android:cursorVisible="false"
         android:ellipsize="none"
@@ -78,9 +99,9 @@
         android:textColor="#388E3C"
         android:textSize="55sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/totalRavenDollars"
@@ -88,7 +109,7 @@
         android:layout_height="22dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:text="0"
+        android:text="0 R$"
         android:textAlignment="center"
         android:textColor="#007922"
         app:layout_constraintEnd_toEndOf="parent"
@@ -131,14 +152,13 @@
 
     <TextView
         android:id="@+id/ravenDollarsPerSecond"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Raven Dollars Per Second: 0"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ravenDollars" />
+        android:layout_width="67dp"
+        android:layout_height="19dp"
+        android:text="0 R$/S"
+        android:textAlignment="center"
+        android:textColor="#00796B"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="30dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
