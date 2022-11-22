@@ -112,11 +112,9 @@ class StoreActivity : AppCompatActivity() {
     fun buyRodney(view: View) {
         numTotalRodneyUpgrades += calcCost(numTotalRodneyUpgrades, 10, 1.15)
     }
-
     fun buyHelios(view: View) {
         numTotalHeliosUpgrades += calcCost(numTotalHeliosUpgrades, 100, 1.15)
     }
-
     fun buyEternalFlame(view: View) {
         numTotalEternalFlameUpgrades += calcCost(numTotalEternalFlameUpgrades, 500, 1.15)
     }
@@ -127,19 +125,18 @@ class StoreActivity : AppCompatActivity() {
         numTotalJoshTandyUpgrades += calcCost(numTotalJoshTandyUpgrades, 2000, 1.15)
     }
     fun buyRodneyMultiplier(view: View) {
-        numTotalRodneyMultipliers += calcCost(numTotalRodneyMultipliers, 100, 1.5)
+        numTotalRodneyMultipliers += calcCost(numTotalRodneyMultipliers - 1, 100, 1.5)
     }
-
     fun buyHeliosMultiplier(view: View) {
-        numTotalHeliosMultipliers += calcCost(numTotalHeliosMultipliers, 500, 1.5)
+        numTotalHeliosMultipliers += calcCost(numTotalHeliosMultipliers - 1, 500, 1.5)
     }
     fun buyEternalFlameMultiplier(view: View) {
-        numTotalEternalFlameMultipliers += calcCost(numTotalEternalFlameMultipliers, 750, 1.5)
+        numTotalEternalFlameMultipliers += calcCost(numTotalEternalFlameMultipliers - 1, 750, 1.5)
     }
     fun buyKoontzMultiplier(view: View) {
-        numTotalKoontzMultipliers += calcCost(numTotalKoontzMultipliers, 1250, 1.5)
+        numTotalKoontzMultipliers += calcCost(numTotalKoontzMultipliers - 1, 1250, 1.5)
     }
     fun buyJoshTandyMultiplier(view: View) {
-        numTotalJoshTandyMultipliers += calcCost(numTotalJoshTandyMultipliers, 2250, 1.5)
+        numTotalJoshTandyMultipliers += calcCost(numTotalJoshTandyMultipliers - 1, 2250, 1.5)
     }
 }
