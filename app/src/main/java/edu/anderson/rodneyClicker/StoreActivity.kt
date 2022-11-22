@@ -100,7 +100,7 @@ class StoreActivity : AppCompatActivity() {
     }
 
     private fun calcCost(numOwned: Int, baseCost: Int, baseCostMultiplier: Double): Int {
-        val cost = if (numTotalRodneyUpgrades == 0) { 10 } else { (baseCost * baseCostMultiplier * numOwned).toInt() }
+        val cost = if (numOwned == 0) { baseCost } else { (baseCost * baseCostMultiplier * numOwned).toInt() }
         return if (numRavenDollars >= cost) {
             numRavenDollars -= cost
             findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
