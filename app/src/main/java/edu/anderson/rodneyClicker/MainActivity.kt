@@ -151,7 +151,7 @@ class MainActivity : AppCompatActivity() {
             totalRavenDollars = allRavenDollars.toInt()
         }
         if (savedRodneyClickers != null) {
-            findViewById<TextView>(R.id.total_rodneys).text = "Total Rodneys: $savedRodneyClickers"
+            findViewById<TextView>(R.id.total_rodneys).text = "$savedRodneyClickers"
             rodney.numOwned = savedRodneyClickers.toInt()
             numRodneyUpgrades = savedRodneyClickers.toInt()
         }
@@ -159,7 +159,7 @@ class MainActivity : AppCompatActivity() {
             numRodneyMultipliers = savedRodneyClickersMultipliers.toInt()
         }
         if (savedHeliosClickers != null) {
-            findViewById<TextView>(R.id.total_helios).text = "Total Helioses: $savedHeliosClickers"
+            findViewById<TextView>(R.id.total_helios).text = "$savedHeliosClickers"
             helios.numOwned = savedHeliosClickers.toInt()
             numHeliosUpgrades = savedHeliosClickers.toInt()
         }

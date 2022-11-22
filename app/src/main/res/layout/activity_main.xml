@@ -10,32 +10,50 @@
     android:padding="@null"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="110dp"
+        android:layout_height="101dp"
+        android:adjustViewBounds="true"
+        android:padding="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.331"
+        app:srcCompat="@drawable/rodneyicon"
+        tools:layout_editor_absoluteX="301dp" />
+
     <TextView
         android:id="@+id/total_rodneys"
-        android:layout_width="233dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
+        android:layout_width="39dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="260dp"
+        android:background="@color/white"
         android:ems="10"
+        android:fontFamily="@font/ubuntu_bold"
         android:inputType="textPersonName"
-        android:text="Total Rodneys: 0"
+        android:text="0"
         android:textAlignment="center"
+        android:textColor="#227726"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.868"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/total_helios"
-        android:layout_width="233dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="224dp"
+        android:layout_width="116dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="216dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Total Helioses: 0"
-        android:textAlignment="center"
+        android:text="0"
+        android:textAlignment="viewStart"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/ravenDollars"
@@ -118,7 +136,9 @@
         android:layout_marginTop="32dp"
         android:text="Raven Dollars Per Second: 0"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ravenDollars" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
