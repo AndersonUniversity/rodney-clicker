@@ -157,8 +157,8 @@
         android:text="0 R$/S"
         android:textAlignment="center"
         android:textColor="#00796B"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="30dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totalRavenDollars" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
