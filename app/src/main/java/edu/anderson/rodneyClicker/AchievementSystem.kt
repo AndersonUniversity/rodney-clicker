@@ -4,7 +4,7 @@ val completedAchievements = mutableListOf<String>()
 
 fun checkAchievements(totalRD:Int, totalClicks:Int, rodneys:Int ):String{
     var achievementFound = ""
-    var waitCount = 10
+    var waitCount = 5
     if(totalRD>999 && verifyComplete[0]<=waitCount){
         achievementFound = displayAchievements("Making Money", "make it to a thousand Raven Dollars",completedAchievements,0)
     }
@@ -30,15 +30,13 @@ fun checkAchievements(totalRD:Int, totalClicks:Int, rodneys:Int ):String{
     return achievementFound
 }
 
-fun displayAchievements(title:String, description:String,completedAchievements:MutableList<String>,aNum:Int):String{
-    return if(completedAchievements.contains(title)){
-        ""
+fun displayAchievements(title:String, description:String,completedAchievements:MutableList<String>,aNum:Int): String {
+    val text = "\n$title\n$description"
+    return if(!completedAchievements.contains(text)) {
+        verifyComplete[aNum]++
+        text
     }
     else {
-        if(verifyComplete[aNum]==10) {
-            completedAchievements.add(title)
-        }
-        verifyComplete[aNum]++
-        "\n$title\n$description"
+        ""
     }
 }

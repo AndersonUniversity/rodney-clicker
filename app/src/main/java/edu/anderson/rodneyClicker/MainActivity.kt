@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     var numHeliosUpgrades = 0
     var numHeliosMultipliers = 0
     var totalClicks = 0
+    var completeAchievementString = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,7 +85,12 @@ class MainActivity : AppCompatActivity() {
                     val toAdd = (rodney.dps * rodney.numOwned * rodney.multiplier) + (helios.dps * helios.numOwned * helios.multiplier)
                     numRavenDollars += toAdd
                     totalRavenDollars += toAdd
-                    setAchievementView(checkAchievements(totalRavenDollars, totalClicks,numRodneyUpgrades))
+                    var currAchievement = checkAchievements(totalRavenDollars, totalClicks,numRodneyUpgrades)
+                    setAchievementView(currAchievement)
+                    if(!completedAchievements.contains(currAchievement)){
+                        completedAchievements.add(currAchievement)
+                    }
+                    completeAchievementString = completedAchievements.toString()
                     findViewById<TextView>(R.id.ravenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
                     findViewById<TextView>(R.id.totalRavenDollars).text = String.format("$totalRavenDollars")
                     handler.postDelayed(this, 1000)
@@ -105,6 +111,8 @@ class MainActivity : AppCompatActivity() {
             putString("Rodney_Multipliers", rodney.multiplier.toString())
             putString("Helios_Clickers", helios.numOwned.toString())
             putString("Helios_Multipliers", helios.multiplier.toString())
+            putString("Total_Clicks", totalClicks.toString())
+            putString("Completed_Achievements_String", completedAchievements.toString())
         }.apply()
     }
 
@@ -117,10 +125,15 @@ class MainActivity : AppCompatActivity() {
         val savedRodneyClickersMultipliers = sharedPref.getString("Rodney_Multipliers", "0")
         val savedHeliosClickers = sharedPref.getString("Helios_Clickers", "0")
         val savedHeliosClickersMultipliers = sharedPref.getString("Helios_Multipliers", "0")
+        val savedClicks = sharedPref.getString("Total_Clicks", "0")
+        val savedAchievementString = sharedPref.getString("Completed_Achievements_String", "")
 
         if (savedRavenDollars != null) {
             findViewById<TextView>(R.id.ravenDollars).text = String.format("R$$savedRavenDollars")
             numRavenDollars = savedRavenDollars.toInt()
+        }
+        if (savedClicks != null) {
+            totalClicks= savedClicks.toInt()
         }
         if (allRavenDollars != null) {
             findViewById<TextView>(R.id.totalRavenDollars).text = "$allRavenDollars"
@@ -151,13 +164,11 @@ class MainActivity : AppCompatActivity() {
         val displayText = "Raven Dollars Per Second: $currRDPS"
         viewText.text = displayText
     }
-var achievementCount = 0.0
     private fun setAchievementView(text:String){
-        findViewById<TextView>(R.id.achievementPopup).visibility = View.INVISIBLE
-        if(text!="") {
-            findViewById<TextView>(R.id.achievementPopup).text = text
-            findViewById<TextView>(R.id.achievementPopup).visibility = View.VISIBLE
-            achievementCount+=.1
-        }
+        //findViewById<TextView>(R.id.achievementPopup).visibility = View.INVISIBLE
+        //if(text!="") {
+            findViewById<TextView>(R.id.achievementPopup).text = text + totalClicks.toString() + completeAchievementString
+            //findViewById<TextView>(R.id.achievementPopup).visibility = View.VISIBLE
+        //}
     }
 }
