@@ -18,18 +18,18 @@ class UpgradeCostTest {
 
     @Test
     fun checkCost() {
-        //click 25 times
+        // click 25 times
         for (i in 1..122) {
             onView(withId(R.id.ravenButton)).perform(click())
         }
 
-        // Confirm that Raven Dollars are 200
+        // Confirm that Raven Dollars are 122
         onView(withId(R.id.ravenDollars)).check(matches(withText("R$122")))
 
         // Click the store page button
         onView(withId(R.id.store_button)).perform(click())
 
-        //Check that the cost is equal to 10
+        // Check that the cost is equal to 10
         onView(withId(R.id.rodney_cost_text)).check(matches(withText("R$10")))
 
         // Click the buy button

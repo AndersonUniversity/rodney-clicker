@@ -54,7 +54,6 @@ class StoreActivity : AppCompatActivity() {
             findViewById<ImageButton>(R.id.buy_multiplier_helios).visibility = View.VISIBLE
         }
 
-
         gameLoop(this)
     }
 
