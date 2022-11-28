@@ -14,12 +14,8 @@ class MainActivity : AppCompatActivity() {
     var totalRavenDollars = 0
     private var numRodneyUpgrades = 0
     private var numRodneyMultipliers = 0
-    private var rodneyCost = 10
-    private var rodneyMilestone = 25
     private var numHeliosUpgrades = 0
     private var numHeliosMultipliers = 0
-    private var heliosCost = 100
-    private var heliosMilestone = 25
     private var numEternalFlameUpgrades = 0
     private var numEternalFlameMultipliers = 0
     private var numKoontzUpgrades = 0
@@ -120,12 +116,8 @@ class MainActivity : AppCompatActivity() {
             putString("Total_Raven_Dollars", totalRavenDollars.toString())
             putString("Rodney_Clickers", rodney.numOwned.toString())
             putString("Rodney_Multipliers", rodney.multiplier.toString())
-            putString("Rodney_Cost", rodneyCost.toString())
-            putString("Rodney_Milestone", rodneyMilestone.toString())
             putString("Helios_Clickers", helios.numOwned.toString())
             putString("Helios_Multipliers", helios.multiplier.toString())
-            putString("Helios_Cost", heliosCost.toString())
-            putString("Helios_Milestone", heliosMilestone.toString())
             putString("Eternal_Flame_Clickers", eternalFlame.numOwned.toString())
             putString("Eternal_Flame_Multipliers", eternalFlame.multiplier.toString())
             putString("Koontz_Clickers", koontz.numOwned.toString())
@@ -142,12 +134,8 @@ class MainActivity : AppCompatActivity() {
         val allRavenDollars = sharedPref.getString("Total_Raven_Dollars", "0")
         val savedRodneyClickers = sharedPref.getString("Rodney_Clickers", "0")
         val savedRodneyClickersMultipliers = sharedPref.getString("Rodney_Multipliers", "0")
-        val savedRodneyClickersCost = sharedPref.getString("Rodney_Cost", "10")
-        val savedRodneyClickersMilestone = sharedPref.getString("Rodney_Milestone", "25")
         val savedHeliosClickers = sharedPref.getString("Helios_Clickers", "0")
         val savedHeliosClickersMultipliers = sharedPref.getString("Helios_Multipliers", "0")
-        val savedHeliosClickersCost = sharedPref.getString("Helios_Cost", "100")
-        val savedHeliosClickersMilestone = sharedPref.getString("Helios_Milestone", "25")
         val savedEternalFlameClickers = sharedPref.getString("Eternal_Flame_Clickers", "0")
         val savedEternalFlameClickersMultipliers = sharedPref.getString("Eternal_Flame_Multiplier", "0")
         val savedKoontzClickers = sharedPref.getString("Koontz_Clickers", "0")
@@ -170,12 +158,6 @@ class MainActivity : AppCompatActivity() {
         }
         if (savedRodneyClickersMultipliers != null) {
             numRodneyMultipliers = savedRodneyClickersMultipliers.toInt()
-        }
-        if (savedRodneyClickersCost != null) {
-            rodneyCost = savedRodneyClickersCost.toInt()
-        }
-        if (savedRodneyClickersMilestone != null) {
-            rodneyMilestone = savedRodneyClickersMilestone.toInt()
         }
         if (savedHeliosClickers != null) {
             findViewById<TextView>(R.id.total_helios).text = String.format("Total Helios: %s", savedHeliosClickers)
@@ -208,12 +190,6 @@ class MainActivity : AppCompatActivity() {
         }
         if (savedJoshTandyClickersMultipliers != null) {
             numJoshTandyMultipliers = savedJoshTandyClickersMultipliers.toInt()
-        }
-        if (savedHeliosClickersCost != null) {
-            heliosCost = savedHeliosClickersCost.toInt()
-        }
-        if (savedHeliosClickersMilestone != null) {
-            heliosMilestone = savedHeliosClickersMilestone.toInt()
         }
     }
     private fun showRDPS() {

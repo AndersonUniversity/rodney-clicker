@@ -23,10 +23,16 @@ class StoreActivity : AppCompatActivity() {
     private var heliosMilestone = 25
     private var numTotalEternalFlameUpgrades = 0
     private var numTotalEternalFlameMultipliers = 0
+    private var eternalFlameCost = 500
+    private var eternalFlameMilestone = 25
     private var numTotalKoontzUpgrades = 0
     private var numTotalKoontzMultipliers = 0
+    private var koontzCost = 1000
+    private var koontzMilestone = 25
     private var numTotalJoshTandyUpgrades = 0
     private var numTotalJoshTandyMultipliers = 0
+    private var joshTandyCost = 2000
+    private var joshTandyMilestone = 25
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,30 +46,42 @@ class StoreActivity : AppCompatActivity() {
         numTotalRavenDollars = sharedPref.getString("Total_Raven_Dollars", "0")?.toInt() ?: 0
         numTotalRodneyUpgrades = sharedPref.getString("Rodney_Clickers", "0")?.toInt() ?: 0
         numTotalRodneyMultipliers = sharedPref.getString("Rodney_Multipliers", "0")?.toInt() ?: 0
-        rodneyCost = sharedPref.getString("Rodney_Cost", "10")?.toInt() ?: 10
-        rodneyMilestone = sharedPref.getString("Rodney_Milestone", "25")?.toInt() ?: 25
         numTotalHeliosUpgrades = sharedPref.getString("Helios_Clickers", "0")?.toInt() ?: 0
         numTotalHeliosMultipliers = sharedPref.getString("Helios_Multipliers", "0")?.toInt() ?: 0
-        heliosCost = sharedPref.getString("Helios_Cost", "100")?.toInt() ?: 100
-        heliosMilestone = sharedPref.getString("Helios_Milestone", "25")?.toInt() ?: 25
         numTotalEternalFlameUpgrades = sharedPref.getString("Eternal_Flame_Clickers", "0")?.toInt() ?: 0
         numTotalEternalFlameMultipliers = sharedPref.getString("Eternal_Flame_Multipliers", "0")?.toInt() ?: 0
         numTotalKoontzUpgrades = sharedPref.getString("Koontz_Clickers", "0")?.toInt() ?: 0
         numTotalKoontzMultipliers = sharedPref.getString("Koontz_Multipliers", "0")?.toInt() ?: 0
         numTotalJoshTandyUpgrades = sharedPref.getString("Josh_Tandy_Clickers", "0")?.toInt() ?: 0
         numTotalJoshTandyMultipliers = sharedPref.getString("Josh_Tandy_Multipliers", "0")?.toInt() ?: 0
+        loadData()
 
         findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
         findViewById<TextView>(R.id.rodney_cost_text).text = FormatNum.formatNumber(rodneyCost.toLong())
         findViewById<TextView>(R.id.helios_cost_text).text = FormatNum.formatNumber(heliosCost.toLong())
+        findViewById<TextView>(R.id.eternalFlame_cost_text).text = FormatNum.formatNumber(eternalFlameCost.toLong())
+        findViewById<TextView>(R.id.koontz_cost_text).text = FormatNum.formatNumber(koontzCost.toLong())
+        findViewById<TextView>(R.id.joshTandy_cost_text).text = FormatNum.formatNumber(joshTandyCost.toLong())
         findViewById<ImageButton>(R.id.buy_multiplier_rodney).visibility = View.GONE
         findViewById<ImageButton>(R.id.buy_multiplier_helios).visibility = View.GONE
+        findViewById<ImageButton>(R.id.buy_multiplier_eternalFlame).visibility = View.GONE
+        findViewById<ImageButton>(R.id.buy_multiplier_koontz).visibility = View.GONE
+        findViewById<ImageButton>(R.id.buy_multiplier_joshTandy).visibility = View.GONE
 
         if (numTotalRodneyUpgrades >= rodneyMilestone) {
             findViewById<ImageButton>(R.id.buy_multiplier_rodney).visibility = View.VISIBLE
         }
         if (numTotalHeliosUpgrades >= heliosMilestone) {
             findViewById<ImageButton>(R.id.buy_multiplier_helios).visibility = View.VISIBLE
+        }
+        if (numTotalEternalFlameUpgrades >= eternalFlameMilestone) {
+            findViewById<ImageButton>(R.id.buy_multiplier_eternalFlame).visibility = View.VISIBLE
+        }
+        if (numTotalKoontzUpgrades >= koontzMilestone) {
+            findViewById<ImageButton>(R.id.buy_multiplier_koontz).visibility = View.VISIBLE
+        }
+        if (numTotalJoshTandyUpgrades >= joshTandyMilestone) {
+            findViewById<ImageButton>(R.id.buy_multiplier_joshTandy).visibility = View.VISIBLE
         }
 
         gameLoop(this)
@@ -81,10 +99,6 @@ class StoreActivity : AppCompatActivity() {
             putString("Rodney_Multipliers", numTotalRodneyMultipliers.toString())
             putString("Helios_Clickers", numTotalHeliosUpgrades.toString())
             putString("Helios_Multipliers", numTotalHeliosMultipliers.toString())
-            putString("Rodney_Cost", rodneyCost.toString())
-            putString("Helios_Cost", heliosCost.toString())
-            putString("Rodney_Milestone", rodneyMilestone.toString())
-            putString("Helios_Milestone", heliosMilestone.toString())
             putString("Eternal_Flame_Clickers", numTotalEternalFlameUpgrades.toString())
             putString("Eternal_Flame_Multipliers", numTotalEternalFlameMultipliers.toString())
             putString("Koontz_Clickers", numTotalKoontzUpgrades.toString())
@@ -92,6 +106,7 @@ class StoreActivity : AppCompatActivity() {
             putString("Josh_Tandy_Clickers", numTotalJoshTandyUpgrades.toString())
             putString("Josh_Tandy_Multipliers", numTotalJoshTandyMultipliers.toString())
         }.apply()
+        saveData()
         startActivity(i)
     }
 
@@ -157,28 +172,82 @@ class StoreActivity : AppCompatActivity() {
     }
     fun buyEternalFlame(view: View) {
         numTotalEternalFlameUpgrades += calcCost(numTotalEternalFlameUpgrades, 500, 1.15)
+        eternalFlameCost = setCost(numTotalEternalFlameUpgrades, 500, 1.15)
+        findViewById<TextView>(R.id.eternalFlame_cost_text).text = FormatNum.formatNumber(eternalFlameCost.toLong())
+        if (numTotalEternalFlameUpgrades >= eternalFlameMilestone) {
+            findViewById<ImageButton>(R.id.buy_multiplier_eternalFlame).visibility = View.VISIBLE
+        }
     }
     fun buyKoontz(view: View) {
         numTotalKoontzUpgrades += calcCost(numTotalKoontzUpgrades, 1000, 1.15)
+        koontzCost = setCost(numTotalKoontzUpgrades, 1000, 1.15)
+        findViewById<TextView>(R.id.koontz_cost_text).text = FormatNum.formatNumber(koontzCost.toLong())
+        if (numTotalKoontzUpgrades >= koontzMilestone) {
+            findViewById<ImageButton>(R.id.buy_multiplier_koontz).visibility = View.VISIBLE
+        }
     }
     fun buyJoshTandy(view: View) {
         numTotalJoshTandyUpgrades += calcCost(numTotalJoshTandyUpgrades, 2000, 1.15)
+        joshTandyCost = setCost(numTotalJoshTandyUpgrades, 2000, 1.15)
+        findViewById<TextView>(R.id.joshTandy_cost_text).text = FormatNum.formatNumber(joshTandyCost.toLong())
+        if (numTotalJoshTandyUpgrades >= joshTandyMilestone) {
+            findViewById<ImageButton>(R.id.buy_multiplier_joshTandy).visibility = View.VISIBLE
+        }
     }
     fun buyRodneyMultiplier(view: View) {
         numTotalRodneyMultipliers += calcCost(numTotalRodneyMultipliers - 1, 100, 1.5)
         rodneyMilestone *= 2
+        findViewById<ImageButton>(R.id.buy_multiplier_rodney).visibility = View.GONE
     }
     fun buyHeliosMultiplier(view: View) {
         numTotalHeliosMultipliers += calcCost(numTotalHeliosMultipliers - 1, 500, 1.5)
         heliosMilestone *= 2
+        findViewById<ImageButton>(R.id.buy_multiplier_helios).visibility = View.GONE
     }
     fun buyEternalFlameMultiplier(view: View) {
         numTotalEternalFlameMultipliers += calcCost(numTotalEternalFlameMultipliers - 1, 750, 1.5)
+        eternalFlameMilestone *= 2
+        findViewById<ImageButton>(R.id.buy_multiplier_eternalFlame).visibility = View.GONE
     }
     fun buyKoontzMultiplier(view: View) {
         numTotalKoontzMultipliers += calcCost(numTotalKoontzMultipliers - 1, 1250, 1.5)
+        koontzMilestone *= 2
+        findViewById<ImageButton>(R.id.buy_multiplier_koontz).visibility = View.GONE
     }
     fun buyJoshTandyMultiplier(view: View) {
         numTotalJoshTandyMultipliers += calcCost(numTotalJoshTandyMultipliers - 1, 2250, 1.5)
+        joshTandyMilestone *= 2
+        findViewById<ImageButton>(R.id.buy_multiplier_joshTandy).visibility = View.GONE
+    }
+
+    private fun saveData() {
+        val sharedPref = getSharedPreferences("storePrefs", Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.apply {
+            putString("rodney_cost", rodneyCost.toString())
+            putString("helios_cost", heliosCost.toString())
+            putString("eternal_flame_cost", eternalFlameCost.toString())
+            putString("koontz_cost", koontzCost.toString())
+            putString("josh_tandy_cost", joshTandyCost.toString())
+            putString("rodney_milestone", rodneyMilestone.toString())
+            putString("helios_milestone", heliosMilestone.toString())
+            putString("eternal_flame_milestone", eternalFlameMilestone.toString())
+            putString("koontz_milestone", koontzMilestone.toString())
+            putString("josh_tandy_milestone", joshTandyMilestone.toString())
+        }.apply()
+    }
+
+    private fun loadData() {
+        val sharedPref = getSharedPreferences("storePrefs", Context.MODE_PRIVATE)
+        rodneyCost = sharedPref.getString("rodney_cost", "10")!!.toInt()
+        heliosCost = sharedPref.getString("helios_cost", "100")!!.toInt()
+        eternalFlameCost = sharedPref.getString("eternal_flame_cost", "500")!!.toInt()
+        koontzCost = sharedPref.getString("koontz_cost", "1000")!!.toInt()
+        joshTandyCost = sharedPref.getString("josh_tandy_cost", "2000")!!.toInt()
+        rodneyMilestone = sharedPref.getString("rodney_milestone", "25")!!.toInt()
+        heliosMilestone = sharedPref.getString("helios_milestone", "25")!!.toInt()
+        eternalFlameMilestone = sharedPref.getString("eternal_flame_milestone", "25")!!.toInt()
+        koontzMilestone = sharedPref.getString("koontz_milestone", "25")!!.toInt()
+        joshTandyMilestone = sharedPref.getString("josh_tandy_milestone", "25")!!.toInt()
     }
 }
