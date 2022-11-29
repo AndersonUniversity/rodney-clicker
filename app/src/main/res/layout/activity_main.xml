@@ -105,11 +105,11 @@
 
     <TextView
         android:id="@+id/totalRavenDollars"
-        android:layout_width="53dp"
-        android:layout_height="22dp"
+        android:layout_width="411dp"
+        android:layout_height="21dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:text="0"
+        android:text="Total Raven Dollars: 0"
         android:textAlignment="center"
         android:textColor="#007922"
         app:layout_constraintEnd_toEndOf="parent"

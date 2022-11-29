@@ -1,5 +1,6 @@
 package edu.anderson.rodneyClicker
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -12,16 +13,16 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
     var numRavenDollars = 0
     var totalRavenDollars = 0
-    private var numRodneyUpgrades = 0
-    private var numRodneyMultipliers = 0
-    private var numHeliosUpgrades = 0
-    private var numHeliosMultipliers = 0
-    private var numEternalFlameUpgrades = 0
-    private var numEternalFlameMultipliers = 0
-    private var numKoontzUpgrades = 0
-    private var numKoontzMultipliers = 0
-    private var numJoshTandyUpgrades = 0
-    private var numJoshTandyMultipliers = 0
+    var numRodneyUpgrades = 0
+    var numRodneyMultipliers = 0
+    var numHeliosUpgrades = 0
+    var numHeliosMultipliers = 0
+    var numEternalFlameUpgrades = 0
+    var numEternalFlameMultipliers = 0
+    var numKoontzUpgrades = 0
+    var numKoontzMultipliers = 0
+    var numJoshTandyUpgrades = 0
+    var numJoshTandyMultipliers = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,13 +56,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     /** Called when the user taps the rodney button */
+    @SuppressLint("SetTextI18n")
     fun increaseNum(view: View) {
         val ravenDollars = findViewById<TextView>(R.id.ravenDollars)
+        val totalRavens = findViewById<TextView>(R.id.totalRavenDollars)
         numRavenDollars += 1
         totalRavenDollars += 1
         val newRavenDollars = FormatNum.formatNumber(numRavenDollars.toLong())
         ravenDollars.text = newRavenDollars
-        findViewById<TextView>(R.id.totalRavenDollars).text = totalRavenDollars.toString()
+        totalRavens.text = "Total Raven Dollars: $totalRavenDollars"
     }
 
     val rodney = ClickersAndUpgrades.AutoClicker(1, 0, 1)
@@ -99,7 +102,7 @@ class MainActivity : AppCompatActivity() {
                     numRavenDollars += toAdd
                     totalRavenDollars += toAdd
                     findViewById<TextView>(R.id.ravenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
-                    findViewById<TextView>(R.id.totalRavenDollars).text = String.format("$totalRavenDollars")
+                    findViewById<TextView>(R.id.totalRavenDollars).text = String.format("Total Raven Dollars: $totalRavenDollars")
                     handler.postDelayed(this, 1000)
                 }
             },
@@ -148,7 +151,7 @@ class MainActivity : AppCompatActivity() {
             numRavenDollars = savedRavenDollars.toInt()
         }
         if (allRavenDollars != null) {
-            findViewById<TextView>(R.id.totalRavenDollars).text = "$allRavenDollars"
+            findViewById<TextView>(R.id.totalRavenDollars).text = String.format("Total Raven Dollars: %s", allRavenDollars)
             totalRavenDollars = allRavenDollars.toInt()
         }
         if (savedRodneyClickers != null) {
