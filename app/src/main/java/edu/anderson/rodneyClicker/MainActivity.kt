@@ -7,7 +7,6 @@ import android.os.Looper
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import kotlin.math.pow
 
 class MainActivity : AppCompatActivity() {
     var numRavenDollars = 0
@@ -17,7 +16,6 @@ class MainActivity : AppCompatActivity() {
     var numHeliosUpgrades = 0
     var numHeliosMultipliers = 0
     var totalClicks = 0
-    var completeAchievementString = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,12 +83,8 @@ class MainActivity : AppCompatActivity() {
                     val toAdd = (rodney.dps * rodney.numOwned * rodney.multiplier) + (helios.dps * helios.numOwned * helios.multiplier)
                     numRavenDollars += toAdd
                     totalRavenDollars += toAdd
-                    var currAchievement = checkAchievements(totalRavenDollars, totalClicks,numRodneyUpgrades)
+                    val currAchievement = checkAchievements(totalRavenDollars, totalClicks, numRodneyUpgrades)
                     setAchievementView(currAchievement)
-                    if(!completedAchievements.contains(currAchievement)){
-                        completedAchievements.add(currAchievement)
-                    }
-                    completeAchievementString = completedAchievements.toString()
                     findViewById<TextView>(R.id.ravenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
                     findViewById<TextView>(R.id.totalRavenDollars).text = String.format("$totalRavenDollars")
                     handler.postDelayed(this, 1000)
@@ -128,6 +122,9 @@ class MainActivity : AppCompatActivity() {
         val savedClicks = sharedPref.getString("Total_Clicks", "0")
         val savedAchievementString = sharedPref.getString("Completed_Achievements_String", "")
 
+        if (savedAchievementString!=null){
+                completedAchievements = savedAchievementString
+        }
         if (savedRavenDollars != null) {
             findViewById<TextView>(R.id.ravenDollars).text = String.format("R$$savedRavenDollars")
             numRavenDollars = savedRavenDollars.toInt()
@@ -165,10 +162,14 @@ class MainActivity : AppCompatActivity() {
         viewText.text = displayText
     }
     private fun setAchievementView(text:String){
-        //findViewById<TextView>(R.id.achievementPopup).visibility = View.INVISIBLE
-        //if(text!="") {
-            findViewById<TextView>(R.id.achievementPopup).text = text + totalClicks.toString() + completeAchievementString
-            //findViewById<TextView>(R.id.achievementPopup).visibility = View.VISIBLE
-        //}
+        val popup = findViewById<TextView>(R.id.achievementPopup)
+
+        if(text!="") {
+            popup.text = text
+            popup.visibility = View.VISIBLE
+        }
+        else{
+            popup.visibility = View.INVISIBLE
+        }
     }
 }

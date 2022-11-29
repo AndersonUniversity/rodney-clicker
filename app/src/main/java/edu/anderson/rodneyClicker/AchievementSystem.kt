@@ -1,38 +1,40 @@
 package edu.anderson.rodneyClicker
 val verifyComplete = Array(10) {0}
-val completedAchievements = mutableListOf<String>()
+var completedAchievements = ""
 
 fun checkAchievements(totalRD:Int, totalClicks:Int, rodneys:Int ):String{
     var achievementFound = ""
-    var waitCount = 5
-    if(totalRD>999 && verifyComplete[0]<=waitCount){
-        achievementFound = displayAchievements("Making Money", "make it to a thousand Raven Dollars",completedAchievements,0)
+    if(totalRD>999){
+        achievementFound = displayAchievements("Making Money", "make it to a thousand Raven Dollars",0)
     }
-    if(totalRD>999999 && verifyComplete[1]<=waitCount){
-        achievementFound = displayAchievements("Millionaire", "collect a million Raven Dollars",completedAchievements,1)
+    if(totalRD>99){
+        achievementFound = displayAchievements("Millionaire", "collect a million Raven Dollars",1)
     }
-    if(totalRD>999999999 && verifyComplete[2]<=waitCount){
-        achievementFound = displayAchievements("1%", "get a billion Raven Dollars",completedAchievements,2)
+    if(totalRD>999999999){
+        achievementFound = displayAchievements("1%", "get a billion Raven Dollars",2)
     }
-    if(totalClicks>99 && verifyComplete[3]<=waitCount) {
-        achievementFound = displayAchievements("Sore Thumb", "click 100 times",completedAchievements,3)
+    if(totalClicks>99) {
+        achievementFound = displayAchievements("Sore Thumb", "click 100 times",3)
     }
-    if(totalClicks>4999 && verifyComplete[4]<=waitCount) {
-        achievementFound = displayAchievements("Why would you do this?", "click 5,000 times",completedAchievements,4)
+    if(totalClicks>4999) {
+        achievementFound = displayAchievements("Why would you do this?", "click 5,000 times",4)
     }
-    if(rodneys>99 && verifyComplete[5]<=waitCount){
-        achievementFound = displayAchievements("That's a lot of birds", "gain 100 rodneys",completedAchievements,5)
+    if(rodneys>99){
+        achievementFound = displayAchievements("That's a lot of birds", "gain 100 rodneys",5)
     }
-    if(totalClicks>0 && verifyComplete[6]<=waitCount){
-        achievementFound = displayAchievements("What's this?", "click the raven",completedAchievements,6)
+    if(totalClicks>0){
+        achievementFound = displayAchievements("What's this?", "click the raven",6)
     }
 
     return achievementFound
 }
 
-fun displayAchievements(title:String, description:String,completedAchievements:MutableList<String>,aNum:Int): String {
-    val text = "\n$title\n$description"
+fun displayAchievements(title:String, description:String, aNum:Int): String {
+    val text = "\n$title:$description "
     return if(!completedAchievements.contains(text)) {
+        if(verifyComplete[aNum] == 5){
+            completedAchievements += text
+        }
         verifyComplete[aNum]++
         text
     }
