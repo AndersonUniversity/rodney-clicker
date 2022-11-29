@@ -47,7 +47,7 @@ class TotalRDTest {
 
         // Confirm that Raven Dollars are 10
         onView(withId(R.id.ravenDollars)).check(matches(withText("R$10")))
-        onView(withId(R.id.totalRavenDollars)).check(matches(withText("10")))
+        onView(withId(R.id.totalRavenDollars)).check(matches(withText("Total Raven Dollars: 10")))
 
         // Click the store page button
         onView(withId(R.id.store_button)).perform(click())
@@ -66,7 +66,9 @@ class TotalRDTest {
         text = text.substring(2, text.length)
         val num = text.toInt()
         val allRD = onView(withId(R.id.totalRavenDollars))
-        val num2 = getText(allRD).toInt()
+        var text2 = getText(allRD)
+        text2 = text2.substring(21, text2.length)
+        val num2 = text2.toInt()
 
         // Verify that total Raven Dollars is higher than the current Raven Dollars
         assert(num2 > num)
