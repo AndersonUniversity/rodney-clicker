@@ -108,6 +108,7 @@ class StoreActivity : AppCompatActivity() {
     }
 
     private fun saveData() {
+        /**save data*/
         val sharedPref = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
         editor.apply {
