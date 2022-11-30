@@ -30,8 +30,8 @@ class SaveDataTest {
         // Open the store page
         onView(withId(R.id.store_button)).perform(ViewActions.click())
 
-        // Buy a Rodney
-        onView(withId(R.id.buy_rodneyButton)).perform(ViewActions.click())
+        // Buy 2 Rodney
+        onView(withId(R.id.buy_rodneyButton)).perform(ViewActions.doubleClick())
 
         // Return to the main page
         onView(withId(R.id.home_button)).perform(ViewActions.click())
