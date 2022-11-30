@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 
 class StoreActivity : AppCompatActivity() {
@@ -30,6 +31,17 @@ class StoreActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val intent = Intent(this@StoreActivity, MainActivity::class.java)
+                saveData()
+                startActivity(intent)
+                isEnabled = false
+                onBackPressedDispatcher.onBackPressed()
+            }
+        }
+        onBackPressedDispatcher.addCallback(callback)
+
         val sharedPref = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         numRavenDollars = sharedPref.getString("Raven_Dollars", "0")?.toInt() ?: 0
         numTotalRavenDollars = sharedPref.getString("Total_Raven_Dollars", "0")?.toInt() ?: 0
@@ -51,6 +63,11 @@ class StoreActivity : AppCompatActivity() {
     /** Called when the user taps the Home button */
     fun openHomePage(view: View) {
         val i = Intent(this@StoreActivity, MainActivity::class.java)
+        saveData()
+        startActivity(i)
+    }
+
+    private fun saveData() {
         val sharedPref = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
         editor.apply {
@@ -67,7 +84,6 @@ class StoreActivity : AppCompatActivity() {
             putString("Josh_Tandy_Clickers", numTotalJoshTandyUpgrades.toString())
             putString("Josh_Tandy_Multipliers", numTotalJoshTandyMultipliers.toString())
         }.apply()
-        startActivity(i)
     }
 
     val rodney = ClickersAndUpgrades.AutoClicker(1, 0, 1)
