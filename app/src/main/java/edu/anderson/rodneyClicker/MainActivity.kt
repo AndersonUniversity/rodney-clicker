@@ -168,7 +168,7 @@ class MainActivity : AppCompatActivity() {
             numHeliosMultipliers = savedHeliosClickersMultipliers.toInt()
         }
         if (savedEternalFlameClickers != null) {
-            findViewById<TextView>(R.id.total_eternalFlame).text = String.format("Total Eternal Flame: %s", savedEternalFlameClickers)
+            findViewById<TextView>(R.id.total_eternalFlame).text = "$savedEternalFlameClickers"
             eternalFlame.numOwned = savedEternalFlameClickers.toInt()
             numEternalFlameUpgrades = savedEternalFlameClickers.toInt()
         }
@@ -176,7 +176,7 @@ class MainActivity : AppCompatActivity() {
             numEternalFlameMultipliers = savedEternalFlameClickersMultipliers.toInt()
         }
         if (savedKoontzClickers != null) {
-            findViewById<TextView>(R.id.total_koontz).text = String.format("Total Koontz: %s", savedKoontzClickers)
+            findViewById<TextView>(R.id.total_koontz).text = "$savedKoontzClickers"
             koontz.numOwned = savedKoontzClickers.toInt()
             numKoontzUpgrades = savedKoontzClickers.toInt()
         }
@@ -184,7 +184,7 @@ class MainActivity : AppCompatActivity() {
             numKoontzMultipliers = savedKoontzClickersMultipliers.toInt()
         }
         if (savedJoshTandyClickers != null) {
-            findViewById<TextView>(R.id.total_joshTandy).text = String.format("Total Josh Tandy: %s", savedJoshTandyClickers)
+            findViewById<TextView>(R.id.total_joshTandy).text = "$savedJoshTandyClickers"
             joshTandy.numOwned = savedJoshTandyClickers.toInt()
             numJoshTandyUpgrades = savedJoshTandyClickers.toInt()
         }
@@ -201,7 +201,7 @@ class MainActivity : AppCompatActivity() {
         val viewText = findViewById<TextView>(R.id.ravenDollarsPerSecond)
         val currRDPS = (totalRodney + totalHelios + totalEternalFlame + totalKoontz + totalJoshTandy).toString()
         val formattedRDPS = FormatNum.formatNumber(currRDPS.toLong())
-        val displayText = formattedRDPS.substring(2, formattedRDPS.length) + "R$ per second"
+        val displayText = formattedRDPS.substring(2, formattedRDPS.length) + "R$/s"
         viewText.text = displayText
     }
 }
