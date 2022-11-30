@@ -72,11 +72,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateClicker(view: MainActivity) {
         ClickersAndUpgrades.addClicker(numRodneyUpgrades, numHeliosUpgrades, numEternalFlameUpgrades, numKoontzUpgrades, numJoshTandyUpgrades, rodney, helios, eternalFlame, koontz, joshTandy)
-        findViewById<TextView>(R.id.total_rodneys).text = String.format("Total Rodneys: %d", rodney.numOwned)
-        findViewById<TextView>(R.id.total_helios).text = String.format("Total Helios: %d", helios.numOwned)
-        findViewById<TextView>(R.id.total_eternalFlame).text = String.format("Total Eternal Flames: %d", eternalFlame.numOwned)
-        findViewById<TextView>(R.id.total_koontz).text = String.format("Total Koontz: %d", koontz.numOwned)
-        findViewById<TextView>(R.id.total_joshTandy).text = String.format("Total Josh Tandy: %d", joshTandy.numOwned)
+        findViewById<TextView>(R.id.total_rodneys).text = rodney.numOwned.toString()
+        findViewById<TextView>(R.id.total_helios).text = helios.numOwned.toString()
+        findViewById<TextView>(R.id.total_eternalFlame).text = eternalFlame.numOwned.toString()
+        findViewById<TextView>(R.id.total_koontz).text = koontz.numOwned.toString()
+        findViewById<TextView>(R.id.total_joshTandy).text = joshTandy.numOwned.toString()
     }
 
     /**Adds the multipliers to the clickers*/
