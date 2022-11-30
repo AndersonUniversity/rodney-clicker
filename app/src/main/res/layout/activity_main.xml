@@ -25,7 +25,7 @@
         app:srcCompat="@drawable/rodneyicon" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageViewHelios"
         android:layout_width="51dp"
         android:layout_height="66dp"
         android:layout_marginEnd="20dp"
@@ -38,12 +38,55 @@
         app:layout_constraintVertical_bias="0.249"
         app:srcCompat="@drawable/heliosicon" />
 
+    <ImageView
+        android:id="@+id/imageViewKoontz"
+        android:layout_width="51dp"
+        android:layout_height="66dp"
+        android:layout_marginEnd="20dp"
+        android:adjustViewBounds="true"
+        android:padding="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.43"
+        app:srcCompat="@drawable/koontz" />
+
+    <ImageView
+        android:id="@+id/imageViewFlame"
+        android:layout_width="51dp"
+        android:layout_height="66dp"
+        android:layout_marginEnd="20dp"
+        android:adjustViewBounds="true"
+        android:padding="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.52"
+        app:srcCompat="@drawable/flame" />
+
+    <ImageView
+        android:id="@+id/imageViewFlame"
+        android:layout_width="51dp"
+        android:layout_height="66dp"
+        android:layout_marginEnd="20dp"
+        android:adjustViewBounds="true"
+        android:padding="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.61"
+        app:srcCompat="@drawable/santa" />
+
+
     <TextView
         android:id="@+id/total_rodneys"
-        android:layout_width="23dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="258dp"
-        android:layout_marginEnd="12dp"
+        android:layout_width="46dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="257dp"
+        android:layout_marginEnd="10dp"
         android:background="@null"
         android:ems="10"
         android:fontFamily="@font/ubuntu_bold"
@@ -53,14 +96,14 @@
         android:textColor="#0C423B"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintHorizontal_bias="0.929"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/total_helios"
-        android:layout_width="27dp"
-        android:layout_height="28dp"
+        android:layout_width="38dp"
+        android:layout_height="24dp"
         android:layout_marginTop="196dp"
         android:layout_marginEnd="2dp"
         android:ems="10"
@@ -71,47 +114,58 @@
         android:textColor="#0C423B"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.885"
+        app:layout_constraintHorizontal_bias="0.894"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <TextView
         android:id="@+id/total_eternalFlame"
-        android:layout_width="233dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="264dp"
+        android:layout_width="63dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="375dp"
         android:ems="10"
+        android:fontFamily="@font/ubuntu_bold"
         android:inputType="textPersonName"
-        android:text="Total Eternal Flame: 0"
+        android:text="0"
         android:textAlignment="center"
+        android:textColor="#0C423B"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.920"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/total_koontz"
-        android:layout_width="233dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="304dp"
+        android:layout_width="42dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="318dp"
         android:ems="10"
+        android:fontFamily="@font/ubuntu_bold"
         android:inputType="textPersonName"
-        android:text="Total Koontz: 0"
+        android:text="0"
         android:textAlignment="center"
+        android:textColor="#0C423B"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.899"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/total_joshTandy"
-        android:layout_width="233dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="344dp"
+        android:layout_width="89dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="436dp"
         android:ems="10"
+        android:fontFamily="@font/ubuntu_bold"
         android:inputType="textPersonName"
-        android:text="Total Josh Tandy: 0"
+        android:text="0"
         android:textAlignment="center"
+        android:textColor="#0C423B"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -144,15 +198,15 @@
 
     <TextView
         android:id="@+id/totalRavenDollars"
-        android:layout_width="53dp"
-        android:layout_height="22dp"
+        android:layout_width="194dp"
+        android:layout_height="24dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:text="0 R$"
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
         android:textColor="#F3F5F6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.073"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -175,9 +229,9 @@
 
     <ImageButton
         android:id="@+id/ravenButton"
-        android:layout_width="297dp"
-        android:layout_height="217dp"
-        android:layout_marginBottom="124dp"
+        android:layout_width="240dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="112dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:minHeight="500dp"
@@ -191,10 +245,11 @@
 
     <TextView
         android:id="@+id/ravenDollarsPerSecond"
-        android:layout_width="195dp"
-        android:layout_height="28dp"
-        android:text="Raven Dollars Per Second: 0"
-        android:textAlignment="center"
+        android:layout_width="194dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="16dp"
+        android:text="0 R$/s"
+        android:textAlignment="viewStart"
         android:textColor="#F9FAFA"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totalRavenDollars" />
