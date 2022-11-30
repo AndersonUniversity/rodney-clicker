@@ -101,8 +101,8 @@ class MainActivity : AppCompatActivity() {
                     val toAdd = rodneyAdd + heliosAdd + eternalFlameAdd + koontzAdd + joshTandyAdd
                     numRavenDollars += toAdd
                     totalRavenDollars += toAdd
+                    findViewById<TextView>(R.id.totalRavenDollars).text = FormatNum.formatNumberTRD((totalRavenDollars.toLong()))
                     findViewById<TextView>(R.id.ravenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
-                    findViewById<TextView>(R.id.totalRavenDollars).text = String.format("Total Raven Dollars: $totalRavenDollars")
                     handler.postDelayed(this, 1000)
                 }
             },
