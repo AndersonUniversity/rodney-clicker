@@ -19,23 +19,62 @@
         android:inputType="textPersonName"
         android:text="Total Rodneys: 0"
         android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/total_helios"
+        app:layout_constraintStart_toStartOf="@+id/total_helios"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/total_helios"
         android:layout_width="233dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="224dp"
+        android:layout_marginTop="208dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Total Helioses: 0"
         android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/total_eternalFlame"
+        app:layout_constraintStart_toStartOf="@+id/total_eternalFlame"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/total_eternalFlame"
+        android:layout_width="233dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="240dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Total Eternal Flame: 0"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/total_koontz"
+        app:layout_constraintStart_toStartOf="@+id/total_koontz"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/total_koontz"
+        android:layout_width="233dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="268dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Total Koontz: 0"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/total_joshTandy"
+        app:layout_constraintStart_toStartOf="@+id/total_joshTandy"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/total_joshTandy"
+        android:layout_width="233dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Total Josh Tandy: 0"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/ravenDollars"
@@ -115,11 +154,11 @@
         android:id="@+id/ravenDollarsPerSecond"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:text="Raven Dollars Per Second: 0"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias=".5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/total_rodneys"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="@+id/total_rodneys"
         app:layout_constraintTop_toBottomOf="@+id/ravenDollars" />
 
     <TextView
@@ -129,12 +168,12 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="33dp"
         android:layout_marginBottom="32dp"
-        android:textAlignment="center"
         android:background="@drawable/achievement"
         android:ellipsize="marquee"
         android:ems="10"
         android:fontFamily="@font/ubuntu_bold"
         android:text=""
+        android:textAlignment="center"
         android:textColor="#007922"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
