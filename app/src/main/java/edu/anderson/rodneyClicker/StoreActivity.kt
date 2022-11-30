@@ -123,10 +123,17 @@ class StoreActivity : AppCompatActivity() {
             putString("Koontz_Multipliers", numTotalKoontzMultipliers.toString())
             putString("Josh_Tandy_Clickers", numTotalJoshTandyUpgrades.toString())
             putString("Josh_Tandy_Multipliers", numTotalJoshTandyMultipliers.toString())
+            putString("rodney_cost", rodneyCost.toString())
+            putString("helios_cost", heliosCost.toString())
+            putString("eternal_flame_cost", eternalFlameCost.toString())
+            putString("koontz_cost", koontzCost.toString())
+            putString("josh_tandy_cost", joshTandyCost.toString())
+            putString("rodney_milestone", rodneyMilestone.toString())
+            putString("helios_milestone", heliosMilestone.toString())
+            putString("eternal_flame_milestone", eternalFlameMilestone.toString())
+            putString("koontz_milestone", koontzMilestone.toString())
+            putString("josh_tandy_milestone", joshTandyMilestone.toString())
         }.apply()
-        saveData()
-        startActivity(i)
-
     }
 
     val rodney = ClickersAndUpgrades.AutoClicker(1, 0, 1)
@@ -237,23 +244,6 @@ class StoreActivity : AppCompatActivity() {
         numTotalJoshTandyMultipliers += calcCost(numTotalJoshTandyMultipliers - 1, 2250, 1.5)
         joshTandyMilestone *= 2
         findViewById<ImageButton>(R.id.buy_multiplier_joshTandy).visibility = View.GONE
-    }
-
-    private fun saveData() {
-        val sharedPref = getSharedPreferences("storePrefs", Context.MODE_PRIVATE)
-        val editor = sharedPref.edit()
-        editor.apply {
-            putString("rodney_cost", rodneyCost.toString())
-            putString("helios_cost", heliosCost.toString())
-            putString("eternal_flame_cost", eternalFlameCost.toString())
-            putString("koontz_cost", koontzCost.toString())
-            putString("josh_tandy_cost", joshTandyCost.toString())
-            putString("rodney_milestone", rodneyMilestone.toString())
-            putString("helios_milestone", heliosMilestone.toString())
-            putString("eternal_flame_milestone", eternalFlameMilestone.toString())
-            putString("koontz_milestone", koontzMilestone.toString())
-            putString("josh_tandy_milestone", joshTandyMilestone.toString())
-        }.apply()
     }
 
     private fun loadData() {
