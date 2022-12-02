@@ -7,8 +7,23 @@
     android:background="@drawable/background"
     android:backgroundTint="#D8D7D7"
     android:backgroundTintMode="multiply"
+    android:fadingEdge="horizontal|vertical"
     android:padding="@null"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageViewFlame"
+        android:layout_width="51dp"
+        android:layout_height="66dp"
+        android:layout_marginEnd="20dp"
+        android:adjustViewBounds="true"
+        android:padding="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499"
+        app:srcCompat="@drawable/flame" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -21,7 +36,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.341"
+        app:layout_constraintVertical_bias="0.228"
         app:srcCompat="@drawable/rodneyicon" />
 
     <ImageView
@@ -35,7 +50,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.249"
+        app:layout_constraintVertical_bias="0.314"
         app:srcCompat="@drawable/heliosicon" />
 
     <ImageView
@@ -49,97 +64,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.43"
+        app:layout_constraintVertical_bias="0.408"
         app:srcCompat="@drawable/koontz" />
-
-    <ImageView
-        android:id="@+id/imageViewFlame"
-        android:layout_width="51dp"
-        android:layout_height="66dp"
-        android:layout_marginEnd="20dp"
-        android:adjustViewBounds="true"
-        android:padding="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.52"
-        app:srcCompat="@drawable/flame" />
-
-    <ImageView
-        android:id="@+id/imageViewFlame"
-        android:layout_width="51dp"
-        android:layout_height="66dp"
-        android:layout_marginEnd="20dp"
-        android:adjustViewBounds="true"
-        android:padding="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.61"
-        app:srcCompat="@drawable/santa" />
-
 
     <TextView
         android:id="@+id/total_rodneys"
         android:layout_width="46dp"
         android:layout_height="26dp"
-        android:layout_marginTop="257dp"
+        android:layout_marginTop="172dp"
         android:layout_marginEnd="10dp"
         android:background="@null"
-        android:ems="10"
-        android:fontFamily="@font/ubuntu_bold"
-        android:inputType="textPersonName"
-        android:text="0"
-        android:textAlignment="center"
-        android:textColor="#0C423B"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.929"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/total_helios"
-        android:layout_width="38dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="196dp"
-        android:layout_marginEnd="2dp"
-        android:ems="10"
-        android:fontFamily="@font/ubuntu_bold"
-        android:inputType="textPersonName"
-        android:text="0"
-        android:textAlignment="center"
-        android:textColor="#0C423B"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.894"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/total_eternalFlame"
-        android:layout_width="63dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="375dp"
-        android:ems="10"
-        android:fontFamily="@font/ubuntu_bold"
-        android:inputType="textPersonName"
-        android:text="0"
-        android:textAlignment="center"
-        android:textColor="#0C423B"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.920"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/total_koontz"
-        android:layout_width="42dp"
-        android:layout_height="22dp"
-        android:layout_marginTop="318dp"
         android:ems="10"
         android:fontFamily="@font/ubuntu_bold"
         android:inputType="textPersonName"
@@ -153,10 +87,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/total_joshTandy"
-        android:layout_width="89dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="436dp"
+        android:id="@+id/total_helios"
+        android:layout_width="38dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="248dp"
+        android:layout_marginEnd="2dp"
         android:ems="10"
         android:fontFamily="@font/ubuntu_bold"
         android:inputType="textPersonName"
@@ -165,9 +100,76 @@
         android:textColor="#0C423B"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintHorizontal_bias="0.881"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/total_eternalFlame"
+        android:layout_width="63dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="380dp"
+        android:ems="10"
+        android:fontFamily="@font/ubuntu_bold"
+        android:inputType="textPersonName"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="#0C423B"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/total_koontz"
+        android:layout_width="42dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="316dp"
+        android:ems="10"
+        android:fontFamily="@font/ubuntu_bold"
+        android:inputType="textPersonName"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="#0C423B"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewSanta"
+        android:layout_width="51dp"
+        android:layout_height="66dp"
+        android:layout_marginEnd="20dp"
+        android:adjustViewBounds="true"
+        android:padding="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.588"
+        app:srcCompat="@drawable/santa" />
+
+    <TextView
+        android:id="@+id/total_joshTandy"
+        android:layout_width="89dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="444dp"
+        android:ems="10"
+        android:fontFamily="@font/ubuntu_bold"
+        android:inputType="textPersonName"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="#0C423B"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.934"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 
     <TextView
         android:id="@+id/ravenDollars"
@@ -253,6 +255,27 @@
         android:textColor="#F9FAFA"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totalRavenDollars" />
+
+    <TextView
+        android:id="@+id/achievementPopup"
+        android:layout_width="222dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/achievement"
+        android:ellipsize="marquee"
+        android:ems="10"
+        android:fontFamily="@font/ubuntu_bold"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="#007922"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.357"
+        app:layout_constraintStart_toEndOf="@+id/store_button"
+        app:layout_constraintTop_toBottomOf="@+id/ravenButton"
+        app:layout_constraintVertical_bias="0.384" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
