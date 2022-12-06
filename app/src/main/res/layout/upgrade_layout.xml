@@ -234,7 +234,7 @@
 
     <TextView
         android:id="@+id/rodney_cost_text"
-        android:layout_width="48dp"
+        android:layout_width="55dp"
         android:layout_height="22dp"
         android:layout_marginTop="81dp"
         android:layout_marginEnd="54dp"
@@ -250,7 +250,7 @@
 
     <TextView
         android:id="@+id/helios_cost_text"
-        android:layout_width="51dp"
+        android:layout_width="59dp"
         android:layout_height="22dp"
         android:layout_marginStart="121dp"
         android:layout_marginTop="52dp"
@@ -265,9 +265,9 @@
 
     <TextView
         android:id="@+id/eternalFlame_cost_text"
-        android:layout_width="51dp"
+        android:layout_width="57dp"
         android:layout_height="22dp"
-        android:layout_marginStart="121dp"
+        android:layout_marginStart="125dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="72dp"
         android:text="R$500"
@@ -283,7 +283,7 @@
         android:id="@+id/koontz_cost_text"
         android:layout_width="60dp"
         android:layout_height="22dp"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:text="R$1000"
         android:visibility="visible"
@@ -299,8 +299,8 @@
         android:id="@+id/joshTandy_cost_text"
         android:layout_width="58dp"
         android:layout_height="25dp"
-        android:layout_marginStart="180dp"
-        android:layout_marginTop="55dp"
+        android:layout_marginStart="178dp"
+        android:layout_marginTop="53dp"
         android:text="R$2000"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"

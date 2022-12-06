@@ -248,7 +248,7 @@ class StoreActivity : AppCompatActivity() {
     }
 
     private fun loadData() {
-        val sharedPref = getSharedPreferences("storePrefs", Context.MODE_PRIVATE)
+        val sharedPref = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         rodneyCost = sharedPref.getString("rodney_cost", "10")!!.toInt()
         heliosCost = sharedPref.getString("helios_cost", "100")!!.toInt()
         eternalFlameCost = sharedPref.getString("eternal_flame_cost", "500")!!.toInt()
