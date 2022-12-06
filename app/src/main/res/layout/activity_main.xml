@@ -23,7 +23,6 @@
         app:layout_constraintStart_toStartOf="@+id/total_helios"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <TextView
         android:id="@+id/total_helios"
         android:layout_width="233dp"
@@ -36,6 +35,7 @@
         app:layout_constraintEnd_toEndOf="@+id/total_eternalFlame"
         app:layout_constraintStart_toStartOf="@+id/total_eternalFlame"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/total_eternalFlame"
@@ -105,15 +105,15 @@
 
     <TextView
         android:id="@+id/totalRavenDollars"
-        android:layout_width="191dp"
+        android:layout_width="411dp"
         android:layout_height="21dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
-        android:text="0"
-        android:textAlignment="textStart"
+        android:text="Total Raven Dollars: 0"
+        android:textAlignment="center"
         android:textColor="#007922"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.158"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
