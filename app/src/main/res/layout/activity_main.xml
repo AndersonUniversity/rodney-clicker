@@ -36,7 +36,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.228"
+        app:layout_constraintVertical_bias="0.215"
         app:srcCompat="@drawable/rodneyicon" />
 
     <ImageView
@@ -67,12 +67,14 @@
         app:layout_constraintVertical_bias="0.408"
         app:srcCompat="@drawable/koontz" />
 
+
     <TextView
         android:id="@+id/total_rodneys"
         android:layout_width="46dp"
         android:layout_height="26dp"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@null"
         android:ems="10"
         android:fontFamily="@font/ubuntu_bold"
@@ -81,17 +83,20 @@
         android:textAlignment="center"
         android:textColor="#0C423B"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.899"
+        app:layout_constraintHorizontal_bias="0.929"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/total_helios"
         android:layout_width="38dp"
         android:layout_height="24dp"
-        android:layout_marginTop="248dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="2dp"
+        android:layout_marginBottom="10dp"
         android:ems="10"
         android:fontFamily="@font/ubuntu_bold"
         android:inputType="textPersonName"
@@ -99,17 +104,21 @@
         android:textAlignment="center"
         android:textColor="#0C423B"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewHelios"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="@+id/imageViewHelios"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/total_eternalFlame"
         android:layout_width="63dp"
         android:layout_height="27dp"
-        android:layout_marginTop="380dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="4dp"
         android:ems="10"
         android:fontFamily="@font/ubuntu_bold"
         android:inputType="textPersonName"
@@ -117,16 +126,19 @@
         android:textAlignment="center"
         android:textColor="#0C423B"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewSanta"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintHorizontal_bias="0.936"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/imageViewFlame"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/total_koontz"
         android:layout_width="42dp"
         android:layout_height="22dp"
-        android:layout_marginTop="316dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
         android:fontFamily="@font/ubuntu_bold"
         android:inputType="textPersonName"
@@ -134,10 +146,12 @@
         android:textAlignment="center"
         android:textColor="#0C423B"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewKoontz"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintHorizontal_bias="0.894"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/imageViewKoontz"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageViewSanta"
@@ -153,11 +167,11 @@
         app:layout_constraintVertical_bias="0.588"
         app:srcCompat="@drawable/santa" />
 
+
     <TextView
         android:id="@+id/total_joshTandy"
         android:layout_width="89dp"
         android:layout_height="28dp"
-        android:layout_marginTop="444dp"
         android:ems="10"
         android:fontFamily="@font/ubuntu_bold"
         android:inputType="textPersonName"
@@ -165,12 +179,12 @@
         android:textAlignment="center"
         android:textColor="#0C423B"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewSanta"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.934"
+        app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/imageViewFlame"
+        app:layout_constraintVertical_bias="0.677" />
 
     <TextView
         android:id="@+id/ravenDollars"
@@ -205,7 +219,7 @@
         android:layout_height="24dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:text="0 R$"
+        android:text="0"
         android:textAlignment="viewStart"
         android:textColor="#F3F5F6"
         app:layout_constraintEnd_toEndOf="parent"
