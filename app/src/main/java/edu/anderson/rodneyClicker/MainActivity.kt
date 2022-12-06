@@ -59,12 +59,15 @@ class MainActivity : AppCompatActivity() {
     /** Called when the user taps the rodney button */
     fun increaseNum(view: View) {
         val ravenDollars = findViewById<TextView>(R.id.ravenDollars)
+        val totalRavens = findViewById<TextView>(R.id.totalRavenDollars)
         numRavenDollars += 1
         totalRavenDollars += 1
         totalClicks++
         val newRavenDollars = FormatNum.formatNumber(numRavenDollars.toLong())
+        val newTotalRavenDollars = FormatNum.formatNumberTRD((totalRavenDollars.toLong()))
         ravenDollars.text = newRavenDollars
-        findViewById<TextView>(R.id.totalRavenDollars).text = String.format("R$$totalRavenDollars")
+        totalRavens.text = newTotalRavenDollars
+        totalRavens.text = String.format("R$$newTotalRavenDollars")
     }
 
     val rodney = ClickersAndUpgrades.AutoClicker(1, 0, 1)
@@ -101,6 +104,8 @@ class MainActivity : AppCompatActivity() {
                     val toAdd = rodneyAdd + heliosAdd + eternalFlameAdd + koontzAdd + joshTandyAdd
                     numRavenDollars += toAdd
                     totalRavenDollars += toAdd
+                    findViewById<TextView>(R.id.ravenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
+                    findViewById<TextView>(R.id.totalRavenDollars).text = FormatNum.formatNumberTRD((totalRavenDollars.toLong()))
                     val currAchievement = checkAchievements(totalRavenDollars, totalClicks, numRodneyUpgrades, numHeliosUpgrades, numEternalFlameUpgrades, numKoontzUpgrades, numJoshTandyUpgrades)
                     setAchievementView(currAchievement)
                     findViewById<TextView>(R.id.ravenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
@@ -163,7 +168,7 @@ class MainActivity : AppCompatActivity() {
             totalClicks = savedClicks.toInt()
         }
         if (allRavenDollars != null) {
-            findViewById<TextView>(R.id.totalRavenDollars).text = "$allRavenDollars"
+            findViewById<TextView>(R.id.totalRavenDollars).text = FormatNum.formatNumberTRD((allRavenDollars.toLong()))
             totalRavenDollars = allRavenDollars.toInt()
         }
         if (savedRodneyClickers != null) {
