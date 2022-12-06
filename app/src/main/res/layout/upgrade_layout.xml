@@ -14,7 +14,7 @@
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="37dp"
         android:layout_marginEnd="24dp"
         android:adjustViewBounds="true"
         android:background="@null"
@@ -28,14 +28,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.923"
         app:layout_constraintStart_toEndOf="@+id/buy_heliosButton"
-        app:layout_constraintTop_toBottomOf="@+id/buy_multiplier_rodney" />
+        app:layout_constraintTop_toBottomOf="@+id/buy_eternalFlame" />
 
     <ImageButton
         android:id="@+id/buy_multiplier_joshTandy"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="264dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="24dp"
         android:adjustViewBounds="true"
         android:background="@null"
@@ -49,7 +49,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.923"
         app:layout_constraintStart_toEndOf="@+id/buy_heliosButton"
-        app:layout_constraintTop_toBottomOf="@+id/buy_multiplier_rodney" />
+        app:layout_constraintTop_toBottomOf="@+id/buy_koontz" />
 
     <ImageButton
         android:id="@+id/buy_joshTandy"
@@ -128,7 +128,7 @@
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="148dp"
         android:layout_marginEnd="24dp"
         android:adjustViewBounds="true"
         android:background="@null"
@@ -142,14 +142,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.923"
         app:layout_constraintStart_toEndOf="@+id/buy_heliosButton"
-        app:layout_constraintTop_toBottomOf="@+id/buy_multiplier_rodney" />
+        app:layout_constraintTop_toBottomOf="@+id/currRavenDollars" />
 
     <ImageButton
         android:id="@+id/buy_multiplier_eternalFlame"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="24dp"
         android:adjustViewBounds="true"
         android:background="@null"
@@ -163,7 +163,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.923"
         app:layout_constraintStart_toEndOf="@+id/buy_heliosButton"
-        app:layout_constraintTop_toBottomOf="@+id/buy_multiplier_rodney" />
+        app:layout_constraintTop_toBottomOf="@+id/buy_heliosButton" />
 
     <ImageButton
         android:id="@+id/home_button"
