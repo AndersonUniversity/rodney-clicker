@@ -47,7 +47,7 @@ class SaveDataTest {
         Thread.sleep(1000)
 
         // Check to see if the values are saved on the ui
-        onView(withId(R.id.total_rodneys)).check(matches(withText("Total Rodneys: 1")))
-        onView(withId(R.id.ravenDollarsPerSecond)).check(matches(withText("Raven Dollars Per Second: 2")))
+        onView(withId(R.id.total_rodneys)).check(matches(withText("1")))
+        onView(withId(R.id.ravenDollarsPerSecond)).check(matches(withText("2 R$/s")))
     }
 }

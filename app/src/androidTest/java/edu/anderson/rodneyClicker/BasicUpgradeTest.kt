@@ -39,6 +39,6 @@ class BasicUpgradeTest {
         Thread.sleep(1000)
 
         // Confirm that value increments
-        onView(withId(R.id.total_rodneys)).check(matches(withText("Total Rodneys: 1")))
+        onView(withId(R.id.total_rodneys)).check(matches(withText("1")))
     }
 }

@@ -64,7 +64,7 @@
         android:scaleType="fitCenter"
         android:scaleX="2.15"
         android:scaleY="2.15"
-        android:src="@drawable/heliosupgrade"
+        android:src="@drawable/santaupgrade"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buy_rodneyButton" />
 
@@ -81,7 +81,7 @@
         android:scaleType="fitCenter"
         android:scaleX="2.15"
         android:scaleY="2.15"
-        android:src="@drawable/heliosupgrade"
+        android:src="@drawable/koontzupgrade"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buy_rodneyButton" />
 
@@ -98,7 +98,7 @@
         android:scaleType="fitCenter"
         android:scaleX="2.15"
         android:scaleY="2.15"
-        android:src="@drawable/heliosupgrade"
+        android:src="@drawable/flameupgrade"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buy_rodneyButton" />
 
@@ -226,7 +226,7 @@
         android:fontFamily="@font/ubuntu_bold"
         android:text="Raven Dollars: 0"
         android:textAlignment="center"
-        android:textColor="#388E3C"
+        android:textColor="#EFF4F0"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

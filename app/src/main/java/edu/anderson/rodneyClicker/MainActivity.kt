@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         val newTotalRavenDollars = FormatNum.formatNumberTRD((totalRavenDollars.toLong()))
         ravenDollars.text = newRavenDollars
         totalRavens.text = newTotalRavenDollars
-        totalRavens.text = String.format(newTotalRavenDollars)
+        totalRavens.text = newTotalRavenDollars
     }
 
     val rodney = ClickersAndUpgrades.AutoClicker(1, 0, 1)
@@ -81,11 +81,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateClicker(view: MainActivity) {
         ClickersAndUpgrades.addClicker(numRodneyUpgrades, numHeliosUpgrades, numEternalFlameUpgrades, numKoontzUpgrades, numJoshTandyUpgrades, rodney, helios, eternalFlame, koontz, joshTandy)
-        findViewById<TextView>(R.id.total_rodneys).text = String.format("Total Rodneys: %d", rodney.numOwned)
-        findViewById<TextView>(R.id.total_helios).text = String.format("Total Helios: %d", helios.numOwned)
-        findViewById<TextView>(R.id.total_eternalFlame).text = String.format("Total Eternal Flames: %d", eternalFlame.numOwned)
-        findViewById<TextView>(R.id.total_koontz).text = String.format("Total Koontz: %d", koontz.numOwned)
-        findViewById<TextView>(R.id.total_joshTandy).text = String.format("Total Josh Tandy: %d", joshTandy.numOwned)
+        findViewById<TextView>(R.id.total_rodneys).text = String.format(rodney.numOwned.toString())
+        findViewById<TextView>(R.id.total_helios).text = String.format(helios.numOwned.toString())
+        findViewById<TextView>(R.id.total_eternalFlame).text = String.format(eternalFlame.numOwned.toString())
+        findViewById<TextView>(R.id.total_koontz).text = String.format(koontz.numOwned.toString())
+        findViewById<TextView>(R.id.total_joshTandy).text = String.format(joshTandy.numOwned.toString())
     }
 
     /**Adds the multipliers to the clickers*/
@@ -113,6 +113,8 @@ class MainActivity : AppCompatActivity() {
                     findViewById<TextView>(R.id.totalRavenDollars).text = FormatNum.formatNumberTRD((totalRavenDollars.toLong()))
                     val currAchievement = checkAchievements(totalRavenDollars, totalClicks, numRodneyUpgrades, numHeliosUpgrades, numEternalFlameUpgrades, numKoontzUpgrades, numJoshTandyUpgrades)
                     setAchievementView(currAchievement)
+                    findViewById<TextView>(R.id.ravenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
+                    findViewById<TextView>(R.id.totalRavenDollars).text = FormatNum.formatNumberTRD((totalRavenDollars.toLong()))
                     handler.postDelayed(this, 1000)
                 }
             },
@@ -132,7 +134,7 @@ class MainActivity : AppCompatActivity() {
             putString("Helios_Clickers", helios.numOwned.toString())
             putString("Helios_Multipliers", helios.multiplier.toString())
             putString("Total_Clicks", totalClicks.toString())
-            putString("Completed_Achievements_String", completedAchievements.toString())
+            putString("Completed_Achievements_String", completedAchievements)
             putString("Eternal_Flame_Clickers", eternalFlame.numOwned.toString())
             putString("Eternal_Flame_Multipliers", eternalFlame.multiplier.toString())
             putString("Koontz_Clickers", koontz.numOwned.toString())
@@ -175,7 +177,7 @@ class MainActivity : AppCompatActivity() {
             totalRavenDollars = allRavenDollars.toLong()
         }
         if (savedRodneyClickers != null) {
-            findViewById<TextView>(R.id.total_rodneys).text = String.format("Total Rodneys: %s", savedRodneyClickers)
+            findViewById<TextView>(R.id.total_rodneys).text = "$savedRodneyClickers"
             rodney.numOwned = savedRodneyClickers.toInt()
             numRodneyUpgrades = savedRodneyClickers.toInt()
         }
@@ -183,7 +185,7 @@ class MainActivity : AppCompatActivity() {
             numRodneyMultipliers = savedRodneyClickersMultipliers.toInt()
         }
         if (savedHeliosClickers != null) {
-            findViewById<TextView>(R.id.total_helios).text = String.format("Total Helios: %s", savedHeliosClickers)
+            findViewById<TextView>(R.id.total_helios).text = "$savedHeliosClickers"
             helios.numOwned = savedHeliosClickers.toInt()
             numHeliosUpgrades = savedHeliosClickers.toInt()
         }
@@ -191,7 +193,7 @@ class MainActivity : AppCompatActivity() {
             numHeliosMultipliers = savedHeliosClickersMultipliers.toInt()
         }
         if (savedEternalFlameClickers != null) {
-            findViewById<TextView>(R.id.total_eternalFlame).text = String.format("Total Eternal Flame: %s", savedEternalFlameClickers)
+            findViewById<TextView>(R.id.total_eternalFlame).text = String.format(savedEternalFlameClickers)
             eternalFlame.numOwned = savedEternalFlameClickers.toInt()
             numEternalFlameUpgrades = savedEternalFlameClickers.toInt()
         }
@@ -199,7 +201,7 @@ class MainActivity : AppCompatActivity() {
             numEternalFlameMultipliers = savedEternalFlameClickersMultipliers.toInt()
         }
         if (savedKoontzClickers != null) {
-            findViewById<TextView>(R.id.total_koontz).text = String.format("Total Koontz: %s", savedKoontzClickers)
+            findViewById<TextView>(R.id.total_koontz).text = String.format(savedKoontzClickers)
             koontz.numOwned = savedKoontzClickers.toInt()
             numKoontzUpgrades = savedKoontzClickers.toInt()
         }
@@ -207,7 +209,7 @@ class MainActivity : AppCompatActivity() {
             numKoontzMultipliers = savedKoontzClickersMultipliers.toInt()
         }
         if (savedJoshTandyClickers != null) {
-            findViewById<TextView>(R.id.total_joshTandy).text = String.format("Total Josh Tandy: %s", savedJoshTandyClickers)
+            findViewById<TextView>(R.id.total_joshTandy).text = String.format(savedJoshTandyClickers)
             joshTandy.numOwned = savedJoshTandyClickers.toInt()
             numJoshTandyUpgrades = savedJoshTandyClickers.toInt()
         }
@@ -224,7 +226,7 @@ class MainActivity : AppCompatActivity() {
         val viewText = findViewById<TextView>(R.id.ravenDollarsPerSecond)
         val currRDPS = (totalRodney + totalHelios + totalEternalFlame + totalKoontz + totalJoshTandy).toString()
         val formattedRDPS = FormatNum.formatNumber(currRDPS.toLong())
-        val displayText = "Raven Dollars Per Second: " + formattedRDPS.substring(2, formattedRDPS.length)
+        val displayText = formattedRDPS.substring(2, formattedRDPS.length) + " R$/s"
         viewText.text = displayText
     }
     private fun setAchievementView(text: String) {
