@@ -66,8 +66,8 @@ class MainActivity : AppCompatActivity() {
         numRavenDollars += 1
         totalRavenDollars += 1
         totalClicks++
-        val newRavenDollars = FormatNum.formatNumber(numRavenDollars.toLong())
-        val newTotalRavenDollars = FormatNum.formatNumberTRD((totalRavenDollars.toLong()))
+        val newRavenDollars = FormatNum.formatNumber(numRavenDollars)
+        val newTotalRavenDollars = FormatNum.formatNumberTRD((totalRavenDollars))
         ravenDollars.text = newRavenDollars
         totalRavens.text = newTotalRavenDollars
         totalRavens.text = newTotalRavenDollars
@@ -75,9 +75,9 @@ class MainActivity : AppCompatActivity() {
 
     val rodney = ClickersAndUpgrades.AutoClicker(1, 0, 1)
     val helios = ClickersAndUpgrades.AutoClicker(5, 0, 1)
-    val eternalFlame = ClickersAndUpgrades.AutoClicker(10, 0, 1)
-    val koontz = ClickersAndUpgrades.AutoClicker(15, 0, 1)
-    val joshTandy = ClickersAndUpgrades.AutoClicker(20, 0, 1)
+    val eternalFlame = ClickersAndUpgrades.AutoClicker(15, 0, 1)
+    val koontz = ClickersAndUpgrades.AutoClicker(30, 0, 1)
+    val joshTandy = ClickersAndUpgrades.AutoClicker(50, 0, 1)
 
     private fun updateClicker(view: MainActivity) {
         ClickersAndUpgrades.addClicker(numRodneyUpgrades, numHeliosUpgrades, numEternalFlameUpgrades, numKoontzUpgrades, numJoshTandyUpgrades, rodney, helios, eternalFlame, koontz, joshTandy)
@@ -109,12 +109,16 @@ class MainActivity : AppCompatActivity() {
                     val toAdd = rodneyAdd + heliosAdd + eternalFlameAdd + koontzAdd + joshTandyAdd
                     numRavenDollars += toAdd
                     totalRavenDollars += toAdd
-                    findViewById<TextView>(R.id.ravenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
-                    findViewById<TextView>(R.id.totalRavenDollars).text = FormatNum.formatNumberTRD((totalRavenDollars.toLong()))
+                    findViewById<TextView>(R.id.ravenDollars).text = FormatNum.formatNumber(
+                        numRavenDollars
+                    )
+                    findViewById<TextView>(R.id.totalRavenDollars).text = FormatNum.formatNumberTRD((totalRavenDollars))
                     val currAchievement = checkAchievements(totalRavenDollars, totalClicks, numRodneyUpgrades, numHeliosUpgrades, numEternalFlameUpgrades, numKoontzUpgrades, numJoshTandyUpgrades)
                     setAchievementView(currAchievement)
-                    findViewById<TextView>(R.id.ravenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
-                    findViewById<TextView>(R.id.totalRavenDollars).text = FormatNum.formatNumberTRD((totalRavenDollars.toLong()))
+                    findViewById<TextView>(R.id.ravenDollars).text = FormatNum.formatNumber(
+                        numRavenDollars
+                    )
+                    findViewById<TextView>(R.id.totalRavenDollars).text = FormatNum.formatNumberTRD((totalRavenDollars))
                     handler.postDelayed(this, 1000)
                 }
             },

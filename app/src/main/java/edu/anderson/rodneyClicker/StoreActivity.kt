@@ -23,10 +23,16 @@ class StoreActivity : AppCompatActivity() {
     private var numTotalKoontzMultipliers = 0
     private var numTotalJoshTandyUpgrades = 0
     private var numTotalJoshTandyMultipliers = 0
+    var gameLoopRunning = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.upgrade_layout)
+    }
+
+    override fun onPause(){
+        super.onPause()
+        gameLoopRunning = false
     }
 
     override fun onResume() {
@@ -56,7 +62,8 @@ class StoreActivity : AppCompatActivity() {
         numTotalJoshTandyUpgrades = sharedPref.getString("Josh_Tandy_Clickers", "0")?.toInt() ?: 0
         numTotalJoshTandyMultipliers = sharedPref.getString("Josh_Tandy_Multipliers", "0")?.toInt() ?: 0
 
-        findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
+        findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars)
+        gameLoopRunning = true
         gameLoop(this)
     }
 
@@ -88,15 +95,17 @@ class StoreActivity : AppCompatActivity() {
 
     val rodney = ClickersAndUpgrades.AutoClicker(1, 0, 1)
     val helios = ClickersAndUpgrades.AutoClicker(5, 0, 1)
-    val eternalFlame = ClickersAndUpgrades.AutoClicker(10, 0, 1)
-    val koontz = ClickersAndUpgrades.AutoClicker(15, 0, 1)
-    val joshTandy = ClickersAndUpgrades.AutoClicker(20, 0, 1)
+    val eternalFlame = ClickersAndUpgrades.AutoClicker(15, 0, 1)
+    val koontz = ClickersAndUpgrades.AutoClicker(30, 0, 1)
+    val joshTandy = ClickersAndUpgrades.AutoClicker(50, 0, 1)
 
     private fun gameLoop(view: StoreActivity) {
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed(
             object : Runnable {
                 override fun run() {
+                    if (!gameLoopRunning) { return }
+
                     ClickersAndUpgrades.addClicker(numTotalRodneyUpgrades, numTotalHeliosUpgrades, numTotalEternalFlameUpgrades, numTotalKoontzUpgrades, numTotalJoshTandyUpgrades, rodney, helios, eternalFlame, koontz, joshTandy)
                     ClickersAndUpgrades.addMultiplier(numTotalRodneyMultipliers, numTotalHeliosMultipliers, numTotalEternalFlameMultipliers, numTotalKoontzMultipliers, numTotalJoshTandyMultipliers, rodney, helios, eternalFlame, koontz, joshTandy)
                     val rodneyAdd = (rodney.dps * rodney.numOwned * rodney.multiplier)
@@ -107,7 +116,9 @@ class StoreActivity : AppCompatActivity() {
                     val toAdd = rodneyAdd + heliosAdd + eternalFlameAdd + koontzAdd + joshTandyAdd
                     numRavenDollars += toAdd
                     numTotalRavenDollars += toAdd
-                    findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
+                    findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(
+                        numRavenDollars
+                    )
                     handler.postDelayed(this, 1000)
                 }
             },
@@ -119,7 +130,9 @@ class StoreActivity : AppCompatActivity() {
         val cost = if (numOwned == 0) { baseCost } else { (baseCost * baseCostMultiplier * numOwned).toInt() }
         return if (numRavenDollars >= cost) {
             numRavenDollars -= cost
-            findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
+            findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(
+                numRavenDollars
+            )
             1
         } else {
             0
