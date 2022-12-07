@@ -19,12 +19,12 @@ class SaveDataTest {
 
     @Test
     fun saveData() {
-        // Click the Rodney button 115 times
+        // Click the Rodney button 25 times
         for (i in 1..25) {
             onView(withId(R.id.ravenButton)).perform(ViewActions.click())
         }
 
-        // Confirm that value is 115
+        // Confirm that value is 25
         onView(withId(R.id.ravenDollars)).check(matches(withText("R$25")))
 
         // Open the store page
@@ -44,7 +44,7 @@ class SaveDataTest {
         Thread.sleep(1000)
 
         // Check to see if the values are saved on the ui
-        onView(withId(R.id.total_rodneys)).check(matches(withText("Total Rodneys: 2")))
-        onView(withId(R.id.ravenDollarsPerSecond)).check(matches(withText("Raven Dollars Per Second: 2")))
+        onView(withId(R.id.total_rodneys)).check(matches(withText("2")))
+        onView(withId(R.id.ravenDollarsPerSecond)).check(matches(withText("2 R$/s")))
     }
 }

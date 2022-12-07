@@ -12,8 +12,8 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 
 class StoreActivity : AppCompatActivity() {
-    private var numRavenDollars = 0
-    private var numTotalRavenDollars = 0
+    private var numRavenDollars = 0L
+    private var numTotalRavenDollars = 0L
     private var numTotalRodneyUpgrades = 0
     private var numTotalRodneyMultipliers = 0
     private var rodneyCost = 10
@@ -54,8 +54,8 @@ class StoreActivity : AppCompatActivity() {
         onBackPressedDispatcher.addCallback(callback)
 
         val sharedPref = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        numRavenDollars = sharedPref.getString("Raven_Dollars", "0")?.toInt() ?: 0
-        numTotalRavenDollars = sharedPref.getString("Total_Raven_Dollars", "0")?.toInt() ?: 0
+        numRavenDollars = sharedPref.getString("Raven_Dollars", "0")?.toLong() ?: 0
+        numTotalRavenDollars = sharedPref.getString("Total_Raven_Dollars", "0")?.toLong() ?: 0
         numTotalRodneyUpgrades = sharedPref.getString("Rodney_Clickers", "0")?.toInt() ?: 0
         numTotalRodneyMultipliers = sharedPref.getString("Rodney_Multipliers", "0")?.toInt() ?: 0
         numTotalHeliosUpgrades = sharedPref.getString("Helios_Clickers", "0")?.toInt() ?: 0
