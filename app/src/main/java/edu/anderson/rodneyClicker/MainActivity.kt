@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
         val newTotalRavenDollars = FormatNum.formatNumberTRD((totalRavenDollars.toLong()))
         ravenDollars.text = newRavenDollars
         totalRavens.text = newTotalRavenDollars
-        totalRavens.text = String.format("R$$newTotalRavenDollars")
+        totalRavens.text = newTotalRavenDollars
     }
 
     val rodney = ClickersAndUpgrades.AutoClicker(1, 0, 1)
