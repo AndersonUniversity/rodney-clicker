@@ -14,7 +14,7 @@
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="37dp"
         android:layout_marginEnd="24dp"
         android:adjustViewBounds="true"
         android:background="@null"
@@ -28,14 +28,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.923"
         app:layout_constraintStart_toEndOf="@+id/buy_heliosButton"
-        app:layout_constraintTop_toBottomOf="@+id/buy_multiplier_rodney" />
+        app:layout_constraintTop_toBottomOf="@+id/buy_eternalFlame" />
 
     <ImageButton
         android:id="@+id/buy_multiplier_joshTandy"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="264dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="24dp"
         android:adjustViewBounds="true"
         android:background="@null"
@@ -49,7 +49,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.923"
         app:layout_constraintStart_toEndOf="@+id/buy_heliosButton"
-        app:layout_constraintTop_toBottomOf="@+id/buy_multiplier_rodney" />
+        app:layout_constraintTop_toBottomOf="@+id/buy_koontz" />
 
     <ImageButton
         android:id="@+id/buy_joshTandy"
@@ -128,7 +128,7 @@
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="148dp"
         android:layout_marginEnd="24dp"
         android:adjustViewBounds="true"
         android:background="@null"
@@ -142,14 +142,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.923"
         app:layout_constraintStart_toEndOf="@+id/buy_heliosButton"
-        app:layout_constraintTop_toBottomOf="@+id/buy_multiplier_rodney" />
+        app:layout_constraintTop_toBottomOf="@+id/currRavenDollars" />
 
     <ImageButton
         android:id="@+id/buy_multiplier_eternalFlame"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="24dp"
         android:adjustViewBounds="true"
         android:background="@null"
@@ -163,7 +163,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.923"
         app:layout_constraintStart_toEndOf="@+id/buy_heliosButton"
-        app:layout_constraintTop_toBottomOf="@+id/buy_multiplier_rodney" />
+        app:layout_constraintTop_toBottomOf="@+id/buy_heliosButton" />
 
     <ImageButton
         android:id="@+id/home_button"
@@ -231,5 +231,90 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/rodney_cost_text"
+        android:layout_width="55dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="81dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginBottom="1dp"
+        android:text="R$10"
+        android:textAlignment="center"
+        android:textSize="10sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/buy_heliosButton"
+        app:layout_constraintEnd_toEndOf="@+id/currRavenDollars"
+        app:layout_constraintStart_toEndOf="@+id/buy_rodneyButton"
+        app:layout_constraintTop_toBottomOf="@+id/currRavenDollars"
+        app:layout_constraintVertical_bias="0.187"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/helios_cost_text"
+        android:layout_width="59dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="121dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="72dp"
+        android:text="R$100"
+        android:textAlignment="center"
+        android:textSize="10sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/currRavenDollars"
+        app:layout_constraintHorizontal_bias="0.46"
+        app:layout_constraintStart_toStartOf="@+id/buy_heliosButton"
+        app:layout_constraintTop_toBottomOf="@+id/rodney_cost_text"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/eternalFlame_cost_text"
+        android:layout_width="57dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="72dp"
+        android:text="R$500"
+        android:textAlignment="center"
+        android:textSize="10sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/buy_koontz"
+        app:layout_constraintEnd_toEndOf="@+id/currRavenDollars"
+        app:layout_constraintHorizontal_bias="0.64"
+        app:layout_constraintStart_toStartOf="@+id/buy_heliosButton"
+        app:layout_constraintTop_toBottomOf="@+id/helios_cost_text"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/koontz_cost_text"
+        android:layout_width="60dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:text="R$1000"
+        android:textAlignment="center"
+        android:textSize="10sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/buy_joshTandy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eternalFlame_cost_text"
+        app:layout_constraintVertical_bias="0.494"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/joshTandy_cost_text"
+        android:layout_width="58dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="178dp"
+        android:layout_marginTop="53dp"
+        android:text="R$2000"
+        android:textAlignment="center"
+        android:textSize="10sp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/koontz_cost_text"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
