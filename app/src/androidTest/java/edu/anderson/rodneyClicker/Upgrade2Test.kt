@@ -39,6 +39,6 @@ class Upgrade2Test {
         Thread.sleep(1000)
 
         // Confirm that value increments
-        onView(withId(R.id.total_helios)).check(matches(withText("Total Helios: 1")))
+        onView(withId(R.id.total_helios)).check(matches(withText("1")))
     }
 }
