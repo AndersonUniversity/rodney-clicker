@@ -257,7 +257,7 @@ class StoreActivity : AppCompatActivity() {
         rodneyMilestone = sharedPref.getString("rodney_milestone", "25")!!.toInt()
         heliosMilestone = sharedPref.getString("helios_milestone", "25")!!.toInt()
         eternalFlameMilestone = sharedPref.getString("eternal_flame_milestone", "25")!!.toInt()
-        koontzMilestone = sharedPref.getString("koontz_mile+stone", "25")!!.toInt()
+        koontzMilestone = sharedPref.getString("koontz_milestone", "25")!!.toInt()
         joshTandyMilestone = sharedPref.getString("josh_tandy_milestone", "25")!!.toInt()
     }
 }
