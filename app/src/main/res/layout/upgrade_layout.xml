@@ -51,42 +51,29 @@
         app:layout_constraintStart_toEndOf="@+id/buy_heliosButton"
         app:layout_constraintTop_toBottomOf="@+id/buy_multiplier_rodney" />
 
-    <FrameLayout
-        android:layout_width="234dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="248dp"
+    <ImageButton
+        android:id="@+id/buy_joshTandy"
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="276dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:onClick="buyJoshTandy"
+        android:padding="@null"
+        android:scaleType="fitCenter"
+        android:scaleX="2.15"
+        android:scaleY="2.15"
+        android:src="@drawable/santaupgrade"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buy_rodneyButton">
-
-        <ImageButton
-            android:id="@+id/buy_joshTandy"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:background="@null"
-            android:onClick="buyJoshTandy"
-            android:padding="@null"
-            android:scaleType="fitXY"
-            android:src="@drawable/heliosupgrade" />
-
-        <TextView
-            android:id="@+id/tandyValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:layout_marginLeft="64dp"
-            android:clickable="false"
-            android:text="0R$/s"/>
-
-    </FrameLayout>
+        app:layout_constraintTop_toBottomOf="@+id/buy_rodneyButton" />
 
     <ImageButton
         android:id="@+id/buy_koontz"
         android:layout_width="120dp"
         android:layout_height="30dp"
         android:layout_marginStart="72dp"
-        android:layout_marginTop="192dp"
+        android:layout_marginTop="200dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:onClick="buyKoontz"
@@ -94,7 +81,7 @@
         android:scaleType="fitCenter"
         android:scaleX="2.15"
         android:scaleY="2.15"
-        android:src="@drawable/heliosupgrade"
+        android:src="@drawable/koontzupgrade"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buy_rodneyButton" />
 
@@ -111,7 +98,7 @@
         android:scaleType="fitCenter"
         android:scaleX="2.15"
         android:scaleY="2.15"
-        android:src="@drawable/heliosupgrade"
+        android:src="@drawable/flameupgrade"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buy_rodneyButton" />
 
@@ -239,12 +226,10 @@
         android:fontFamily="@font/ubuntu_bold"
         android:text="Raven Dollars: 0"
         android:textAlignment="center"
-        android:textColor="#388E3C"
+        android:textColor="#EFF4F0"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
