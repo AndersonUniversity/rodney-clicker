@@ -10,8 +10,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
-    var numRavenDollars = 0
-    var totalRavenDollars = 0
+    var numRavenDollars = 0L
+    var totalRavenDollars = 0L
     var numRodneyUpgrades = 0
     var numRodneyMultipliers = 0
     var numHeliosUpgrades = 0
@@ -165,14 +165,14 @@ class MainActivity : AppCompatActivity() {
         }
         if (savedRavenDollars != null) {
             findViewById<TextView>(R.id.ravenDollars).text = FormatNum.formatNumber(savedRavenDollars.toLong())
-            numRavenDollars = savedRavenDollars.toInt()
+            numRavenDollars = savedRavenDollars.toLong()
         }
         if (savedClicks != null) {
             totalClicks = savedClicks.toInt()
         }
         if (allRavenDollars != null) {
             findViewById<TextView>(R.id.totalRavenDollars).text = FormatNum.formatNumberTRD((allRavenDollars.toLong()))
-            totalRavenDollars = allRavenDollars.toInt()
+            totalRavenDollars = allRavenDollars.toLong()
         }
         if (savedRodneyClickers != null) {
             findViewById<TextView>(R.id.total_rodneys).text = String.format("Total Rodneys: %s", savedRodneyClickers)
