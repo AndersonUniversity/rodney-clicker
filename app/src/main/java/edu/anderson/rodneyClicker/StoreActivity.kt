@@ -49,14 +49,18 @@ class StoreActivity : AppCompatActivity() {
         numTotalRodneyMultipliers = sharedPref.getString("Rodney_Multipliers", "0")?.toInt() ?: 0
         numTotalHeliosUpgrades = sharedPref.getString("Helios_Clickers", "0")?.toInt() ?: 0
         numTotalHeliosMultipliers = sharedPref.getString("Helios_Multipliers", "0")?.toInt() ?: 0
-        numTotalEternalFlameUpgrades = sharedPref.getString("Eternal_Flame_Clickers", "0")?.toInt() ?: 0
-        numTotalEternalFlameMultipliers = sharedPref.getString("Eternal_Flame_Multipliers", "0")?.toInt() ?: 0
+        numTotalEternalFlameUpgrades =
+            sharedPref.getString("Eternal_Flame_Clickers", "0")?.toInt() ?: 0
+        numTotalEternalFlameMultipliers =
+            sharedPref.getString("Eternal_Flame_Multipliers", "0")?.toInt() ?: 0
         numTotalKoontzUpgrades = sharedPref.getString("Koontz_Clickers", "0")?.toInt() ?: 0
         numTotalKoontzMultipliers = sharedPref.getString("Koontz_Multipliers", "0")?.toInt() ?: 0
         numTotalJoshTandyUpgrades = sharedPref.getString("Josh_Tandy_Clickers", "0")?.toInt() ?: 0
-        numTotalJoshTandyMultipliers = sharedPref.getString("Josh_Tandy_Multipliers", "0")?.toInt() ?: 0
+        numTotalJoshTandyMultipliers =
+            sharedPref.getString("Josh_Tandy_Multipliers", "0")?.toInt() ?: 0
 
-        findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
+        findViewById<TextView>(R.id.currRavenDollars).text =
+            FormatNum.formatNumber(numRavenDollars.toLong())
         gameLoop(this)
     }
 
@@ -97,17 +101,44 @@ class StoreActivity : AppCompatActivity() {
         handler.postDelayed(
             object : Runnable {
                 override fun run() {
-                    ClickersAndUpgrades.addClicker(numTotalRodneyUpgrades, numTotalHeliosUpgrades, numTotalEternalFlameUpgrades, numTotalKoontzUpgrades, numTotalJoshTandyUpgrades, rodney, helios, eternalFlame, koontz, joshTandy)
-                    ClickersAndUpgrades.addMultiplier(numTotalRodneyMultipliers, numTotalHeliosMultipliers, numTotalEternalFlameMultipliers, numTotalKoontzMultipliers, numTotalJoshTandyMultipliers, rodney, helios, eternalFlame, koontz, joshTandy)
+                    ClickersAndUpgrades.addClicker(
+                        numTotalRodneyUpgrades,
+                        numTotalHeliosUpgrades,
+                        numTotalEternalFlameUpgrades,
+                        numTotalKoontzUpgrades,
+                        numTotalJoshTandyUpgrades,
+                        rodney,
+                        helios,
+                        eternalFlame,
+                        koontz,
+                        joshTandy
+                    )
+                    ClickersAndUpgrades.addMultiplier(
+                        numTotalRodneyMultipliers,
+                        numTotalHeliosMultipliers,
+                        numTotalEternalFlameMultipliers,
+                        numTotalKoontzMultipliers,
+                        numTotalJoshTandyMultipliers,
+                        rodney,
+                        helios,
+                        eternalFlame,
+                        koontz,
+                        joshTandy
+                    )
                     val rodneyAdd = (rodney.dps * rodney.numOwned * rodney.multiplier)
                     val heliosAdd = (helios.dps * helios.numOwned * helios.multiplier)
-                    val eternalFlameAdd = (eternalFlame.dps * eternalFlame.numOwned * eternalFlame.multiplier)
+                    val eternalFlameAdd =
+                        (eternalFlame.dps * eternalFlame.numOwned * eternalFlame.multiplier)
                     val koontzAdd = (koontz.dps * koontz.numOwned * koontz.multiplier)
                     val joshTandyAdd = (joshTandy.dps * joshTandy.numOwned * joshTandy.multiplier)
+
                     val toAdd = rodneyAdd + heliosAdd + eternalFlameAdd + koontzAdd + joshTandyAdd
                     numRavenDollars += toAdd
                     numTotalRavenDollars += toAdd
-                    findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
+                    findViewById<TextView>(R.id.tandyValue).text =
+                        "+" + FormatNum.formatNumber((numTotalJoshTandyMultipliers*20).toLong()) + "R$/s"
+                    findViewById<TextView>(R.id.currRavenDollars).text =
+                        FormatNum.formatNumber(numRavenDollars.toLong())
                     handler.postDelayed(this, 1000)
                 }
             },
@@ -116,42 +147,58 @@ class StoreActivity : AppCompatActivity() {
     }
 
     private fun calcCost(numOwned: Int, baseCost: Int, baseCostMultiplier: Double): Int {
-        val cost = if (numOwned == 0) { baseCost } else { (baseCost * baseCostMultiplier * numOwned).toInt() }
+        val cost = if (numOwned == 0) {
+            baseCost
+        } else {
+            (baseCost * baseCostMultiplier * numOwned).toInt()
+        }
         return if (numRavenDollars >= cost) {
             numRavenDollars -= cost
-            findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
+            findViewById<TextView>(R.id.currRavenDollars).text =
+                FormatNum.formatNumber(numRavenDollars.toLong())
             1
         } else {
             0
         }
     }
+
     fun buyRodney(view: View) {
         numTotalRodneyUpgrades += calcCost(numTotalRodneyUpgrades, 10, 1.15)
     }
+
     fun buyHelios(view: View) {
         numTotalHeliosUpgrades += calcCost(numTotalHeliosUpgrades, 100, 1.15)
     }
+
     fun buyEternalFlame(view: View) {
         numTotalEternalFlameUpgrades += calcCost(numTotalEternalFlameUpgrades, 500, 1.15)
     }
+
     fun buyKoontz(view: View) {
         numTotalKoontzUpgrades += calcCost(numTotalKoontzUpgrades, 1000, 1.15)
     }
+
     fun buyJoshTandy(view: View) {
         numTotalJoshTandyUpgrades += calcCost(numTotalJoshTandyUpgrades, 2000, 1.15)
     }
+
     fun buyRodneyMultiplier(view: View) {
         numTotalRodneyMultipliers += calcCost(numTotalRodneyMultipliers - 1, 100, 1.5)
+
     }
+
     fun buyHeliosMultiplier(view: View) {
         numTotalHeliosMultipliers += calcCost(numTotalHeliosMultipliers - 1, 500, 1.5)
     }
+
     fun buyEternalFlameMultiplier(view: View) {
         numTotalEternalFlameMultipliers += calcCost(numTotalEternalFlameMultipliers - 1, 750, 1.5)
     }
+
     fun buyKoontzMultiplier(view: View) {
         numTotalKoontzMultipliers += calcCost(numTotalKoontzMultipliers - 1, 1250, 1.5)
     }
+
     fun buyJoshTandyMultiplier(view: View) {
         numTotalJoshTandyMultipliers += calcCost(numTotalJoshTandyMultipliers - 1, 2250, 1.5)
     }
