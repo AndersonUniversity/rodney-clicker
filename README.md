@@ -1,6 +1,15 @@
-Michael Carroll
-Jacob Spires
-Francis Uzorh
-Johnathan Alford
-Conor Nowlan
-Emmalee Paarlberg
+# **CPSC 4430: Software Engineering Final Project - Rodney Clicker**
+
+Welcome to our Software Engineering final project. We call this final project Rodney Clicker, based off the popular web game and app, Cookie Clicker. Our class designed ours to be centered around Anderson University where we attend school at.
+
+This game is a simple clicker game that allows the user to click on a button to gain points. The user can then use these points to purchase upgrades to increase the amount of points they gain per click. The game is designed to be simple and easy to play, and is meant to be a fun way to pass the time.
+
+We had a few in the scope of programming languages when creating this game, we could've used either Kotlin or Java. Ultimately, we created this game in Android Studio using _Kotlin_ as our programming language as it had better functionality overall with more possibilities in the future. We used the Android Studio IDE to create the game, and used Git and GitHub to collaborate on the project. In addition, we also used Discord to communicate with each other and keep track of our progress, and used a webhook to monitor GitHub processes such as checks passing, pull requests being merged, files being pushed.
+
+Regardless of the programming language you use, two tools that every developer uses on a daily basis are the command line and version control. The command line allows developers to quickly and efficiently interface with their operating system and software. To begin, we'll use the command line to navigate the file tree and create directories and files. Later, we'll use it to install software dependencies and run servers, among other tasks. Version control is an approach to managing changes in files without the need to make multiple copies of those files. We'll learn Git, which is the most popular version control system. Git integrates with GitHub.com, a site for developers to host and share their code. We will deploy our first website using GitHub Pages.
+
+The first, and perhaps most important, file we'll create is index.html, which is the default entry point for any web application. All of our subsequent work will build on this initial starting point. The file suffix .html refers to HTML, or Hypertext Markup Language. HTML allows us to format webpages and text in a similar way to how a word processor formats documents and the text inside them. However, the biggest difference between HTML and a word processor is the ability to link between any document that's on the web, anywhere in the world. This is the "hypertext" in HTML.
+
+Though HTML is enough to create a simple website, it falls a bit short in the design department. So we'll add color, fonts, and element positioning by adding CSS (Cascading Style Sheets) to our HTML files to make them visually dynamic. In the next unit, we'll learn CSS frameworks that can expedite our development process.
+
+Subsequent units will build on this foundation of HTML, CSS, and version control as we add JavaScript, servers, and databases to our stack to build interactive web applications.
