@@ -41,7 +41,7 @@ class StoreActivity : AppCompatActivity() {
         setContentView(R.layout.upgrade_layout)
     }
 
-    override fun onPause(){
+    override fun onPause() {
         super.onPause()
         gameLoopRunning = false
     }
@@ -167,9 +167,7 @@ class StoreActivity : AppCompatActivity() {
                     val toAdd = rodneyAdd + heliosAdd + eternalFlameAdd + koontzAdd + joshTandyAdd
                     numRavenDollars += toAdd
                     numTotalRavenDollars += toAdd
-                    findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(
-                        numRavenDollars
-                    )
+                    findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars)
                     handler.postDelayed(this, 1000)
                 }
             },
@@ -185,9 +183,7 @@ class StoreActivity : AppCompatActivity() {
         val cost = if (numOwned == 0) { baseCost } else { (baseCost * baseCostMultiplier * numOwned).toInt() }
         return if (numRavenDollars >= cost) {
             numRavenDollars -= cost
-            findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(
-                numRavenDollars
-            )
+            findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars)
             1
         } else {
             0
