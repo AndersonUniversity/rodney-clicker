@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     var numKoontzMultipliers = 0
     var numJoshTandyUpgrades = 0
     var numJoshTandyMultipliers = 0
+    var gameLoopRunning = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         saveData()
+        gameLoopRunning = false
     }
 
     /**Loads all the information whenever the main activity is started*/
@@ -47,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         updateMultiplier(this)
         showRDPS()
         setAchievementView("")
+        gameLoopRunning = true
         gameLoop(this)
     }
 
@@ -96,6 +99,8 @@ class MainActivity : AppCompatActivity() {
         handler.postDelayed(
             object : Runnable {
                 override fun run() {
+                    if (!gameLoopRunning) { return }
+
                     val rodneyAdd = (rodney.dps * rodney.numOwned * rodney.multiplier)
                     val heliosAdd = (helios.dps * helios.numOwned * helios.multiplier)
                     val eternalFlameAdd = (eternalFlame.dps * eternalFlame.numOwned * eternalFlame.multiplier)
