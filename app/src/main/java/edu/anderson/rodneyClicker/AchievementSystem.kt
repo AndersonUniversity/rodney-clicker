@@ -2,7 +2,7 @@ package edu.anderson.rodneyClicker
 val verifyComplete = Array(10) { 0 }
 var completedAchievements = ""
 
-fun checkAchievements(totalRD: Int, totalClicks: Int, rodneys: Int, helios: Int, flames: Int, koontz: Int, tandy: Int): String {
+fun checkAchievements(totalRD: Long, totalClicks: Int, rodneys: Int, helios: Int, flames: Int, koontz: Int, tandy: Int): String {
     var achievementFound = ""
 
     if (totalRD> 999 && verifyComplete[0] <5) {
