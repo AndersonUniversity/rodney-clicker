@@ -172,11 +172,11 @@ class StoreActivity : AppCompatActivity() {
                     numRavenDollars += toAdd
                     numTotalRavenDollars += toAdd
                     findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars)
-                    findViewById<TextView>(R.id.rodneyValue).text = FormatNum.formatNumberRDPS((numTotalRodneyMultipliers*rodney.dps).toLong())
-                    findViewById<TextView>(R.id.heliosValue).text = FormatNum.formatNumberRDPS((numTotalHeliosMultipliers*helios.dps).toLong())
-                    findViewById<TextView>(R.id.flameValue).text = FormatNum.formatNumberRDPS((numTotalEternalFlameMultipliers*eternalFlame.dps).toLong())
-                    findViewById<TextView>(R.id.koontzValue).text = FormatNum.formatNumberRDPS((numTotalKoontzMultipliers*koontz.dps).toLong())
-                    findViewById<TextView>(R.id.tandyValue).text = FormatNum.formatNumberRDPS((numTotalJoshTandyMultipliers*joshTandy.dps).toLong())
+                    findViewById<TextView>(R.id.rodneyValue).text = FormatNum.formatNumberRDPS((numTotalRodneyMultipliers * rodney.dps).toLong())
+                    findViewById<TextView>(R.id.heliosValue).text = FormatNum.formatNumberRDPS((numTotalHeliosMultipliers * helios.dps).toLong())
+                    findViewById<TextView>(R.id.flameValue).text = FormatNum.formatNumberRDPS((numTotalEternalFlameMultipliers * eternalFlame.dps).toLong())
+                    findViewById<TextView>(R.id.koontzValue).text = FormatNum.formatNumberRDPS((numTotalKoontzMultipliers * koontz.dps).toLong())
+                    findViewById<TextView>(R.id.tandyValue).text = FormatNum.formatNumberRDPS((numTotalJoshTandyMultipliers * joshTandy.dps).toLong())
                     handler.postDelayed(this, 1000)
                 }
             },
