@@ -18,7 +18,6 @@ While creating this project we encountered several challenges. The first of whic
 
 The second challenge we encountered was settling upon a formatter that could be used for syntax and code style. We did some investigation and settled upon Ktlint which was an extension on the Android Studio IDE. This allowed us to have a consistent code style throughout the project.
 
-_**Add more challenges here**_
 
 ## How to Play
 
