@@ -84,6 +84,11 @@ class StoreActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.eternalFlame_cost_text).text = FormatNum.formatNumber(eternalFlameCost.toLong())
         findViewById<TextView>(R.id.koontz_cost_text).text = FormatNum.formatNumber(koontzCost.toLong())
         findViewById<TextView>(R.id.joshTandy_cost_text).text = FormatNum.formatNumber(joshTandyCost.toLong())
+        findViewById<TextView>(R.id.rodneyValue).text = FormatNum.formatNumberRDPS((numTotalRodneyMultipliers * rodney.dps).toLong())
+        findViewById<TextView>(R.id.heliosValue).text = FormatNum.formatNumberRDPS((numTotalHeliosMultipliers * helios.dps).toLong())
+        findViewById<TextView>(R.id.flameValue).text = FormatNum.formatNumberRDPS((numTotalEternalFlameMultipliers * eternalFlame.dps).toLong())
+        findViewById<TextView>(R.id.koontzValue).text = FormatNum.formatNumberRDPS((numTotalKoontzMultipliers * koontz.dps).toLong())
+        findViewById<TextView>(R.id.tandyValue).text = FormatNum.formatNumberRDPS((numTotalJoshTandyMultipliers * joshTandy.dps).toLong())
         findViewById<ImageButton>(R.id.buy_multiplier_rodney).visibility = View.GONE
         findViewById<ImageButton>(R.id.buy_multiplier_helios).visibility = View.GONE
         findViewById<ImageButton>(R.id.buy_multiplier_eternalFlame).visibility = View.GONE
@@ -158,8 +163,6 @@ class StoreActivity : AppCompatActivity() {
                 override fun run() {
                     if (!gameLoopRunning) { return }
 
-                    ClickersAndUpgrades.addClicker(numTotalRodneyUpgrades, numTotalHeliosUpgrades, numTotalEternalFlameUpgrades, numTotalKoontzUpgrades, numTotalJoshTandyUpgrades, rodney, helios, eternalFlame, koontz, joshTandy)
-                    ClickersAndUpgrades.addMultiplier(numTotalRodneyMultipliers, numTotalHeliosMultipliers, numTotalEternalFlameMultipliers, numTotalKoontzMultipliers, numTotalJoshTandyMultipliers, rodney, helios, eternalFlame, koontz, joshTandy)
                     ClickersAndUpgrades.addClicker(numTotalRodneyUpgrades, numTotalHeliosUpgrades, numTotalEternalFlameUpgrades, numTotalKoontzUpgrades, numTotalJoshTandyUpgrades, rodney, helios, eternalFlame, koontz, joshTandy)
                     ClickersAndUpgrades.addMultiplier(numTotalRodneyMultipliers, numTotalHeliosMultipliers, numTotalEternalFlameMultipliers, numTotalKoontzMultipliers, numTotalJoshTandyMultipliers, rodney, helios, eternalFlame, koontz, joshTandy)
                     val rodneyAdd = (rodney.dps * rodney.numOwned * rodney.multiplier)
