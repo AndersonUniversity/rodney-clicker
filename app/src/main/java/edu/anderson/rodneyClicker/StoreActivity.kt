@@ -70,9 +70,10 @@ class StoreActivity : AppCompatActivity() {
         numTotalEternalFlameMultipliers = sharedPref.getString("Eternal_Flame_Multipliers", "0")?.toInt() ?: 0
         numTotalKoontzUpgrades = sharedPref.getString("Koontz_Clickers", "0")?.toInt() ?: 0
         numTotalKoontzMultipliers = sharedPref.getString("Koontz_Multipliers", "0")?.toInt() ?: 0
-        numTotalJoshTandyUpgrades = sharedPref.getString("Josh_Tandy_Clickers", "0")?.toInt() ?: 0
         numTotalJoshTandyMultipliers = sharedPref.getString("Josh_Tandy_Multipliers", "0")?.toInt() ?: 0
-        numTotalJoshTandyMultipliers = sharedPref.getString("Josh_Tandy_Multipliers", "0")?.toInt() ?: 0
+        achievementCount = sharedPref.getString("Achievement_Count", "0")?.toInt() ?:0
+        completedAchievements = sharedPref.getString("Completed_Achievements_String", "")?:""
+
         /**load saved cost and milestones*/
         loadData()
 
@@ -89,6 +90,12 @@ class StoreActivity : AppCompatActivity() {
         findViewById<ImageButton>(R.id.buy_multiplier_eternalFlame).visibility = View.GONE
         findViewById<ImageButton>(R.id.buy_multiplier_koontz).visibility = View.GONE
         findViewById<ImageButton>(R.id.buy_multiplier_joshTandy).visibility = View.GONE
+        findViewById<TextView>(R.id.rodneyValue).text = "+" + FormatNum.formatNumber((numTotalRodneyMultipliers * rodney.dps).toLong()).substring(2) + "/s"
+        findViewById<TextView>(R.id.heliosValue).text = "+" + FormatNum.formatNumber((numTotalHeliosMultipliers * helios.dps).toLong()).substring(2) + "/s"
+        findViewById<TextView>(R.id.flameValue).text = "+" + FormatNum.formatNumber((numTotalEternalFlameMultipliers * eternalFlame.dps).toLong()).substring(2) + "/s"
+        findViewById<TextView>(R.id.koontzValue).text = "+" + FormatNum.formatNumber((numTotalKoontzMultipliers * koontz.dps).toLong()).substring(2) + "/s"
+        findViewById<TextView>(R.id.tandyValue).text = "+" + FormatNum.formatNumber((numTotalJoshTandyMultipliers * joshTandy.dps).toLong()).substring(2) + "/s"
+
 
         if (numTotalRodneyUpgrades >= rodneyMilestone) {
             findViewById<ImageButton>(R.id.buy_multiplier_rodney).visibility = View.VISIBLE
@@ -142,6 +149,8 @@ class StoreActivity : AppCompatActivity() {
             putString("eternal_flame_milestone", eternalFlameMilestone.toString())
             putString("koontz_milestone", koontzMilestone.toString())
             putString("josh_tandy_milestone", joshTandyMilestone.toString())
+            putString("Completed_Achievements_String", completedAchievements)
+            putString("Achievement_Count", achievementCount.toString())
         }.apply()
     }
 
@@ -160,8 +169,6 @@ class StoreActivity : AppCompatActivity() {
 
                     ClickersAndUpgrades.addClicker(numTotalRodneyUpgrades, numTotalHeliosUpgrades, numTotalEternalFlameUpgrades, numTotalKoontzUpgrades, numTotalJoshTandyUpgrades, rodney, helios, eternalFlame, koontz, joshTandy)
                     ClickersAndUpgrades.addMultiplier(numTotalRodneyMultipliers, numTotalHeliosMultipliers, numTotalEternalFlameMultipliers, numTotalKoontzMultipliers, numTotalJoshTandyMultipliers, rodney, helios, eternalFlame, koontz, joshTandy)
-                    ClickersAndUpgrades.addClicker(numTotalRodneyUpgrades, numTotalHeliosUpgrades, numTotalEternalFlameUpgrades, numTotalKoontzUpgrades, numTotalJoshTandyUpgrades, rodney, helios, eternalFlame, koontz, joshTandy)
-                    ClickersAndUpgrades.addMultiplier(numTotalRodneyMultipliers, numTotalHeliosMultipliers, numTotalEternalFlameMultipliers, numTotalKoontzMultipliers, numTotalJoshTandyMultipliers, rodney, helios, eternalFlame, koontz, joshTandy)
                     val rodneyAdd = (rodney.dps * rodney.numOwned * rodney.multiplier)
                     val heliosAdd = (helios.dps * helios.numOwned * helios.multiplier)
                     val eternalFlameAdd = (eternalFlame.dps * eternalFlame.numOwned * eternalFlame.multiplier)
@@ -176,8 +183,7 @@ class StoreActivity : AppCompatActivity() {
                     findViewById<TextView>(R.id.heliosValue).text = "+" + FormatNum.formatNumber((numTotalHeliosMultipliers * helios.dps).toLong()).substring(2) + "/s"
                     findViewById<TextView>(R.id.flameValue).text = "+" + FormatNum.formatNumber((numTotalEternalFlameMultipliers * eternalFlame.dps).toLong()).substring(2) + "/s"
                     findViewById<TextView>(R.id.koontzValue).text = "+" + FormatNum.formatNumber((numTotalKoontzMultipliers * koontz.dps).toLong()).substring(2) + "/s"
-                    findViewById<TextView>(R.id.tandyValue).text = "+" + FormatNum.formatNumber((numTotalJoshTandyMultipliers * joshTandy.dps).toLong()).substring(2) + "/s"
-                    findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars)
+                    findViewById<TextView>(R.id.tandyValue).text = "+" + (numTotalJoshTandyMultipliers * joshTandy.dps) + "/s"
                     handler.postDelayed(this, 1000)
                 }
             },

@@ -1,6 +1,7 @@
 package edu.anderson.rodneyClicker
 val verifyComplete = Array(10) { 0 }
 var completedAchievements = ""
+var achievementCount = 0
 
 fun checkAchievements(totalRD: Long, totalClicks: Int, rodneys: Int, helios: Int, flames: Int, koontz: Int, tandy: Int): String {
     var achievementFound = ""

@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
     var numJoshTandyUpgrades = 0
     var numJoshTandyMultipliers = 0
     var gameLoopRunning = false
-    var achievementCount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -140,13 +139,13 @@ class MainActivity : AppCompatActivity() {
             putString("Helios_Clickers", helios.numOwned.toString())
             putString("Helios_Multipliers", helios.multiplier.toString())
             putString("Total_Clicks", totalClicks.toString())
-            putString("Completed_Achievements_String", completedAchievements)
             putString("Eternal_Flame_Clickers", eternalFlame.numOwned.toString())
             putString("Eternal_Flame_Multipliers", eternalFlame.multiplier.toString())
             putString("Koontz_Clickers", koontz.numOwned.toString())
             putString("Koontz_Multiplier", koontz.multiplier.toString())
             putString("Josh_Tandy_Clickers", joshTandy.numOwned.toString())
             putString("Josh_Tandy_Multiplier", joshTandy.multiplier.toString())
+            putString("Completed_Achievements_String", completedAchievements)
             putString("Achievement_Count", achievementCount.toString())
         }.apply()
     }
@@ -161,7 +160,6 @@ class MainActivity : AppCompatActivity() {
         val savedHeliosClickers = sharedPref.getString("Helios_Clickers", "0")
         val savedHeliosClickersMultipliers = sharedPref.getString("Helios_Multipliers", "0")
         val savedClicks = sharedPref.getString("Total_Clicks", "0")
-        val savedAchievementString = sharedPref.getString("Completed_Achievements_String", "")
         val savedEternalFlameClickers = sharedPref.getString("Eternal_Flame_Clickers", "0")
         val savedEternalFlameClickersMultipliers = sharedPref.getString("Eternal_Flame_Multiplier", "0")
         val savedKoontzClickers = sharedPref.getString("Koontz_Clickers", "0")
@@ -169,6 +167,7 @@ class MainActivity : AppCompatActivity() {
         val savedJoshTandyClickers = sharedPref.getString("Josh_Tandy_Clickers", "0")
         val savedJoshTandyClickersMultipliers = sharedPref.getString("Josh_Tandy_Multipliers", "0")
         val savedAchievementCount = sharedPref.getString("Achievement_Count", "0")
+        val savedAchievementString = sharedPref.getString("Completed_Achievements_String", "")
 
         if (savedAchievementCount != null) {
             achievementCount = savedAchievementCount.toInt()

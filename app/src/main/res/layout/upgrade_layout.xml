@@ -76,7 +76,7 @@
             android:layout_marginLeft="65dp"
             android:layout_marginTop="34dp"
             android:clickable="false"
-            android:text="0R$/s" />
+            android:text="0/s" />
         <TextView
             android:id="@+id/joshTandy_cost_text"
             android:layout_width="59dp"
@@ -118,7 +118,7 @@
             android:layout_marginLeft="65dp"
             android:layout_marginTop="34dp"
             android:clickable="false"
-            android:text="0R$/s" />
+            android:text="0/s" />
         <TextView
             android:id="@+id/koontz_cost_text"
             android:layout_width="59dp"
@@ -162,7 +162,7 @@
             android:layout_marginLeft="65dp"
             android:layout_marginTop="34dp"
             android:clickable="false"
-            android:text="0R$/s" />
+            android:text="0/s" />
         <TextView
             android:id="@+id/eternalFlame_cost_text"
             android:layout_width="59dp"
@@ -280,7 +280,7 @@
             android:layout_marginLeft="65dp"
             android:layout_marginTop="34dp"
             android:clickable="false"
-            android:text="0R$/s" />
+            android:text="0/s" />
         <TextView
             android:id="@+id/rodney_cost_text"
             android:layout_width="59dp"
@@ -320,7 +320,7 @@
         android:layout_marginLeft="65dp"
         android:layout_marginTop="34dp"
         android:clickable="false"
-        android:text="0R$/s" />
+        android:text="0/s" />
         <TextView
             android:id="@+id/helios_cost_text"
             android:layout_width="59dp"
