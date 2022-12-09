@@ -33,7 +33,7 @@ If you would like to contribute to this project, you can do so by forking the re
 
 ##Contributors
 
-A special thanks to Jon Craton, Michael Carroll, Johnathan Alford, Conow Nowlan, Jacob Spires and Francis Uzorh, this project would not have been possible with out you all. 
+A special thanks to Jon Craton, Michael Carroll, Johnathan Alford, Conor Nowlan, Jacob Spires and Francis Uzorh, this project would not have been possible with out you all. 
 
 ## Useful Links
 
