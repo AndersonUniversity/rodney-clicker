@@ -24,8 +24,8 @@ _**Add more challenges here**_
 
 To play the game, you must either have an Android device or you must be running an Android Emulator that is connected through Android Studio. Once you have downloaded the game, you can open it and begin playing. The game is very simple to play, all you have to do is click on the button in the middle of the screen to gain points. You can then use these points to purchase upgrades to increase the amount of points you gain per click. You can also use these points to purchase buildings to gain points automatically.
 
-![Screenshot_20221209-095013_Rodney Clicker](https://user-images.githubusercontent.com/91626436/206729808-93726edb-3317-40d6-980b-08c2dcf272af.jpg)
-![Screenshot_20221209-095007_Rodney Clicker](https://user-images.githubusercontent.com/91626436/206729819-fccfb2d1-d651-4525-bc6f-1a9375c8659d.jpg)
+![Screenshot_20221209-095007_Rodney Clicker](https://user-images.githubusercontent.com/91626436/206730954-e3957eec-d1c9-4edf-9e7d-95938b562915.jpg)
+![Screenshot_20221209-095013_Rodney Clicker](https://user-images.githubusercontent.com/91626436/206730961-06723cd3-b988-4256-afe5-8c6cd524a319.jpg)
 
 
 ## How to Contribute
