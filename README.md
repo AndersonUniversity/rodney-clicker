@@ -26,7 +26,6 @@ To play the game, you must either have an Android device or you must be running 
 
 ![Screenshot_20221209-095013_Rodney Clicker](https://user-images.githubusercontent.com/91626436/206729808-93726edb-3317-40d6-980b-08c2dcf272af.jpg)
 ![Screenshot_20221209-095007_Rodney Clicker](https://user-images.githubusercontent.com/91626436/206729819-fccfb2d1-d651-4525-bc6f-1a9375c8659d.jpg)
-![koontz](https://user-images.githubusercontent.com/83080699/206730738-61f9ba8a-e35c-426a-bba0-ebd9b01c8b9c.png)
 
 
 ## How to Contribute
