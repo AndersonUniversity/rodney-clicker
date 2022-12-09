@@ -182,8 +182,8 @@ class StoreActivity : AppCompatActivity() {
                     findViewById<TextView>(R.id.rodneyValue).text = FormatNum.formatNumberRDPS((numTotalRodneyMultipliers * rodney.dps).toLong())
                     findViewById<TextView>(R.id.heliosValue).text = FormatNum.formatNumberRDPS((numTotalHeliosMultipliers * helios.dps).toLong())
                     findViewById<TextView>(R.id.flameValue).text = FormatNum.formatNumberRDPS((numTotalEternalFlameMultipliers * eternalFlame.dps).toLong())
-                    findViewById<TextView>(R.id.koontzValue).text = FormatNum.formatNumberRDPS(((numTotalKoontzMultipliers+1) * koontz.dps).toLong())
-                    findViewById<TextView>(R.id.tandyValue).text = FormatNum.formatNumberRDPS(((numTotalJoshTandyMultipliers+1) * joshTandy.dps).toLong())
+                    findViewById<TextView>(R.id.koontzValue).text = FormatNum.formatNumberRDPS(((numTotalKoontzMultipliers + 1) * koontz.dps).toLong())
+                    findViewById<TextView>(R.id.tandyValue).text = FormatNum.formatNumberRDPS(((numTotalJoshTandyMultipliers + 1) * joshTandy.dps).toLong())
                     handler.postDelayed(this, 1000)
                 }
             },
