@@ -5,25 +5,141 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    android:backgroundTint="#D8D7D7"
+    android:backgroundTint="#FFFFFF"
     android:backgroundTintMode="multiply"
     android:fadingEdge="horizontal|vertical"
     android:padding="@null"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageViewFlame"
-        android:layout_width="51dp"
-        android:layout_height="66dp"
-        android:layout_marginEnd="20dp"
-        android:adjustViewBounds="true"
-        android:padding="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <FrameLayout
+        android:id="@+id/achievementDisplay"
+        android:layout_width="100dp"
+        android:layout_height="183dp"
+        android:layout_marginLeft="-5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/ravenButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
-        app:srcCompat="@drawable/flame" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ravenDollars"
+        app:layout_constraintVertical_bias="0.228">
+
+        <ImageView
+        android:layout_width="82dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/achievementview"/>
+
+        <ImageView
+            android:id = "@+id/achievement0"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="10dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/badge" />
+
+        <ImageView
+            android:id = "@+id/achievement1"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="47dp"
+            android:layout_marginTop="10dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/badge" />
+
+        <ImageView
+            android:id = "@+id/achievement2"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="45dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/badge" />
+
+        <ImageView
+            android:id = "@+id/achievement3"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="47dp"
+            android:layout_marginTop="45dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/badge" />
+
+        <ImageView
+            android:id = "@+id/achievement4"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="80dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/badge" />
+
+        <ImageView
+            android:id = "@+id/achievement5"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="47dp"
+            android:layout_marginTop="80dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/badge" />
+
+        <ImageView
+            android:id = "@+id/achievement6"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="115dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/badge" />
+
+        <ImageView
+            android:id = "@+id/achievement7"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="47dp"
+            android:layout_marginTop="115dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/badge" />
+
+        <ImageView
+            android:id = "@+id/achievement8"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="150dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/badge" />
+
+        <ImageView
+            android:id = "@+id/achievement9"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="47dp"
+            android:layout_marginTop="150dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/badge" />
+    </FrameLayout>
 
     <ImageView
         android:id="@+id/imageView"
@@ -64,8 +180,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.408"
+        app:layout_constraintVertical_bias="0.499"
         app:srcCompat="@drawable/koontz" />
+
+    <ImageView
+        android:id="@+id/imageViewFlame"
+        android:layout_width="51dp"
+        android:layout_height="66dp"
+        android:layout_marginEnd="20dp"
+        android:adjustViewBounds="true"
+        android:padding="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.408"
+        app:srcCompat="@drawable/flame" />
 
 
     <TextView
@@ -128,7 +258,7 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/imageViewSanta"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.936"
+        app:layout_constraintHorizontal_bias="0.934"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageViewFlame"
         app:layout_constraintVertical_bias="0.0" />
@@ -148,10 +278,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewKoontz"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.894"
+        app:layout_constraintHorizontal_bias="0.891"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageViewKoontz"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/imageViewSanta"
@@ -181,10 +311,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewSanta"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintHorizontal_bias="0.947"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewFlame"
-        app:layout_constraintVertical_bias="0.677" />
+        app:layout_constraintVertical_bias="0.918" />
 
     <TextView
         android:id="@+id/ravenDollars"

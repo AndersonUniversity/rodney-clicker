@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -138,13 +139,14 @@ class MainActivity : AppCompatActivity() {
             putString("Helios_Clickers", helios.numOwned.toString())
             putString("Helios_Multipliers", helios.multiplier.toString())
             putString("Total_Clicks", totalClicks.toString())
-            putString("Completed_Achievements_String", completedAchievements)
             putString("Eternal_Flame_Clickers", eternalFlame.numOwned.toString())
             putString("Eternal_Flame_Multipliers", eternalFlame.multiplier.toString())
             putString("Koontz_Clickers", koontz.numOwned.toString())
             putString("Koontz_Multiplier", koontz.multiplier.toString())
             putString("Josh_Tandy_Clickers", joshTandy.numOwned.toString())
             putString("Josh_Tandy_Multiplier", joshTandy.multiplier.toString())
+            putString("Completed_Achievements_String", completedAchievements)
+            putString("Achievement_Count", achievementCount.toString())
         }.apply()
     }
 
@@ -158,14 +160,18 @@ class MainActivity : AppCompatActivity() {
         val savedHeliosClickers = sharedPref.getString("Helios_Clickers", "0")
         val savedHeliosClickersMultipliers = sharedPref.getString("Helios_Multipliers", "0")
         val savedClicks = sharedPref.getString("Total_Clicks", "0")
-        val savedAchievementString = sharedPref.getString("Completed_Achievements_String", "")
         val savedEternalFlameClickers = sharedPref.getString("Eternal_Flame_Clickers", "0")
         val savedEternalFlameClickersMultipliers = sharedPref.getString("Eternal_Flame_Multiplier", "0")
         val savedKoontzClickers = sharedPref.getString("Koontz_Clickers", "0")
         val savedKoontzClickersMultipliers = sharedPref.getString("Koontz_Multipliers", "0")
         val savedJoshTandyClickers = sharedPref.getString("Josh_Tandy_Clickers", "0")
         val savedJoshTandyClickersMultipliers = sharedPref.getString("Josh_Tandy_Multipliers", "0")
+        val savedAchievementCount = sharedPref.getString("Achievement_Count", "0")
+        val savedAchievementString = sharedPref.getString("Completed_Achievements_String", "")
 
+        if (savedAchievementCount != null) {
+            achievementCount = savedAchievementCount.toInt()
+        }
         if (savedAchievementString != null) {
             completedAchievements = savedAchievementString
         }
@@ -237,8 +243,41 @@ class MainActivity : AppCompatActivity() {
         val popup = findViewById<TextView>(R.id.achievementPopup)
         popup.visibility = View.INVISIBLE
         if (text != "") {
+            if (popup.text != text) {
+                achievementCount++
+            }
             popup.text = text
             popup.visibility = View.VISIBLE
+        }
+        if (achievementCount >= 1) {
+            findViewById<ImageView>(R.id.achievement0).visibility = View.VISIBLE
+        }
+        if (achievementCount >= 2) {
+            findViewById<ImageView>(R.id.achievement1).visibility = View.VISIBLE
+        }
+        if (achievementCount >= 3) {
+            findViewById<ImageView>(R.id.achievement2).visibility = View.VISIBLE
+        }
+        if (achievementCount >= 4) {
+            findViewById<ImageView>(R.id.achievement3).visibility = View.VISIBLE
+        }
+        if (achievementCount >= 5) {
+            findViewById<ImageView>(R.id.achievement4).visibility = View.VISIBLE
+        }
+        if (achievementCount >= 6) {
+            findViewById<ImageView>(R.id.achievement5).visibility = View.VISIBLE
+        }
+        if (achievementCount >= 7) {
+            findViewById<ImageView>(R.id.achievement6).visibility = View.VISIBLE
+        }
+        if (achievementCount >= 8) {
+            findViewById<ImageView>(R.id.achievement7).visibility = View.VISIBLE
+        }
+        if (achievementCount >= 9) {
+            findViewById<ImageView>(R.id.achievement8).visibility = View.VISIBLE
+        }
+        if (achievementCount >= 10) {
+            findViewById<ImageView>(R.id.achievement9).visibility = View.VISIBLE
         }
     }
 }

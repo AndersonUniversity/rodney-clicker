@@ -15,23 +15,23 @@ class StoreActivity : AppCompatActivity() {
     private var numRavenDollars = 0L
     private var numTotalRavenDollars = 0L
     private var numTotalRodneyUpgrades = 0
-    private var numTotalRodneyMultipliers = 0
+    private var numTotalRodneyMultipliers = 1
     private var rodneyCost = 10
     private var rodneyMilestone = 25
     private var numTotalHeliosUpgrades = 0
-    private var numTotalHeliosMultipliers = 0
+    private var numTotalHeliosMultipliers = 1
     private var heliosCost = 100
     private var heliosMilestone = 25
     private var numTotalEternalFlameUpgrades = 0
-    private var numTotalEternalFlameMultipliers = 0
+    private var numTotalEternalFlameMultipliers = 1
     private var eternalFlameCost = 500
     private var eternalFlameMilestone = 25
     private var numTotalKoontzUpgrades = 0
-    private var numTotalKoontzMultipliers = 0
+    private var numTotalKoontzMultipliers = 1
     private var koontzCost = 1000
     private var koontzMilestone = 25
     private var numTotalJoshTandyUpgrades = 0
-    private var numTotalJoshTandyMultipliers = 0
+    private var numTotalJoshTandyMultipliers = 1
     private var joshTandyCost = 2000
     private var joshTandyMilestone = 25
     var gameLoopRunning = false
@@ -72,9 +72,13 @@ class StoreActivity : AppCompatActivity() {
         numTotalKoontzMultipliers = sharedPref.getString("Koontz_Multipliers", "0")?.toInt() ?: 0
         numTotalJoshTandyUpgrades = sharedPref.getString("Josh_Tandy_Clickers", "0")?.toInt() ?: 0
         numTotalJoshTandyMultipliers = sharedPref.getString("Josh_Tandy_Multipliers", "0")?.toInt() ?: 0
+        achievementCount = sharedPref.getString("Achievement_Count", "0")?.toInt() ?: 0
+        completedAchievements = sharedPref.getString("Completed_Achievements_String", "") ?: ""
+
         /**load saved cost and milestones*/
         loadData()
 
+        findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars)
         findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars)
         findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars)
         findViewById<TextView>(R.id.rodney_cost_text).text = FormatNum.formatNumber(rodneyCost.toLong())
@@ -82,6 +86,11 @@ class StoreActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.eternalFlame_cost_text).text = FormatNum.formatNumber(eternalFlameCost.toLong())
         findViewById<TextView>(R.id.koontz_cost_text).text = FormatNum.formatNumber(koontzCost.toLong())
         findViewById<TextView>(R.id.joshTandy_cost_text).text = FormatNum.formatNumber(joshTandyCost.toLong())
+        findViewById<TextView>(R.id.rodneyValue).text = FormatNum.formatNumberRDPS((numTotalRodneyMultipliers * rodney.dps).toLong())
+        findViewById<TextView>(R.id.heliosValue).text = FormatNum.formatNumberRDPS((numTotalHeliosMultipliers * helios.dps).toLong())
+        findViewById<TextView>(R.id.flameValue).text = FormatNum.formatNumberRDPS((numTotalEternalFlameMultipliers * eternalFlame.dps).toLong())
+        findViewById<TextView>(R.id.koontzValue).text = FormatNum.formatNumberRDPS(((numTotalKoontzMultipliers + 1) * koontz.dps).toLong())
+        findViewById<TextView>(R.id.tandyValue).text = FormatNum.formatNumberRDPS(((numTotalJoshTandyMultipliers + 1) * joshTandy.dps).toLong())
         findViewById<ImageButton>(R.id.buy_multiplier_rodney).visibility = View.GONE
         findViewById<ImageButton>(R.id.buy_multiplier_helios).visibility = View.GONE
         findViewById<ImageButton>(R.id.buy_multiplier_eternalFlame).visibility = View.GONE
@@ -115,7 +124,6 @@ class StoreActivity : AppCompatActivity() {
     }
 
     private fun saveData() {
-        /**save data*/
         val sharedPref = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
         editor.apply {
@@ -141,6 +149,8 @@ class StoreActivity : AppCompatActivity() {
             putString("eternal_flame_milestone", eternalFlameMilestone.toString())
             putString("koontz_milestone", koontzMilestone.toString())
             putString("josh_tandy_milestone", joshTandyMilestone.toString())
+            putString("Completed_Achievements_String", completedAchievements)
+            putString("Achievement_Count", achievementCount.toString())
         }.apply()
     }
 
@@ -164,10 +174,16 @@ class StoreActivity : AppCompatActivity() {
                     val eternalFlameAdd = (eternalFlame.dps * eternalFlame.numOwned * eternalFlame.multiplier)
                     val koontzAdd = (koontz.dps * koontz.numOwned * koontz.multiplier)
                     val joshTandyAdd = (joshTandy.dps * joshTandy.numOwned * joshTandy.multiplier)
+
                     val toAdd = rodneyAdd + heliosAdd + eternalFlameAdd + koontzAdd + joshTandyAdd
                     numRavenDollars += toAdd
                     numTotalRavenDollars += toAdd
                     findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars)
+                    findViewById<TextView>(R.id.rodneyValue).text = FormatNum.formatNumberRDPS((numTotalRodneyMultipliers * rodney.dps).toLong())
+                    findViewById<TextView>(R.id.heliosValue).text = FormatNum.formatNumberRDPS((numTotalHeliosMultipliers * helios.dps).toLong())
+                    findViewById<TextView>(R.id.flameValue).text = FormatNum.formatNumberRDPS((numTotalEternalFlameMultipliers * eternalFlame.dps).toLong())
+                    findViewById<TextView>(R.id.koontzValue).text = FormatNum.formatNumberRDPS(((numTotalKoontzMultipliers + 1) * koontz.dps).toLong())
+                    findViewById<TextView>(R.id.tandyValue).text = FormatNum.formatNumberRDPS(((numTotalJoshTandyMultipliers + 1) * joshTandy.dps).toLong())
                     handler.postDelayed(this, 1000)
                 }
             },
@@ -183,13 +199,14 @@ class StoreActivity : AppCompatActivity() {
         val cost = if (numOwned == 0) { baseCost } else { (baseCost * baseCostMultiplier * numOwned).toInt() }
         return if (numRavenDollars >= cost) {
             numRavenDollars -= cost
+            findViewById<TextView>(R.id.currRavenDollars).text =
+                FormatNum.formatNumber(numRavenDollars)
             findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars)
             1
         } else {
             0
         }
     }
-
     fun buyRodney(view: View) {
         numTotalRodneyUpgrades += calcCost(numTotalRodneyUpgrades, 10, 1.15)
         rodneyCost = setCost(numTotalRodneyUpgrades, 10, 1.15)
@@ -232,6 +249,7 @@ class StoreActivity : AppCompatActivity() {
     }
     fun buyRodneyMultiplier(view: View) {
         numTotalRodneyMultipliers += calcCost(numTotalRodneyMultipliers - 1, 100, 1.5)
+
         rodneyMilestone *= 2
         findViewById<ImageButton>(R.id.buy_multiplier_rodney).visibility = View.GONE
     }
