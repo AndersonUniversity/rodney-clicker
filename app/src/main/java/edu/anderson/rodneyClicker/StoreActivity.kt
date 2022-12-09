@@ -85,17 +85,16 @@ class StoreActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.eternalFlame_cost_text).text = FormatNum.formatNumber(eternalFlameCost.toLong())
         findViewById<TextView>(R.id.koontz_cost_text).text = FormatNum.formatNumber(koontzCost.toLong())
         findViewById<TextView>(R.id.joshTandy_cost_text).text = FormatNum.formatNumber(joshTandyCost.toLong())
+        findViewById<TextView>(R.id.rodneyValue).text = FormatNum.formatNumberRDPS((numTotalRodneyMultipliers * rodney.dps).toLong())
+        findViewById<TextView>(R.id.heliosValue).text = FormatNum.formatNumberRDPS((numTotalHeliosMultipliers * helios.dps).toLong())
+        findViewById<TextView>(R.id.flameValue).text = FormatNum.formatNumberRDPS((numTotalEternalFlameMultipliers * eternalFlame.dps).toLong())
+        findViewById<TextView>(R.id.koontzValue).text = FormatNum.formatNumberRDPS((numTotalKoontzMultipliers * koontz.dps).toLong())
+        findViewById<TextView>(R.id.tandyValue).text = FormatNum.formatNumberRDPS((numTotalJoshTandyMultipliers * joshTandy.dps).toLong())
         findViewById<ImageButton>(R.id.buy_multiplier_rodney).visibility = View.GONE
         findViewById<ImageButton>(R.id.buy_multiplier_helios).visibility = View.GONE
         findViewById<ImageButton>(R.id.buy_multiplier_eternalFlame).visibility = View.GONE
         findViewById<ImageButton>(R.id.buy_multiplier_koontz).visibility = View.GONE
         findViewById<ImageButton>(R.id.buy_multiplier_joshTandy).visibility = View.GONE
-        findViewById<TextView>(R.id.rodneyValue).text = "+" + FormatNum.formatNumber((numTotalRodneyMultipliers * rodney.dps).toLong()).substring(2) + "/s"
-        findViewById<TextView>(R.id.heliosValue).text = "+" + FormatNum.formatNumber((numTotalHeliosMultipliers * helios.dps).toLong()).substring(2) + "/s"
-        findViewById<TextView>(R.id.flameValue).text = "+" + FormatNum.formatNumber((numTotalEternalFlameMultipliers * eternalFlame.dps).toLong()).substring(2) + "/s"
-        findViewById<TextView>(R.id.koontzValue).text = "+" + FormatNum.formatNumber((numTotalKoontzMultipliers * koontz.dps).toLong()).substring(2) + "/s"
-        findViewById<TextView>(R.id.tandyValue).text = "+" + FormatNum.formatNumber((numTotalJoshTandyMultipliers * joshTandy.dps).toLong()).substring(2) + "/s"
-
 
         if (numTotalRodneyUpgrades >= rodneyMilestone) {
             findViewById<ImageButton>(R.id.buy_multiplier_rodney).visibility = View.VISIBLE
@@ -179,11 +178,11 @@ class StoreActivity : AppCompatActivity() {
                     numRavenDollars += toAdd
                     numTotalRavenDollars += toAdd
                     findViewById<TextView>(R.id.currRavenDollars).text = FormatNum.formatNumber(numRavenDollars)
-                    findViewById<TextView>(R.id.rodneyValue).text = "+" + FormatNum.formatNumber((numTotalRodneyMultipliers * rodney.dps).toLong()).substring(2) + "/s"
-                    findViewById<TextView>(R.id.heliosValue).text = "+" + FormatNum.formatNumber((numTotalHeliosMultipliers * helios.dps).toLong()).substring(2) + "/s"
-                    findViewById<TextView>(R.id.flameValue).text = "+" + FormatNum.formatNumber((numTotalEternalFlameMultipliers * eternalFlame.dps).toLong()).substring(2) + "/s"
-                    findViewById<TextView>(R.id.koontzValue).text = "+" + FormatNum.formatNumber((numTotalKoontzMultipliers * koontz.dps).toLong()).substring(2) + "/s"
-                    findViewById<TextView>(R.id.tandyValue).text = "+" + (numTotalJoshTandyMultipliers * joshTandy.dps) + "/s"
+                    findViewById<TextView>(R.id.rodneyValue).text = FormatNum.formatNumberRDPS((numTotalRodneyMultipliers * rodney.dps).toLong())
+                    findViewById<TextView>(R.id.heliosValue).text = FormatNum.formatNumberRDPS((numTotalHeliosMultipliers * helios.dps).toLong())
+                    findViewById<TextView>(R.id.flameValue).text = FormatNum.formatNumberRDPS((numTotalEternalFlameMultipliers * eternalFlame.dps).toLong())
+                    findViewById<TextView>(R.id.koontzValue).text = FormatNum.formatNumberRDPS((numTotalKoontzMultipliers * koontz.dps).toLong())
+                    findViewById<TextView>(R.id.tandyValue).text = FormatNum.formatNumberRDPS((numTotalJoshTandyMultipliers * joshTandy.dps).toLong())
                     handler.postDelayed(this, 1000)
                 }
             },

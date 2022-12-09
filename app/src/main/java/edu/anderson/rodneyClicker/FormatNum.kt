@@ -21,4 +21,15 @@ object FormatNum {
             else -> String.format("Total Raven Dollars: $num")
         }
     }
+
+    fun formatNumberRDPS(num: Long): String {
+        return when {
+            num >= 1000000000000000000 -> String.format("+%.2fQ/s", num / 1000000000000000000.0)
+            num >= 1000000000000 -> String.format("+%.2fT/s", num / 1000000000000.0)
+            num >= 1000000000 -> String.format("+%.2fB/s", num / 1000000000.0)
+            num >= 1000000 -> String.format("+%.2fM/s", num / 1000000.0)
+            num >= 1000 -> String.format("+%.2fK/s", num / 1000.0)
+            else -> String.format("+$num/s")
+        }
+    }
 }
