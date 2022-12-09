@@ -71,8 +71,8 @@ class StoreActivity : AppCompatActivity() {
         numTotalKoontzUpgrades = sharedPref.getString("Koontz_Clickers", "0")?.toInt() ?: 0
         numTotalKoontzMultipliers = sharedPref.getString("Koontz_Multipliers", "0")?.toInt() ?: 0
         numTotalJoshTandyMultipliers = sharedPref.getString("Josh_Tandy_Multipliers", "0")?.toInt() ?: 0
-        achievementCount = sharedPref.getString("Achievement_Count", "0")?.toInt() ?:0
-        completedAchievements = sharedPref.getString("Completed_Achievements_String", "")?:""
+        achievementCount = sharedPref.getString("Achievement_Count", "0")?.toInt() ?: 0
+        completedAchievements = sharedPref.getString("Completed_Achievements_String", "") ?: ""
 
         /**load saved cost and milestones*/
         loadData()
