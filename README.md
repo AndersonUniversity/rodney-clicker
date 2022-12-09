@@ -31,6 +31,10 @@ To play the game, you must either have an Android device or you must be running 
 
 If you would like to contribute to this project, you can do so by forking the repository and making a pull request. We will review your pull request and merge it if it is approved. If you would like to contribute to the project, please make sure that you are following the code of conduct and contributing guidelines. Below are some useful links and commands that will help you format and build your code properly.
 
+##Contributors
+
+A special thanks to Jon Craton, Michael Carroll, John Alford, Conow Nowlan, Jacob Spires and Francis Uzorh, this project would not have been possible with out you all. 
+
 ## Useful Links
 
 If you would like to download the repository and provide/suggest changes and improvements. These links will help with the processes we used for this project. Make sure you have Ktlint formatted correctly, the commands for Ktlint will be listed below.
