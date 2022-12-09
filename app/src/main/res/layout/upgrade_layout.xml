@@ -77,6 +77,17 @@
             android:layout_marginTop="34dp"
             android:clickable="false"
             android:text="0R$/s" />
+        <TextView
+            android:id="@+id/joshTandy_cost_text"
+            android:layout_width="59dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="28dp"
+            android:text="R$2000"
+            android:textAlignment="center"
+            android:textSize="10sp"
+            android:visibility="visible"
+            tools:visibility="visible" />
     </FrameLayout>
 
     <FrameLayout
@@ -108,6 +119,17 @@
             android:layout_marginTop="34dp"
             android:clickable="false"
             android:text="0R$/s" />
+        <TextView
+            android:id="@+id/koontz_cost_text"
+            android:layout_width="59dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="28dp"
+            android:text="R$1000"
+            android:textAlignment="center"
+            android:textSize="10sp"
+            android:visibility="visible"
+            tools:visibility="visible" />
     </FrameLayout>
 
     <FrameLayout
@@ -119,6 +141,7 @@
         app:layout_constraintTop_toBottomOf="@id/helios_frame"
         app:layout_constraintStart_toStartOf="parent"
         >
+
         <ImageButton
             android:id="@+id/buy_eternalFlame"
             android:layout_width="match_parent"
@@ -131,6 +154,7 @@
             android:src="@drawable/flameupgrade"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buy_heliosButton" />
+
         <TextView
             android:id="@+id/flameValue"
             android:layout_width="wrap_content"
@@ -139,6 +163,17 @@
             android:layout_marginTop="34dp"
             android:clickable="false"
             android:text="0R$/s" />
+        <TextView
+            android:id="@+id/eternalFlame_cost_text"
+            android:layout_width="59dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="28dp"
+            android:text="R$500"
+            android:textAlignment="center"
+            android:textSize="10sp"
+            android:visibility="visible"
+            tools:visibility="visible" />
     </FrameLayout>
 
     <ImageButton
@@ -246,6 +281,17 @@
             android:layout_marginTop="34dp"
             android:clickable="false"
             android:text="0R$/s" />
+        <TextView
+            android:id="@+id/rodney_cost_text"
+            android:layout_width="59dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginStart="160dp"
+            android:text="R$10"
+            android:textAlignment="center"
+            android:textSize="10sp"
+            android:visibility="visible"
+            tools:visibility="visible" />
     </FrameLayout>
 
     <FrameLayout
@@ -275,6 +321,17 @@
         android:layout_marginTop="34dp"
         android:clickable="false"
         android:text="0R$/s" />
+        <TextView
+            android:id="@+id/helios_cost_text"
+            android:layout_width="59dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="28dp"
+            android:text="R$100"
+            android:textAlignment="center"
+            android:textSize="10sp"
+            android:visibility="visible"
+            tools:visibility="visible" />
 </FrameLayout>
     <TextView
         android:id="@+id/currRavenDollars"

@@ -2,18 +2,13 @@ package edu.anderson.rodneyClicker
 
 import android.content.Context
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import android.widget.FrameLayout
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
-import androidx.core.view.marginLeft
 
 class MainActivity : AppCompatActivity() {
     var numRavenDollars = 0L
@@ -29,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     var numKoontzMultipliers = 0
     var numJoshTandyUpgrades = 0
     var numJoshTandyMultipliers = 0
+    var gameLoopRunning = false
     var achievementCount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +36,7 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         saveData()
+        gameLoopRunning = false
     }
 
     /**Loads all the information whenever the main activity is started*/
@@ -54,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         updateMultiplier(this)
         showRDPS()
         setAchievementView("")
+        gameLoopRunning = true
         gameLoop(this)
     }
 
@@ -70,8 +68,8 @@ class MainActivity : AppCompatActivity() {
         numRavenDollars += 1
         totalRavenDollars += 1
         totalClicks++
-        val newRavenDollars = FormatNum.formatNumber(numRavenDollars.toLong())
-        val newTotalRavenDollars = FormatNum.formatNumberTRD((totalRavenDollars.toLong()))
+        val newRavenDollars = FormatNum.formatNumber(numRavenDollars)
+        val newTotalRavenDollars = FormatNum.formatNumberTRD((totalRavenDollars))
         ravenDollars.text = newRavenDollars
         totalRavens.text = newTotalRavenDollars
         totalRavens.text = newTotalRavenDollars
@@ -79,9 +77,9 @@ class MainActivity : AppCompatActivity() {
 
     val rodney = ClickersAndUpgrades.AutoClicker(1, 0, 1)
     val helios = ClickersAndUpgrades.AutoClicker(5, 0, 1)
-    val eternalFlame = ClickersAndUpgrades.AutoClicker(10, 0, 1)
-    val koontz = ClickersAndUpgrades.AutoClicker(15, 0, 1)
-    val joshTandy = ClickersAndUpgrades.AutoClicker(20, 0, 1)
+    val eternalFlame = ClickersAndUpgrades.AutoClicker(15, 0, 1)
+    val koontz = ClickersAndUpgrades.AutoClicker(30, 0, 1)
+    val joshTandy = ClickersAndUpgrades.AutoClicker(50, 0, 1)
 
     private fun updateClicker(view: MainActivity) {
         ClickersAndUpgrades.addClicker(numRodneyUpgrades, numHeliosUpgrades, numEternalFlameUpgrades, numKoontzUpgrades, numJoshTandyUpgrades, rodney, helios, eternalFlame, koontz, joshTandy)
@@ -103,6 +101,8 @@ class MainActivity : AppCompatActivity() {
         handler.postDelayed(
             object : Runnable {
                 override fun run() {
+                    if (!gameLoopRunning) { return }
+
                     val rodneyAdd = (rodney.dps * rodney.numOwned * rodney.multiplier)
                     val heliosAdd = (helios.dps * helios.numOwned * helios.multiplier)
                     val eternalFlameAdd = (eternalFlame.dps * eternalFlame.numOwned * eternalFlame.multiplier)
@@ -111,12 +111,16 @@ class MainActivity : AppCompatActivity() {
                     val toAdd = rodneyAdd + heliosAdd + eternalFlameAdd + koontzAdd + joshTandyAdd
                     numRavenDollars += toAdd
                     totalRavenDollars += toAdd
-                    findViewById<TextView>(R.id.ravenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
-                    findViewById<TextView>(R.id.totalRavenDollars).text = FormatNum.formatNumberTRD((totalRavenDollars.toLong()))
+                    findViewById<TextView>(R.id.ravenDollars).text = FormatNum.formatNumber(
+                        numRavenDollars
+                    )
+                    findViewById<TextView>(R.id.totalRavenDollars).text = FormatNum.formatNumberTRD((totalRavenDollars))
                     val currAchievement = checkAchievements(totalRavenDollars, totalClicks, numRodneyUpgrades, numHeliosUpgrades, numEternalFlameUpgrades, numKoontzUpgrades, numJoshTandyUpgrades)
                     setAchievementView(currAchievement)
-                    findViewById<TextView>(R.id.ravenDollars).text = FormatNum.formatNumber(numRavenDollars.toLong())
-                    findViewById<TextView>(R.id.totalRavenDollars).text = FormatNum.formatNumberTRD((totalRavenDollars.toLong()))
+                    findViewById<TextView>(R.id.ravenDollars).text = FormatNum.formatNumber(
+                        numRavenDollars
+                    )
+                    findViewById<TextView>(R.id.totalRavenDollars).text = FormatNum.formatNumberTRD((totalRavenDollars))
                     handler.postDelayed(this, 1000)
                 }
             },
@@ -240,42 +244,41 @@ class MainActivity : AppCompatActivity() {
         val popup = findViewById<TextView>(R.id.achievementPopup)
         popup.visibility = View.INVISIBLE
         if (text != "") {
-            if(popup.text != text){
+            if (popup.text != text) {
                 achievementCount++
             }
             popup.text = text
             popup.visibility = View.VISIBLE
         }
-        if(achievementCount >= 1){
+        if (achievementCount >= 1) {
             findViewById<ImageView>(R.id.achievement0).visibility = View.VISIBLE
         }
-        if(achievementCount >= 2) {
+        if (achievementCount >= 2) {
             findViewById<ImageView>(R.id.achievement1).visibility = View.VISIBLE
         }
-        if(achievementCount >= 3){
+        if (achievementCount >= 3) {
             findViewById<ImageView>(R.id.achievement2).visibility = View.VISIBLE
         }
-        if(achievementCount >= 4){
+        if (achievementCount >= 4) {
             findViewById<ImageView>(R.id.achievement3).visibility = View.VISIBLE
         }
-        if(achievementCount >= 5){
+        if (achievementCount >= 5) {
             findViewById<ImageView>(R.id.achievement4).visibility = View.VISIBLE
         }
-        if(achievementCount >= 6){
+        if (achievementCount >= 6) {
             findViewById<ImageView>(R.id.achievement5).visibility = View.VISIBLE
         }
-        if(achievementCount >= 7){
+        if (achievementCount >= 7) {
             findViewById<ImageView>(R.id.achievement6).visibility = View.VISIBLE
         }
-        if(achievementCount >= 8){
+        if (achievementCount >= 8) {
             findViewById<ImageView>(R.id.achievement7).visibility = View.VISIBLE
         }
-        if(achievementCount >= 9){
+        if (achievementCount >= 9) {
             findViewById<ImageView>(R.id.achievement8).visibility = View.VISIBLE
         }
-        if(achievementCount >= 10){
+        if (achievementCount >= 10) {
             findViewById<ImageView>(R.id.achievement9).visibility = View.VISIBLE
         }
-
     }
 }
