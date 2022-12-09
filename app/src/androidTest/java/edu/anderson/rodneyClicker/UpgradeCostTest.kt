@@ -38,7 +38,6 @@ class UpgradeCostTest {
         // Check the cost has gone up
         var cost = (10 * 1.15).toInt()
         onView(withId(R.id.rodney_cost_text)).check(matches(withText("R$$cost")))
-
         // Buy again
         onView(withId(R.id.buy_rodneyButton)).perform(click())
 
