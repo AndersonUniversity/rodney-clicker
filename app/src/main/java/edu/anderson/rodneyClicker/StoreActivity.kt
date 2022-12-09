@@ -135,10 +135,18 @@ class StoreActivity : AppCompatActivity() {
                     val toAdd = rodneyAdd + heliosAdd + eternalFlameAdd + koontzAdd + joshTandyAdd
                     numRavenDollars += toAdd
                     numTotalRavenDollars += toAdd
+                    findViewById<TextView>(R.id.rodneyValue).text =
+                        "+" + FormatNum.formatNumber((numTotalRodneyMultipliers+1).toLong()).substring(2) + "/s"
+                    findViewById<TextView>(R.id.heliosValue).text =
+                        "+" + FormatNum.formatNumber(((numTotalHeliosMultipliers+1)*5).toLong()).substring(2) + "/s"
+                    findViewById<TextView>(R.id.flameValue).text =
+                        "+" + FormatNum.formatNumber(((numTotalEternalFlameMultipliers+1)*10).toLong()).substring(2) + "/s"
+                    findViewById<TextView>(R.id.koontzValue).text =
+                        "+" + FormatNum.formatNumber(((numTotalKoontzMultipliers+1)*15).toLong()).substring(2) + "/s"
                     findViewById<TextView>(R.id.tandyValue).text =
-                        "+" + FormatNum.formatNumber((numTotalJoshTandyMultipliers*20).toLong()) + "R$/s"
+                        "+" + FormatNum.formatNumber(((numTotalJoshTandyMultipliers+1)*20).toLong()).substring(2) + "/s"
                     findViewById<TextView>(R.id.currRavenDollars).text =
-                        FormatNum.formatNumber(numRavenDollars.toLong())
+                        FormatNum.formatNumber(numRavenDollars)
                     handler.postDelayed(this, 1000)
                 }
             },
@@ -155,7 +163,7 @@ class StoreActivity : AppCompatActivity() {
         return if (numRavenDollars >= cost) {
             numRavenDollars -= cost
             findViewById<TextView>(R.id.currRavenDollars).text =
-                FormatNum.formatNumber(numRavenDollars.toLong())
+                FormatNum.formatNumber(numRavenDollars)
             1
         } else {
             0

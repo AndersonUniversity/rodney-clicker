@@ -2,12 +2,18 @@ package edu.anderson.rodneyClicker
 
 import android.content.Context
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import android.widget.FrameLayout
+import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import androidx.core.view.marginLeft
 
 class MainActivity : AppCompatActivity() {
     var numRavenDollars = 0L
@@ -23,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     var numKoontzMultipliers = 0
     var numJoshTandyUpgrades = 0
     var numJoshTandyMultipliers = 0
+    var achievementCount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -136,6 +143,7 @@ class MainActivity : AppCompatActivity() {
             putString("Koontz_Multiplier", koontz.multiplier.toString())
             putString("Josh_Tandy_Clickers", joshTandy.numOwned.toString())
             putString("Josh_Tandy_Multiplier", joshTandy.multiplier.toString())
+            putString("Achievement_Count", achievementCount.toString())
         }.apply()
     }
 
@@ -156,7 +164,11 @@ class MainActivity : AppCompatActivity() {
         val savedKoontzClickersMultipliers = sharedPref.getString("Koontz_Multipliers", "0")
         val savedJoshTandyClickers = sharedPref.getString("Josh_Tandy_Clickers", "0")
         val savedJoshTandyClickersMultipliers = sharedPref.getString("Josh_Tandy_Multipliers", "0")
+        val savedAchievementCount = sharedPref.getString("Achievement_Count", "0")
 
+        if (savedAchievementCount != null) {
+            achievementCount = savedAchievementCount.toInt()
+        }
         if (savedAchievementString != null) {
             completedAchievements = savedAchievementString
         }
@@ -228,8 +240,42 @@ class MainActivity : AppCompatActivity() {
         val popup = findViewById<TextView>(R.id.achievementPopup)
         popup.visibility = View.INVISIBLE
         if (text != "") {
+            if(popup.text != text){
+                achievementCount++
+            }
             popup.text = text
             popup.visibility = View.VISIBLE
         }
+        if(achievementCount >= 1){
+            findViewById<ImageView>(R.id.achievement0).visibility = View.VISIBLE
+        }
+        if(achievementCount >= 2) {
+            findViewById<ImageView>(R.id.achievement1).visibility = View.VISIBLE
+        }
+        if(achievementCount >= 3){
+            findViewById<ImageView>(R.id.achievement2).visibility = View.VISIBLE
+        }
+        if(achievementCount >= 4){
+            findViewById<ImageView>(R.id.achievement3).visibility = View.VISIBLE
+        }
+        if(achievementCount >= 5){
+            findViewById<ImageView>(R.id.achievement4).visibility = View.VISIBLE
+        }
+        if(achievementCount >= 6){
+            findViewById<ImageView>(R.id.achievement5).visibility = View.VISIBLE
+        }
+        if(achievementCount >= 7){
+            findViewById<ImageView>(R.id.achievement6).visibility = View.VISIBLE
+        }
+        if(achievementCount >= 8){
+            findViewById<ImageView>(R.id.achievement7).visibility = View.VISIBLE
+        }
+        if(achievementCount >= 9){
+            findViewById<ImageView>(R.id.achievement8).visibility = View.VISIBLE
+        }
+        if(achievementCount >= 10){
+            findViewById<ImageView>(R.id.achievement9).visibility = View.VISIBLE
+        }
+
     }
 }
