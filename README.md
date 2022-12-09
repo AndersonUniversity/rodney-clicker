@@ -31,7 +31,7 @@ To play the game, you must either have an Android device or you must be running 
 
 If you would like to contribute to this project, you can do so by forking the repository and making a pull request. We will review your pull request and merge it if it is approved. If you would like to contribute to the project, please make sure that you are following the code of conduct and contributing guidelines. Below are some useful links and commands that will help you format and build your code properly.
 
-##Contributors
+## Contributors
 
 A special thanks to Jon Craton, Michael Carroll, Johnathan Alford, Conor Nowlan, Jacob Spires and Francis Uzorh, this project would not have been possible with out you all. 
 
